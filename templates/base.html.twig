@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <span class="site-title">Min rapportsida</span>
+            <nav>
+            <ul>
+                <li><a href="{{ path('me') }}">Home</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
+            </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>{% block footer %}Footer{% endblock %}</footer>
+    </body>
+</html>
