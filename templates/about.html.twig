@@ -3,11 +3,25 @@
 {% block title %}About{% endblock %}
 
 {% block main %}
-    <h1>Om kursen MVC</h1>
-    <div class="content">
-        Kursen MVC (Objektorienterade webbteknologier), fokuserar på objektorienterade programmeringstekniker
-        i programmeringsspråket PHP. Klassiska objektorienterade konstruktioner hanteras tillsammans med objektorienterad
+<h1>Om kursen</h1>
+<div class="content col2">
+    <div>
+        <b>Kursen MVC (Objektorienterade webbteknologier)</b>, fokuserar på objektorienterade programmeringstekniker
+        i programmeringsspråket PHP. Klassiska objektorienterade konstruktioner hanteras tillsammans med
+        objektorienterad
         programmering i webbaserat ramverk tillsammans med databaser samt enhetstestning.
     </div>
+    <div>
+        <ul class="linkstyle">
+            <li>
+                <a href="https://github.com/dbwebb-se/mvc" target="_blank">Kursens GitHub</a>
+            </li>
+            <li>
+                <a href="https://github.com/sofan/mvc" target="_blank">Mitt GitHub</a>
+            </li>
+        </ul>
+        <img src="{{ asset('img/php_elephant.jpg') }}" alt="PHP" title="PHP">
+    </div>
+</div>
 
 {% endblock %}

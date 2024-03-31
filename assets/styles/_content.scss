@@ -6,4 +6,64 @@
     border-radius: 5px;
     margin: 2rem 0;
 
+    img {
+        width: 300px;
+        border-radius: 5px;
+    }
+
+}
+
+.col2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "textcontent imgcontent";
+    gap: 1rem;
+
+    div {
+        &:nth-of-type(2) {
+            border-left: 1px solid grey;
+            padding-left: 1rem;
+        }
+    }
+}
+
+.aside {
+    grid-template-columns: 4fr 1fr;
+}
+
+
+article {
+    height: 500px;
+}
+
+ul.linkstyle {
+    list-style: none;
+    padding: 10px 0;
+
+    a {
+        color: #333;
+    }
+
+    a:hover {
+        color: #776e6e;
+    }
+}
+
+
+
+
+@media (max-width: 700px) {
+    .col2 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "imgcontent"
+            "textcontent";
+
+        div {
+            &:nth-of-type(2) {
+                border-left: 0;
+                padding-left: 0;
+            }
+        }
+    }
 }

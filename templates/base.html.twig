@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
 
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+  <link rel="icon" href="{{ asset('img/girl.svg') }}">
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+  {% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+  {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        <header class="site-header">
-            <span class="site-title">Min rapportsida</span>
-            <nav>
-            <ul>
-                <li><a href="{{ path('me') }}">Home</a></li>
-                <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('report') }}">Report</a></li>
-            </ul>
-            </nav>
-        </header>
-        <main>
-            {% block main %}{% endblock %}
-        </main>
-        <footer>
-          <span>Redovisningssida i kurs MVC vt-24</span>
-          <div>
-            <a href="https://github.com/sofan/mvc" target="_blank">
-              <img src="{{ asset('img/github.png') }}" alt="Min Github" title="Min Github">
-            </a>
-          </div>
-        </footer>
-    </body>
+  {% block javascripts %}
+  {{ encore_entry_script_tags('app') }}
+  {% endblock %}
+</head>
+
+<body>
+  <header class="site-header">
+    <div>
+      <img src="{{ asset('img/girl.svg') }}">
+      <span class="site-title">MVC - Rapportsida</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="{{ path('me') }}">Home</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+        <li><a href="{{ path('report') }}">Report</a></li>
+        <li><a href="{{ path('lucky') }}">Lucky</a></li>
+        <li><a href="{{ path('api') }}">API</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block main %}{% endblock %}
+  </main>
+  <footer>
+    <span>Redovisningssida i kurs MVC vt-24</span>
+    <div>
+      <a href="https://github.com/sofan/mvc" target="_blank">
+        <img src="{{ asset('img/github.png') }}" alt="Min Github" title="Min Github">
+      </a>
+    </div>
+  </footer>
+</body>
+
 </html>

@@ -25,5 +25,13 @@ main {
     margin: 0 auto;
     max-width: 800px;
     padding: 2rem;
+    min-width: 700px;
+}
+
+
+@media (max-width: 700px) {
+    main {
+        min-width: auto;
+    }
 }
 
