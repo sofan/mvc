@@ -32,7 +32,7 @@ class MyController extends AbstractController
     #[Route('/lucky', name: "lucky")]
     public function lucky(): Response
     {
-        $number = random_int(1, 50);
+        $number = random_int(1, 100);
 
         $data = [
             'number' => $number
