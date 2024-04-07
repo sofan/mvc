@@ -28,7 +28,7 @@ class MyControllerJson
 
         $data = [
             'quote' => $randomQuote,
-            'today'=> $today,
+            'today' => $today,
             'timestamp' => $timestamp
         ];
 

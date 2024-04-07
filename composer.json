@@ -1,4 +1,6 @@
 {
+    "name": "sofst/course_2024",
+    "description": "My code",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -85,7 +87,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix src tests",
+        "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix src --dry-run -v"
     },
     "conflict": {
         "symfony/symfony": "*"
