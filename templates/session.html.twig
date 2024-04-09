@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session info{% endblock %}
+
+{% block main %}
+<h1>Sessions</h1>
+<div>
+
+    {{ dump(sessionData) }}
+    {# <ul>
+        {% for key, value in sessionData %}
+            <li>{{ key }}</li>
+        {% endfor %}
+    </ul> #}
+
+    {{ include('flash.html.twig') }}
+
+</div>
+
+
+
+{% endblock %}

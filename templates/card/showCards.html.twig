@@ -1,0 +1,15 @@
+
+
+    {% set cardsPerRow = 13 %}
+    {% set counter = 0 %}
+    <div class="cardrow">
+        {% for card in cards %}
+            <div class="card {{ card.getSuit() }}">{{ card.getAsString() }}</div>
+            {% set counter = counter + 1 %}
+            {% if counter % cardsPerRow == 0 %}
+                </div> <!-- close row after 13 cards -->
+                <div class="cardrow"> <!-- start new row -->
+            {% endif %}
+        {% endfor %}
+    </div>
+
