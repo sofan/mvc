@@ -9,7 +9,8 @@ class CardHand
     private $playerId;
     private $cards = [];
 
-    public function __construct($playerId) {
+    public function __construct($playerId)
+    {
 
         $this->playerId = $playerId;
     }
@@ -26,12 +27,29 @@ class CardHand
     }
 
 
-    public function getPlayer() {
+    public function getPlayer()
+    {
         return $this->playerId;
     }
 
-    public function getCards() {
+    public function getCards()
+    {
         return $this->cards;
+    }
+
+    public function toArray()
+    {
+        $cardsData = [];
+        foreach ($this->cards as $card) {
+            $cardsData[] = [
+                "suit" => $card->getSuit(),
+                "value" => $card->getValue()
+            ];
+        }
+        return [
+            'playerId' => $this->playerId,
+            'cards' => $cardsData,
+        ];
     }
 
 

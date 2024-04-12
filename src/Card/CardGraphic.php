@@ -4,8 +4,6 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-
-
     /**
      * Get suit as graphic
      *

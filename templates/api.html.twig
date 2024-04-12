@@ -1,29 +1,59 @@
 {% extends "base.html.twig" %}
 
-{% block title %}API{% endblock %}
+{% block title %}API
+{% endblock %}
 
 {% block main %}
-<h1>Api </h1>
-<div class="content">
-    <ul class="linkstyle">
-        <li><a href="{{ path('quote') }}">/api/quote</a></li>
-        <li><a href="{{ path('api_deck') }}">/api/deck</a></li>
-        <form action="" method="POST">
-            <input type="submit" name="shuffle" value="/api/deck/shuffle"
-                onClick="this.form.action='{{ path('api_deck_shuffle_post') }}';"
-            >
-            <br>
-            <input type="submit" name="draw1" value="/api/deck/draw"
-                onClick="this.form.action='{{ path('api_deck_draw') }}';"
-            >
+	<h1>Api
+	</h1>
+	<div class="api">
 
-            <br>
-            <input type="number" name="num_cards" min="1" max="10" value="2">
-            <input type="submit" name="draw1" value="/api/deck/draw/:number"
-                onClick="this.form.action='{{ path('api_deck_draw_num', {number: 1}) }}';"
-            >
-        </form>
-    </ul>
-</div>
+		<div>
+			<p>Quote</p>
+			<a href="{{ path('quote') }}">/api/quote</a>
+		</div>
+		<div>
+			<p>Skapa kortlek</p>
+			<a href="{{ path('api_deck') }}">/api/deck</a>
+
+		</div>
+
+		<form action="" method="POST">
+
+			<div>
+				<p>Shuffle</p>
+				<input type="submit" name="shuffle" value="/api/deck/shuffle" onclick="this.form.action='{{ path('api_deck_shuffle_post') }}';">
+			</div>
+
+
+			<div>
+				<p>Dra kort</p>
+				<input type="submit" name="draw1" value="/api/deck/draw" onclick="this.form.action='{{ path('api_deck_draw') }}';">
+			</div>
+
+			<div>
+				<p>Dra kort/:antal</p>
+				<input type="number" name="num_cards" min="1" max="10" value="2">
+				<input type="submit" name="draw1" value="/api/deck/draw/:number" onclick="this.form.action='{{ path('api_deck_draw_num', {number: 1}) }}';">
+			</div>
+
+		</form>
+
+
+		<form action="" method="POST">
+
+			<p>Skapa CardHand</p>
+
+			<div class="hand">
+				<label for="num_players">Antal spelare:</label>
+				<input type="number" name="num_players" min="1" max="5" value="2">
+				<label for="num_player_cards">Antal kort:</label>
+				<input type="number" name="num_player_cards" min="1" max="10" value="5">
+				<input type="submit" name="play" value="/api/deck/deal/:players/:cards" onclick="this.form.action='{{ path('api_card_hand_post', {players: 2, cards: 5}) }}';">
+			</div>
+
+		</form>
+
+	</div>
 
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardControllerJson extends AbstractController
 {
-
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
@@ -111,6 +111,56 @@ class CardControllerJson extends AbstractController
             'cards' => $cards,
             'cardsLeft' => $deck->getNumberOfCards()
         ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        );
+
+        return $response;
+    }
+
+
+    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_card_hand_post", methods: ['POST'])]
+    public function apiCardHand_post(Request $request, SessionInterface $session, int $players, int $cards): Response
+    {
+        $numPlayers = (int)$request->request->get('num_players');
+        $numCards = (int)$request->request->get('num_player_cards');
+
+        return $this->redirectToRoute('api_card_hand', ['players' => $numPlayers, 'cards' => $numCards ]);
+    }
+
+    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_card_hand", methods: ['GET'])]
+    public function apiCardHand_get(SessionInterface $session, int $players, int $cards): JsonResponse
+    {
+        // Create new deck of cards (or get from session), shuffle and add to session
+        $deckOfCards = new DeckOfCards();
+        $deckOfCards->shuffle();
+
+        $cardHands = [];
+
+        // Create players
+        for ($i = 1; $i <= $players; $i++) {
+
+            $hand = new CardHand($i);
+
+            // Draw cards from deck and add to players hand
+            $playerCards = $deckOfCards->draw((int)$cards);
+            $hand->addCards($playerCards);
+            $cardHands[] = $hand;
+        }
+
+
+        $cardHandsData = [];
+        foreach ($cardHands as $hand) {
+            $cardHandsData[] = $hand->toArray();
+        }
+
+        $data = [
+            'hands' => $cardHandsData,
+            'cardsLeft' => $deckOfCards->getNumberOfCards()
+        ];
+
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

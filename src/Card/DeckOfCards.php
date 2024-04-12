@@ -24,7 +24,8 @@ class DeckOfCards
         }
     }
 
-    public function getCards() {
+    public function getCards()
+    {
         return $this->cards;
     }
 
@@ -34,9 +35,10 @@ class DeckOfCards
      *
      * @return void
      */
-    public function sort() {
+    public function sort()
+    {
 
-        usort($this->cards, function($a, $b) {
+        usort($this->cards, function ($a, $b) {
             // Jämför suit först
             $suitOrderA = array_search($a->getSuit(), $this->suits);
             $suitOrderB = array_search($b->getSuit(), $this->suits);
@@ -58,7 +60,8 @@ class DeckOfCards
      *
      * @return void
      */
-    public function shuffle() {
+    public function shuffle()
+    {
         shuffle($this->cards);
     }
 
@@ -68,7 +71,8 @@ class DeckOfCards
      *
      * @return array
      */
-    public function draw($num = 1) {
+    public function draw($num = 1)
+    {
 
         // Take the first card in deck
         //return array_shift($this->cards);
@@ -83,7 +87,8 @@ class DeckOfCards
      *
      * @return int
      */
-    public function getNumberOfCards() {
+    public function getNumberOfCards()
+    {
         return count($this->cards);
     }
 
@@ -98,7 +103,8 @@ class DeckOfCards
     }
 
 
-    public function getCardArray() {
+    public function getCardArray()
+    {
         $cards = [];
         foreach ($this->cards as $card) {
             $cards[] = [

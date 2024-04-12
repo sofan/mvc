@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DiceGameController extends AbstractController
 {
-
     #[Route("/game/pig", name: "pig_start")]
     public function home(): Response
     {

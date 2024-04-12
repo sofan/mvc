@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardController extends AbstractController
 {
-
     #[Route("/session", name: "session_info")]
     public function session_show(SessionInterface $session): Response
     {
@@ -106,7 +105,8 @@ class CardController extends AbstractController
      * @param integer $number
      * @return Response
      */
-    private function drawFromDeck(SessionInterface $session, int $number = 1) : Response {
+    private function drawFromDeck(SessionInterface $session, int $number = 1): Response
+    {
 
         $deck = $session->get("deck", new DeckOfCards());
 
@@ -143,12 +143,11 @@ class CardController extends AbstractController
     {
         // Get deckOfCards from session (or create new of session not exists)
         $deck = $session->get("deck", new DeckOfCards());
-        $deck->shuffle();
 
         $cardHands = [];
 
         // Create players
-        for ($i=1; $i<=$players; $i++) {
+        for ($i = 1; $i <= $players; $i++) {
 
             $hand = new CardHand($i);
 
@@ -182,15 +181,17 @@ class CardController extends AbstractController
     #[Route("/card/hand/init", name: "card_hand_init", methods: ["POST"])]
     public function createCardHand(Request $request, SessionInterface $session): Response
     {
-        // Create new deck of cards and add to session
+        // Create new deck of cards, shuffle and add to session
         $deckOfCards = new DeckOfCards();
+        $deckOfCards->shuffle();
         $session->set("deck", $deckOfCards);
 
         // Get number of players and cards from form input
         $players = (int) $request->request->get('players');
         $cards = (int) $request->request->get('cards');
 
-        return $this->redirectToRoute('card_hand',
+        return $this->redirectToRoute(
+            'card_hand',
             [
                 'players' => $players,
                 'cards' => $cards

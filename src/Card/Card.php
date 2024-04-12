@@ -4,7 +4,6 @@ namespace App\Card;
 
 class Card
 {
-
     private $suit;
     private $value;
 

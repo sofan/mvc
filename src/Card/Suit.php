@@ -14,7 +14,8 @@ class Suit
 
     public const VALUES13 = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-    public static function getGraphic($suit) {
+    public static function getGraphic($suit)
+    {
         switch($suit) {
             case self::HEARTS:
                 return '♥️';
@@ -29,7 +30,8 @@ class Suit
         }
     }
 
-    public static function getValues13() {
+    public static function getValues13()
+    {
         return self::VALUES13;
     }
 }
