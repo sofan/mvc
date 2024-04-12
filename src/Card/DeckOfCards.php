@@ -8,17 +8,18 @@ class DeckOfCards
 {
     private $cards = [];
     private $suits = [Suit::HEARTS, Suit::SPADES, Suit::CLUBS, Suit::DIAMONDS];
-    private $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+    private $values;
 
-
-
-    public function __construct()
+    public function __construct($graphic = true, $values = null)
     {
+        // If no values parameter, use default 13 cards
+        $this->values = $values ?? Suit::getValues13();
+
         $this->cards = [];
 
         foreach ($this->suits as $suit) {
             foreach ($this->values as $value) {
-                $this->cards[] = new CardGraphic($suit, $value);
+                $this->cards[] = $graphic ? new CardGraphic($suit, $value) : new Card($suit, $value);
             }
         }
     }
@@ -71,9 +72,9 @@ class DeckOfCards
 
         // Take the first card in deck
         //return array_shift($this->cards);
-        $drawCards = array_splice($this->cards, 0, $num);
+        $drawnCards = array_splice($this->cards, 0, $num);
 
-        return $drawCards;
+        return $drawnCards;
     }
 
 
@@ -94,5 +95,18 @@ class DeckOfCards
             $values[] = $card->getAsString();
         }
         return $values;
+    }
+
+
+    public function getCardArray() {
+        $cards = [];
+        foreach ($this->cards as $card) {
+            $cards[] = [
+            'suit' => $card->getSuit(),
+            'value' => $card->getValue()
+            ];
+        }
+
+        return $cards;
     }
 }

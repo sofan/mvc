@@ -177,7 +177,6 @@ class DiceGameController extends AbstractController
         );
 
         return $this->redirectToRoute('pig_play');
-
     }
 
 

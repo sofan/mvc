@@ -7,6 +7,22 @@
 <div class="content">
     <ul class="linkstyle">
         <li><a href="{{ path('quote') }}">/api/quote</a></li>
+        <li><a href="{{ path('api_deck') }}">/api/deck</a></li>
+        <form action="" method="POST">
+            <input type="submit" name="shuffle" value="/api/deck/shuffle"
+                onClick="this.form.action='{{ path('api_deck_shuffle_post') }}';"
+            >
+            <br>
+            <input type="submit" name="draw1" value="/api/deck/draw"
+                onClick="this.form.action='{{ path('api_deck_draw') }}';"
+            >
+
+            <br>
+            <input type="number" name="num_cards" min="1" max="10" value="2">
+            <input type="submit" name="draw1" value="/api/deck/draw/:number"
+                onClick="this.form.action='{{ path('api_deck_draw_num', {number: 1}) }}';"
+            >
+        </form>
     </ul>
 </div>
 

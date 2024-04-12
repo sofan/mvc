@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,15 +51,10 @@ class CardController extends AbstractController
     #[Route("/card/deck", name: "card_deck")]
     public function card_deck(SessionInterface $session): Response
     {
-        $deck = null;
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-            $deck->sort();
-        }
-        else {
-            $deck = new DeckOfCards();
-        }
+        $deck = $session->get("deck", new DeckOfCards());
+        $deck->sort();
 
+        // Add to session
         $session->set("deck", $deck);
         $data = [
             "title" => "Sorterad kortlek",
@@ -71,6 +68,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/init", name: "card_deck_init")]
     public function card_deck_init(SessionInterface $session): Response
     {
+        // Create new deck of cards
         $deck = new DeckOfCards();
 
         $session->set("deck", $deck);
@@ -87,13 +85,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/shuffle", name: "card_deck_shuffled")]
     public function shuffle_cards(SessionInterface $session): Response
     {
-        $deck = null;
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        }
-        else {
-            $deck = new DeckOfCards();
-        }
+        $deck = $session->get("deck", new DeckOfCards());
 
         $deck->shuffle();
         $session->set("deck", $deck);
@@ -105,6 +97,8 @@ class CardController extends AbstractController
         return $this->render('card/deck.html.twig', $data);
     }
 
+
+
     /**
      * Functino to draw cards from deck
      *
@@ -114,10 +108,7 @@ class CardController extends AbstractController
      */
     private function drawFromDeck(SessionInterface $session, int $number = 1) : Response {
 
-        $deck = $session->get("deck");
-        if (!$deck instanceof DeckOfCards) {
-            $deck = new DeckOfCards();
-        }
+        $deck = $session->get("deck", new DeckOfCards());
 
         $drawnCards = $deck->draw($number);
         $session->set("deck", $deck);
@@ -147,24 +138,63 @@ class CardController extends AbstractController
     }
 
 
-    #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deal")]
-    public function deal_cards(SessionInterface $session): Response
+    #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_hand", methods: ['GET'])]
+    public function cardHand(SessionInterface $session, int $players, int $cards): Response
     {
-        $deck = null;
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        }
-        else {
-            $deck = new DeckOfCards();
+        // Get deckOfCards from session (or create new of session not exists)
+        $deck = $session->get("deck", new DeckOfCards());
+        $deck->shuffle();
+
+        $cardHands = [];
+
+        // Create players
+        for ($i=1; $i<=$players; $i++) {
+
+            $hand = new CardHand($i);
+
+            // Draw cards from deck and add to players hand
+            $playerCards = $deck->draw((int)$cards);
+            $hand->addCards($playerCards);
+            $cardHands[] = $hand;
         }
 
-        $deck->shuffle();
-        $session->set("deck", $deck);
         $data = [
-            "title" => "Blandad kortlek",
-            "cards" => $deck->getCards()
+            "numCards" => $cards,
+            "numPlayers" => $players,
+            "hands" => $cardHands,
+            "cardsLeft" => $deck->getNumberOfCards()
         ];
 
-        return $this->render('card/deck.html.twig', $data);
+        $session->set("cardHands", $cardHands);
+
+        return $this->render('card/hand.html.twig', $data);
+    }
+
+
+
+    /**
+     * Route to init CardHand
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
+     */
+    #[Route("/card/hand/init", name: "card_hand_init", methods: ["POST"])]
+    public function createCardHand(Request $request, SessionInterface $session): Response
+    {
+        // Create new deck of cards and add to session
+        $deckOfCards = new DeckOfCards();
+        $session->set("deck", $deckOfCards);
+
+        // Get number of players and cards from form input
+        $players = (int) $request->request->get('players');
+        $cards = (int) $request->request->get('cards');
+
+        return $this->redirectToRoute('card_hand',
+            [
+                'players' => $players,
+                'cards' => $cards
+            ]
+        );
     }
 }

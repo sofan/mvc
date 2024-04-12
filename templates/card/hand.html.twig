@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Hand
+{% endblock %}
+
+{% block main %}
+
+	<h2>{{numPlayers}} Spelare med {{ numCards }} kort i handen</h2>
+    <br>
+	<div class="deckContainer">
+
+		{% for hand in hands %}
+        <div class"player">
+            <h3># {{ hand.getPlayer() }}</h3>
+            {% set cards = hand.getCards() %}
+
+            {{ include('card/showCards.html.twig')}}
+
+        </div>
+		{% endfor %}
+
+	</div>
+
+    <p class="cardsLeft">Antal kort kvar: {{cardsLeft}}</p>
+
+    {% if cardsLeft >= numCards*numPlayers  %}
+        <button onclick="location.reload();">Dela ut nya kort</button>
+    {% endif %}
+
+    <a class="button" href="{{ path('card_start') }}">Starta nytt spel</a>
+
+
+
+{% endblock %}

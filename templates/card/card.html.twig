@@ -1,19 +1,35 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Card game{% endblock %}
+{% block title %}Card game
+{% endblock %}
 
 {% block main %}
-<div>
-    <a href="{{ path('card_deck_init') }}">Skapa ny kortlek</a>
-    <a href="{{ path('card_deck') }}">Sortera kortlek</a>
-    <a href="{{ path('card_deck_shuffled') }}">Blanda kortlek</a>
-    <a href="{{ path('card_deck_draw') }}">Dra ett kort</a>
-</div>
-<div>
-    <h1>Card game </h1>
-    <p>Struktur på klasserna:</p>
-    <p>Klasser:</p>
-    <p>UML:</p>
-</div>
+	<div class="cards">
+		<a class="button" href="{{ path('card_deck_init') }}">Skapa ny kortlek</a>
+		<form action="{{ path('card_hand_init') }}" method="POST">
+			<div class="form-group">
+				<label for="players">Antal spelare:</label>
+				<input type="number" id="players" name="players" min="1" value="2" max="5" required>
+			</div>
+
+			<div class="form-group">
+				<label for="cards">Antal kort:</label>
+				<input type="number" id="cards" name="cards" min="1" value="5" max="10" required>
+			</div>
+			<button type="submit">Starta Spel</button>
+		</form>
+	</div>
+
+	{# <form method="post" action="">
+	    <input type="number" name="num_dices" min="1" max="99" value="1">
+	    <input type="submit" name="do_it" value="Start playing">
+	</form> #}
+
+	{# <div>
+	    <h1>Card game </h1>
+	    <p>Struktur på klasserna:</p>
+	    <p>Klasser:</p>
+	    <p>UML:</p>
+	</div> #}
 
 {% endblock %}

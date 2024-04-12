@@ -3,15 +3,17 @@
 {% block title %}Card Deck{% endblock %}
 
 {% block main %}
-<div>
+<h2>{{ title }}</h2>
+<div class="deckContainer">
 
-    <h2>{{ title }}</h2>
+    <div class="cardAside">
+        <a class="button" href="{{ path('card_deck') }}">Sortera</a>
+        <a class="button" href="{{ path('card_deck_shuffled') }}">Blanda</a>
+        <a class="button"  href="{{ path('card_deck_draw') }}">Dra ett kort</a>
+        <a class="button" href="{{ path('card_deck_init') }}">Ny kortlek</a>
+    </div>
 
     {{ include('card/showCards.html.twig')}}
-
-    <a href="{{ path('card_deck') }}">Sortera kortlek</a>
-    <a href="{{ path('card_deck_shuffled') }}">Blanda kortleken</a>
-    <a href="{{ path('card_deck_draw') }}">Dra ett kort</a>
 
 </div>
 

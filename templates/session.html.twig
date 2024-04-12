@@ -4,6 +4,7 @@
 
 {% block main %}
 <h1>Sessions</h1>
+<a href="{{ path('session_delete') }}">Delete session</a>
 <div>
 
     {{ dump(sessionData) }}

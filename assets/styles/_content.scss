@@ -19,7 +19,7 @@
     grid-template-areas: "textcontent imgcontent";
     gap: 1rem;
 
-    div {
+    > div {
         &:nth-of-type(2) {
             border-left: 1px solid grey;
             padding-left: 1rem;
