@@ -33,10 +33,31 @@
     </article>
 
 
-    <article id="kmom02">
-        <h2>Kursmoment 2 - </h2>
+    <article id="kmom02" class="report">
+        <h2>Kursmoment 2 - Objektorientering</h2>
         <div>
-            Innehåll kommer...
+            <p>
+                <b>Arv</b> - Tillåter att en klass ärver egenskaper från en annan klass, genom att använda nyckelorder 'extends'.<br>
+                <b>Komposition</b> - innebär att en klass har ett eller flera objekt av en annan klass som medlemmar.<br>
+                <b>Interface</b> - är samling abstrakta metoder som en klass måste implementera. Det definierar ett kontrakt som klasserna att följa.<br>
+                <b>Trait</b> - är en återanvändbar grupp av metoder som kan användas i flera klasser. Det tillåter återanvändning av kod utan att behöva använda arv.<br>
+            </p>
+            <p>
+                Min implementation av kmom02 liknar till största del det vi lärt oss i övningen med Dice som jag tycker var tydlig och bra.
+                Jag tycker att det var ganska rakt på sak att implemetera klasserna samt de controllers som används för att visas i twig templates. Däremot bler det
+                krångligare att tänka hur POST routes skulle implemeteras till JSON API. Jag byggde det som små formulär på api-sidan som anropar POST routes, som sen i sin tur
+                gör en redirect till GET routes som skriver ut JSON. Det svåraste var att få med de fall när parametrar ska skickas in i funktionen, och jag hoppas min lösning med att
+                anropa path tillsammans med parametrar var korrekt.
+            </p>
+            <p>
+                Att jobba i Symfony med MVC känns alltmer bekvämt och jag gillar sättet hur man strukturerar upp koden i modeller, kontroller och vyer. Ibland kan det vara lite svårt att avgöra
+                var logiken ska hamna, i en klass eller controller.
+                Jag gillar också hur man kan återanvända vyer med include. Till exempel använde jag i  min implemetation en vy showCards.twig.html för att
+                visa korten på de olika sidorna för att slippa dupblicera den koden.
+            </p>
+            <p>
+                TIL detta kursmoment är att kunna använda routes för både POST och GET.
+            </p>
         </div>
     </article>
 

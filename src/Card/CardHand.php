@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-
 class CardHand
 {
     private $playerId;
