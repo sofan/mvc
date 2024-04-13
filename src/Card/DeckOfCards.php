@@ -73,9 +73,7 @@ class DeckOfCards
      */
     public function draw($num = 1)
     {
-
-        // Take the first card in deck
-        //return array_shift($this->cards);
+        // get num cards from the array
         $drawnCards = array_splice($this->cards, 0, $num);
 
         return $drawnCards;
@@ -92,15 +90,6 @@ class DeckOfCards
         return count($this->cards);
     }
 
-
-    public function getString(): array
-    {
-        $values = [];
-        foreach ($this->cards as $card) {
-            $values[] = $card->getAsString();
-        }
-        return $values;
-    }
 
 
     public function getCardArray()

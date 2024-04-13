@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\Card;
 
 class CardHand
 {
@@ -11,7 +10,6 @@ class CardHand
 
     public function __construct($playerId)
     {
-
         $this->playerId = $playerId;
     }
 
@@ -51,6 +49,5 @@ class CardHand
             'cards' => $cardsData,
         ];
     }
-
 
 }

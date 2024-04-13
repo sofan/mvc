@@ -4,9 +4,16 @@
 {% endblock %}
 
 {% block main %}
-	<div class="cards">
-		<a class="button" href="{{ path('card_deck_init') }}">Skapa ny kortlek</a>
-		<form action="{{ path('card_hand_init') }}" method="POST">
+<h2>Cards startsida</h2>
+<div class="deckContainer">
+    <div class="cardAside">
+        <a class="button" href="{{ path('card_deck_sort') }}">Visa kortlek</a>
+        <a class="button" href="{{ path('card_deck_shuffled') }}">Blanda</a>
+        <a class="button"  href="{{ path('card_deck_draw') }}">Dra ett kort</a>
+        <a class="button" href="{{ path('card_deck_init') }}">Ny kortlek</a>
+    </div>
+
+        <form action="{{ path('card_hand_init') }}" method="POST">
 			<div class="form-group">
 				<label for="players">Antal spelare:</label>
 				<input type="number" id="players" name="players" min="1" value="2" max="5" required>
@@ -16,20 +23,22 @@
 				<label for="cards">Antal kort:</label>
 				<input type="number" id="cards" name="cards" min="1" value="5" max="10" required>
 			</div>
-			<button type="submit">Starta Spel</button>
+			<button type="submit">Dela ut kort</button>
 		</form>
-	</div>
 
-	{# <form method="post" action="">
-	    <input type="number" name="num_dices" min="1" max="99" value="1">
-	    <input type="submit" name="do_it" value="Start playing">
-	</form> #}
+</div>
+<div class='uml'>
+    <h3>Beskrivning av klasserna</h3>
+    <ul>
+        <li><code>Card:</code> klass som beskriver ett kort i kortleken</li>
+        <li><code>GraphicCard:</code> klass som ärver från Card och överrider funktionen getAsString() för att presentera kortet grafiskt.</li>
+        <li><code>DeckOfCards:</code> representerar en kortlek och har relationen aggregat till Card. Card kan finnas även om inte DeckOfCard finns.</li>
+        <li><code>CardHand:</code> representerar en korthand och har relationen aggregat till Card.</li>
+    </ul>
+    <img src="{{ asset('img/Card_uml.webp') }}" alt="Card UML" title="Card UML">
+</div>
 
-	{# <div>
-	    <h1>Card game </h1>
-	    <p>Struktur på klasserna:</p>
-	    <p>Klasser:</p>
-	    <p>UML:</p>
-	</div> #}
+
+
 
 {% endblock %}
