@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,8 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardController extends AbstractController
 {
+    public function createDeckOfCards(): DeckOfCards
+    {
+        $deck = new DeckOfCards();
+
+        foreach ($deck->getSuits() as $suit) {
+            foreach ($deck->getValues() as $value) {
+                $deck->addCard(new CardGraphic($suit, $value));
+            }
+        }
+        return $deck;
+    }
+
     #[Route("/session", name: "session_info")]
-    public function session_show(SessionInterface $session): Response
+    public function sessionShow(SessionInterface $session): Response
     {
         $allSessions = $session->all();
 
@@ -27,7 +40,7 @@ class CardController extends AbstractController
 
 
     #[Route("/session/delete", name: "session_delete")]
-    public function session_delete(SessionInterface $session): Response
+    public function sessionDelete(SessionInterface $session): Response
     {
         $session->clear();
 
@@ -41,16 +54,19 @@ class CardController extends AbstractController
 
 
     #[Route("/card", name: "card_start")]
-    public function card_start(): Response
+    public function cardStart(): Response
     {
         return $this->render('card/card.html.twig');
     }
 
 
     #[Route("/card/deck", name: "card_deck")]
-    public function card_deck(SessionInterface $session): Response
+    public function cardDeck(SessionInterface $session): Response
     {
-        $deck = $session->get("deck", new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get("deck", $this->createDeckOfCards());
         //$deck->sort();
 
         // Add to session
@@ -65,21 +81,38 @@ class CardController extends AbstractController
 
 
 
+    /**
+     * Sort deck of cards
+     *
+     * @param SessionInterface $session
+     * @return Response
+     */
     #[Route("/card/deck/sort", name: "card_deck_sort")]
-    public function dec_sort(SessionInterface $session): Response
+    public function deckSort(SessionInterface $session): Response
     {
-        $deck = $session->get("deck", new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get("deck", $this->createDeckOfCards());
+
         $deck->sort();
         $session->set("deck", $deck);
         return $this->redirectToRoute('card_deck');
 
     }
 
+
+    /**
+     * init new deck of cards
+     *
+     * @param SessionInterface $session
+     * @return Response
+     */
     #[Route("/card/deck/init", name: "card_deck_init")]
-    public function card_deck_init(SessionInterface $session): Response
+    public function cardDeckInit(SessionInterface $session): Response
     {
         // Create new deck of cards
-        $deck = new DeckOfCards();
+        $deck = $this->createDeckOfCards();
 
         $session->set("deck", $deck);
 
@@ -90,9 +123,12 @@ class CardController extends AbstractController
 
 
     #[Route("/card/deck/shuffle", name: "card_deck_shuffled")]
-    public function shuffle_cards(SessionInterface $session): Response
+    public function shuffleCards(SessionInterface $session): Response
     {
-        $deck = $session->get("deck", new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get("deck", $this->createDeckOfCards());
 
         $deck->shuffle();
         $session->set("deck", $deck);
@@ -116,7 +152,10 @@ class CardController extends AbstractController
     private function drawFromDeck(SessionInterface $session, int $number = 1): Response
     {
 
-        $deck = $session->get("deck", new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get("deck", $this->createDeckOfCards());
 
         $drawnCards = $deck->draw($number);
         $session->set("deck", $deck);
@@ -133,14 +172,14 @@ class CardController extends AbstractController
 
 
     #[Route("/card/deck/draw", name: "card_deck_draw")]
-    public function draw_card(SessionInterface $session): Response
+    public function drawCard(SessionInterface $session): Response
     {
         return $this->drawFromDeck($session, 1);
     }
 
 
     #[Route("/card/deck/draw/{number<\d+>}", name: "card_deck_draw_num")]
-    public function draw_card_num(SessionInterface $session, int $number): Response
+    public function drawCardNum(SessionInterface $session, int $number): Response
     {
         return $this->drawFromDeck($session, $number);
     }
@@ -150,7 +189,10 @@ class CardController extends AbstractController
     public function cardHand(SessionInterface $session, int $players, int $cards): Response
     {
         // Get deckOfCards from session (or create new of session not exists)
-        $deck = $session->get("deck", new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get("deck", $this->createDeckOfCards());
 
         $cardHands = [];
 
@@ -190,7 +232,10 @@ class CardController extends AbstractController
     public function createCardHand(Request $request, SessionInterface $session): Response
     {
         // Create new deck of cards, shuffle and add to session
-        $deckOfCards = new DeckOfCards();
+        /**
+         * @var DeckOfCards
+         */
+        $deckOfCards = $this->createDeckOfCards();
         $deckOfCards->shuffle();
         $session->set("deck", $deckOfCards);
 

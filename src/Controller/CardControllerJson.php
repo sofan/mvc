@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,10 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardControllerJson extends AbstractController
 {
+    public function createDeckOfCards(): DeckOfCards
+    {
+        $deck = new DeckOfCards();
+
+        foreach ($deck->getSuits() as $suit) {
+            foreach ($deck->getValues() as $value) {
+                $deck->addCard(new CardGraphic($suit, $value));
+            }
+        }
+        return $deck;
+    }
+
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
-        $deck = new DeckOfCards();
+        $deck = $this->createDeckOfCards();
 
         $session->set("deck", $deck);
 
@@ -37,17 +50,20 @@ class CardControllerJson extends AbstractController
 
 
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle_post", methods: ['POST'])]
-    public function apiDeckShuffle_post(SessionInterface $session): Response
+    public function apiDeckShufflePost(): Response
     {
         return $this->redirectToRoute('api_deck_shuffle_get');
     }
 
 
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle_get", methods: ['GET'])]
-    public function apiDeckShuffle_get(SessionInterface $session): JsonResponse
+    public function apiDeckShuffleGet(SessionInterface $session): JsonResponse
     {
         // Get session or new DeckOfCards of session not exists
-        $deck = $session->get('deck', new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get('deck', $this->createDeckOfCards());
         $deck->shuffle();
 
         $cards = [];
@@ -72,14 +88,14 @@ class CardControllerJson extends AbstractController
 
 
     #[Route("/api/deck/draw", name: "api_deck_draw", methods: ['POST'])]
-    public function apiDeckDrawPost(SessionInterface $session): Response
+    public function apiDeckDrawPost(): Response
     {
         return $this->redirectToRoute('api_deck_draw_get', ['number' => 1]);
     }
 
 
     #[Route("/api/deck/draw/{number<\d+>}", name: "api_deck_draw_num", methods: ['POST'])]
-    public function apiDeckDrawNumPost(Request $request, SessionInterface $session, int $number): Response
+    public function apiDeckDrawNumPost(Request $request): Response
     {
         $numCards = $request->request->get('num_cards');
 
@@ -89,10 +105,13 @@ class CardControllerJson extends AbstractController
 
 
     #[Route("/api/deck/draw/{number<\d+>}", name: "api_deck_draw_get", methods: ['GET'])]
-    public function apiDeckDraw_get(SessionInterface $session, int $number): JsonResponse
+    public function apiDeckDrawGet(SessionInterface $session, int $number): JsonResponse
     {
         // Get session or new DeckOfCards of session not exists
-        $deck = $session->get('deck', new DeckOfCards());
+        /**
+         * @var DeckOfCards
+         */
+        $deck = $session->get('deck', $this->createDeckOfCards());
 
         $drawnCards = $deck->draw($number);
         $session->set("deck", $deck);
@@ -122,7 +141,7 @@ class CardControllerJson extends AbstractController
 
 
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_card_hand_post", methods: ['POST'])]
-    public function apiCardHand_post(Request $request, SessionInterface $session, int $players, int $cards): Response
+    public function apiCardHandPost(Request $request): Response
     {
         $numPlayers = (int)$request->request->get('num_players');
         $numCards = (int)$request->request->get('num_player_cards');
@@ -131,10 +150,10 @@ class CardControllerJson extends AbstractController
     }
 
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_card_hand", methods: ['GET'])]
-    public function apiCardHand_get(SessionInterface $session, int $players, int $cards): JsonResponse
+    public function apiCardHandGet(int $players, int $cards): JsonResponse
     {
         // Create new deck of cards (or get from session), shuffle and add to session
-        $deckOfCards = new DeckOfCards();
+        $deckOfCards = $this->createDeckOfCards();
         $deckOfCards->shuffle();
 
         $cardHands = [];

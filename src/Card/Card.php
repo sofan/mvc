@@ -4,16 +4,27 @@ namespace App\Card;
 
 class Card
 {
+    /**
+     * Suit value
+     *
+     * @var string
+     */
     private $suit;
+
+    /**
+     * Card value
+     *
+     * @var string
+     */
     private $value;
 
     /**
      * Card constructor
      *
-     * @param [string] $suit
-     * @param [string] $value
+     * @param string $suit
+     * @param string $value
      */
-    public function __construct($suit, $value)
+    public function __construct(string $suit, string $value)
     {
         $this->suit = $suit;
         $this->value = $value;

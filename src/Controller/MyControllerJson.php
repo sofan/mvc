@@ -7,6 +7,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MyControllerJson
 {
+    /**
+     * quotes
+     *
+     * @var string[]
+     */
     private $quotes = [
         'Gör det roliga först. Det tråkigare blir mindre tråkigt, när ingenting roligt väntar.',
         'Ungdomen skulle vara ett idealiskt tillstånd om den kom lite senare i livet.',

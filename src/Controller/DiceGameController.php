@@ -37,9 +37,9 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/test/roll/{num<\d+>}", name: "test_roll_num_dices")]
     public function testRollDices(int $num): Response
     {
-        if ($num > 99) {
+        /* if ($num > 99) {
             throw new \Exception("Can not roll more than 99 dices!");
-        }
+        } */
 
         $diceRoll = [];
         for ($i = 1; $i <= $num; $i++) {
@@ -60,17 +60,13 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/test/dicehand/{num<\d+>}", name: "test_dicehand")]
     public function testDiceHand(int $num): Response
     {
-        if ($num > 99) {
+        /* if ($num > 99) {
             throw new \Exception("Can not roll more than 99 dices!");
         }
-
+ */
         $hand = new DiceHand();
         for ($i = 1; $i <= $num; $i++) {
-            if ($i % 2 === 1) {
-                $hand->add(new DiceGraphic());
-            } else {
-                $hand->add(new Dice());
-            }
+            $hand->add(new DiceGraphic());
         }
 
         $hand->roll();
@@ -115,7 +111,9 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(SessionInterface $session): Response
     {
-        // Logic to play the game
+        /**
+         * @var DiceHand
+         */
         $dicehand = $session->get("pig_dicehand");
 
         $data = [
@@ -132,7 +130,9 @@ class DiceGameController extends AbstractController
     #[Route("/game/pig/roll", name: "pig_roll", methods: ['POST'])]
     public function roll(SessionInterface $session): Response
     {
-        // Logic to roll the dice
+        /**
+         * @var DiceHand
+         */
         $hand = $session->get("pig_dicehand");
         $hand->roll();
 

@@ -6,24 +6,57 @@ use App\Card\Card;
 
 class DeckOfCards
 {
+    /**
+     * @var Card[]
+     */
     private $cards = [];
-    private $suits = [Suit::HEARTS, Suit::SPADES, Suit::CLUBS, Suit::DIAMONDS];
-    private $values;
 
-    public function __construct($graphic = true, $values = null)
+    /**
+     * @var string[]
+     */
+    private $suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds'];
+
+    /**
+     * @var string[]
+     */
+    private $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+    public function __construct()
     {
-        // If no values parameter, use default 13 cards
-        $this->values = $values ?? Suit::getValues13();
-
         $this->cards = [];
-
-        foreach ($this->suits as $suit) {
-            foreach ($this->values as $value) {
-                $this->cards[] = $graphic ? new CardGraphic($suit, $value) : new Card($suit, $value);
-            }
-        }
     }
 
+
+    /**
+     * Get suits
+     *
+     * @return string[]
+     */
+    public function getSuits(): array
+    {
+        return $this->suits;
+    }
+
+    /**
+     * Get values
+     *
+     * @return string[]
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    public function addCard(Card $card): void
+    {
+        $this->cards[] = $card;
+    }
+
+    /**
+     * Get cards
+     *
+     * @return Card[]
+     */
     public function getCards()
     {
         return $this->cards;
@@ -37,19 +70,20 @@ class DeckOfCards
      */
     public function sort()
     {
-
-        usort($this->cards, function ($a, $b) {
+        usort($this->cards, function (Card $first, Card $second) {
             // Jämför suit först
-            $suitOrderA = array_search($a->getSuit(), $this->suits);
-            $suitOrderB = array_search($b->getSuit(), $this->suits);
-            $suitComparison = $suitOrderA - $suitOrderB;
+            $suitOrderA = (int)array_search($first->getSuit(), $this->suits);
+            $suitOrderB = (int)array_search($second->getSuit(), $this->suits);
+
+            $suitComparison = ($suitOrderA - $suitOrderB);
             if ($suitComparison !== 0) {
                 return $suitComparison;
             }
 
             // Jämför value sen
-            $numA = array_search($a->getValue(), $this->values);
-            $numB = array_search($b->getValue(), $this->values);
+            $numA = (int)array_search($first->getValue(), $this->values);
+            $numB = (int)array_search($second->getValue(), $this->values);
+
             return $numA - $numB;
 
         });
@@ -69,9 +103,9 @@ class DeckOfCards
     /**
      * Draw card from deck
      *
-     * @return array
+     * @return Card[]
      */
-    public function draw($num = 1)
+    public function draw(int $num = 1): array
     {
         // get num cards from the array
         $drawnCards = array_splice($this->cards, 0, $num);
@@ -92,7 +126,12 @@ class DeckOfCards
 
 
 
-    public function getCardArray()
+    /**
+     * Get cards as array, to use for JSON
+     *
+     * @return array<int<0, max>, array<string, string>>
+     */
+    public function getCardArray(): array
     {
         $cards = [];
         foreach ($this->cards as $card) {

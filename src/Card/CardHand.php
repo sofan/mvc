@@ -4,10 +4,21 @@ namespace App\Card;
 
 class CardHand
 {
+    /**
+     * Player id
+     *
+     * @var int
+     */
     private $playerId;
+
+    /**
+     * Array of cards
+     *
+     * @var Card[]
+     */
     private $cards = [];
 
-    public function __construct($playerId)
+    public function __construct(int $playerId)
     {
         $this->playerId = $playerId;
     }
@@ -15,7 +26,7 @@ class CardHand
     /**
      * Add card to hand
      *
-     * @param array $card
+     * @param Card[] $cards
      * @return void
      */
     public function addCards($cards)
@@ -24,17 +35,28 @@ class CardHand
     }
 
 
-    public function getPlayer()
+    public function getPlayer(): int
     {
         return $this->playerId;
     }
 
-    public function getCards()
+    /**
+     * Get cards in hand
+     *
+     * @return Card[]
+     */
+    public function getCards(): array
     {
         return $this->cards;
     }
 
-    public function toArray()
+
+    /**
+     * Undocumented function
+     *
+     * @return array{playerId: int, cards: array<int<0, max>, array{suit: string, value: string}>}
+     */
+    public function toArray(): array
     {
         $cardsData = [];
         foreach ($this->cards as $card) {
