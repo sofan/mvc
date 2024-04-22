@@ -11,7 +11,7 @@
 
 		{% for hand in hands %}
         <div class"player">
-            <h3># {{ hand.getPlayer() }}</h3>
+            <h3>Spelare {{ loop.index }}</h3>
             {% set cards = hand.getCards() %}
 
             {{ include('card/showCards.html.twig')}}

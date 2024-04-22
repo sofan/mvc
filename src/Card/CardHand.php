@@ -5,23 +5,30 @@ namespace App\Card;
 class CardHand
 {
     /**
-     * Player id
-     *
-     * @var int
-     */
-    private $playerId;
-
-    /**
      * Array of cards
      *
      * @var Card[]
      */
     private $cards = [];
 
-    public function __construct(int $playerId)
+
+
+    public function __construct()
     {
-        $this->playerId = $playerId;
+        $this->cards = [];
     }
+
+    /**
+     * Add card to hand
+     *
+     * @param Card $card
+     * @return void
+     */
+    public function addCard(Card $card)
+    {
+        $this->cards[] = $card;
+    }
+
 
     /**
      * Add card to hand
@@ -34,11 +41,6 @@ class CardHand
         $this->cards = array_merge($this->cards, $cards);
     }
 
-
-    public function getPlayer(): int
-    {
-        return $this->playerId;
-    }
 
     /**
      * Get cards in hand
@@ -54,7 +56,7 @@ class CardHand
     /**
      * Undocumented function
      *
-     * @return array{playerId: int, cards: array<int<0, max>, array{suit: string, value: string}>}
+     * @return array{cards: array<int<0, max>, array{suit: string, value: string}>}
      */
     public function toArray(): array
     {
@@ -66,9 +68,23 @@ class CardHand
             ];
         }
         return [
-            'playerId' => $this->playerId,
             'cards' => $cardsData,
         ];
+    }
+
+    /**
+     * Get total score for card hand
+     *
+     * @return int
+     */
+    public function getTotalScore()
+    {
+
+        $totalScore = 0;
+        foreach ($this->cards as $card) {
+            $totalScore += $card->getScore();
+        }
+        return $totalScore;
     }
 
 }

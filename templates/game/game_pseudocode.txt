@@ -1,0 +1,47 @@
+# pseudokod för kortspelet 21
+
+BEGIN
+
+    Skapa ny kortlek
+    Blanda kortleken
+
+    Skapa en tom hand för spelare
+    Skapa en tom hand för banken
+
+    WHILE spelaren inte har stannat
+        Spelaren drar ett kort
+        Summera spelarens kort
+        IF summan > 21 THEN
+            banken vinner
+            avsluta WHILE, visa resultat och avsluta spel
+        ENDIF
+
+        Fråga om spelaren vill stanna
+
+    ENDWHILE
+
+    WHILE banken inte har stannat OCH spelarens kort <= 21
+        Banken drar ett kort
+        Summera bankens kort
+        IF summan > 21
+            spelaren vinner
+            visa resultat och avsluta spel
+        ELSE IF summan > 17
+            banken stannar
+        ENDIF
+
+    ENDWHILE
+
+    IF spelarens summa > 21 THEN
+        banken vinner
+    ELSE IF bankens summa > 21 THEN
+        spelaren vinner
+    ELSE IF bankens summa >= spelarens summa THEN
+        banken vinner
+    ELSE
+        spelaren vinner
+    ENDIF
+
+END
+
+

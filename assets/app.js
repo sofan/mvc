@@ -7,4 +7,23 @@
  */
 import './styles/app.scss';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+/* const delayTime = 500;
+
+document.addEventListener("DOMContentLoaded", function() {
+    let cards = document.querySelectorAll('.cardrow .card');
+
+    cards.forEach(function(card, index) {
+        setTimeout(function() {
+            card.classList.remove('hidden'); // Ta bort klassen 'hidden' för att visa kortet
+        }, index * delayTime); // Fördröjning baserat på kortets index (500 ms per kort)
+    });
+
+    let scoreElement = document.querySelector('.score');
+
+    setTimeout(() => {
+        console.log("Delayed for 1 second.");
+        scoreElement.classList.remove('hidden');
+    }, cards.length * delayTime);
+
+
+}); */

@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game dokumentation
+{% endblock %}
+
+{% block main %}
+
+<div class="game-doc">
+<h2>Flödesschema</h2>
+<img src="{{ asset('img/21_flowchart.webp') }}" alt="Flowchart" title="Flowchart">
+
+<h2>Presudokod</h2>
+<pre class="pseudo">
+<code>
+BEGIN
+
+    Skapa ny kortlek
+    Blanda kortleken
+
+    Skapa en tom hand för spelare
+    Skapa en tom hand för banken
+
+    WHILE spelaren inte har stannat
+        Spelaren drar ett kort
+        Summera spelarens kort
+        IF summan > 21 THEN
+            banken vinner
+            avsluta WHILE, visa resultat och avsluta spel
+        ENDIF
+
+        Fråga om spelaren vill stanna
+
+    ENDWHILE
+
+    WHILE banken inte har stannat OCH spelarens kort <= 21
+        Banken drar ett kort
+        Summera bankens kort
+        IF summan > 21
+            spelaren vinner
+            visa resultat och avsluta spel
+        ELSE IF summan > 17
+            banken stannar
+        ENDIF
+
+    ENDWHILE
+
+    IF spelarens summa > 21 THEN
+        banken vinner
+    ELSE IF bankens summa > 21 THEN
+        spelaren vinner
+    ELSE IF bankens summa >= spelarens summa THEN
+        banken vinner
+    ELSE
+        spelaren vinner
+    ENDIF
+
+END
+</code>
+</pre>
+
+<h2>Klasser</h2>
+
+<h3>Game</h3> Hanterar spelet som helhet, genom att dela ut kort, hantera spelarnas drag och avgöra vinnaren.
+<h3>ScoreBoard</h3>Ansvarar för att lagra poängställning av varje spelomgång.
+<h3>Player</h3>Representerar en spelare i spelet. Även banken är tillhör denna klass.
+<h3>Card</h3>Representerar ett enskilt kort i kortleken.
+<h3>DeckOfCard</h3>Hanterar alla kort i kortleken och har funktioner för att blanda korten och dra kort från kortleken.
+<h3>CardHand</h3>Representerar en spelares hand, vilken kan bestå av ett visst antal kort.
+</div>
+{% endblock %}

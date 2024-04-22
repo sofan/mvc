@@ -27,6 +27,7 @@ class DeckOfCards
     }
 
 
+
     /**
      * Get suits
      *

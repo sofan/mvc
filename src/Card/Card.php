@@ -52,6 +52,28 @@ class Card
     }
 
     /**
+     * Get card scort
+     *
+     * @return int
+     */
+    public function getScore(): int
+    {
+        switch ($this->value) {
+            case 'K':
+                return 13;
+            case 'Q':
+                return 12;
+            case 'J':
+                return 11;
+            case 'A':
+                return 1;
+            default:
+                return (int)$this->value;
+        }
+    }
+
+
+    /**
      * Get card suit and value as string
      *
      * @return string

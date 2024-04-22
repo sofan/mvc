@@ -161,7 +161,7 @@ class CardControllerJson extends AbstractController
         // Create players
         for ($i = 1; $i <= $players; $i++) {
 
-            $hand = new CardHand($i);
+            $hand = new CardHand();
 
             // Draw cards from deck and add to players hand
             $playerCards = $deckOfCards->draw((int)$cards);

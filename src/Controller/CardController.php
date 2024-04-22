@@ -25,32 +25,6 @@ class CardController extends AbstractController
         return $deck;
     }
 
-    #[Route("/session", name: "session_info")]
-    public function sessionShow(SessionInterface $session): Response
-    {
-        $allSessions = $session->all();
-
-        $data = [
-            "sessionData" => $allSessions
-        ];
-
-        return $this->render('session.html.twig', $data);
-    }
-
-
-
-    #[Route("/session/delete", name: "session_delete")]
-    public function sessionDelete(SessionInterface $session): Response
-    {
-        $session->clear();
-
-        $this->addFlash(
-            'notice',
-            'Sessionen är raderad!'
-        );
-
-        return $this->redirectToRoute('session_info');
-    }
 
 
     #[Route("/card", name: "card_start")]
@@ -199,7 +173,7 @@ class CardController extends AbstractController
         // Create players
         for ($i = 1; $i <= $players; $i++) {
 
-            $hand = new CardHand($i);
+            $hand = new CardHand();
 
             // Draw cards from deck and add to players hand
             $playerCards = $deck->draw((int)$cards);
