@@ -8,59 +8,54 @@
 
 	<div class="game">
 
-        <div class="info">
+		<div class="info">
 
-            {% if game.getCurrentPlayer() %} <h3>På tur att spela: {{ game.getCurrentPlayer().getName() }} </h3> {% endif %}
+			{% if game.getCurrentPlayer() %}
+				<h3>På tur att spela:
+					{{ game.getCurrentPlayer().getName() }}
+				</h3>
+			{% endif %}
 
-            <button class="button" onclick="window.location.href='{{ path('game_draw_card') }}'"
-                {% if game.getWinner() %}disabled{% endif %}> {{ game.getCurrentPlayer().getName() }}: Dra ett kort
-            </button>
+            {# Dra kort-knapp #}
+			<button class="button" onclick="window.location.href='{{ path('game_draw_card') }}'"
+                {% if game.getWinner() %} disabled {% endif %}>
+				{{ game.getCurrentPlayer().getName() }}: Dra ett kort
+			</button>
 
-            <button class="button" onclick="window.location.href='{{ path('game_switch_player') }}'"
-                {% if game.getWinner() or game.getPlayer().isStopped() %}disabled{% endif %}>Stanna
-            </button>
+            {# Stanna-knapp #}
+			<button class="button" onclick="window.location.href='{{ path('game_switch_player') }}'"
+                {% if game.getWinner() or game.getPlayer().isStopped() %} disabled {% endif %}>
+                Stanna
+			</button>
 
-            <button class="button" onclick="window.location.href='{{ path('game_init') }}'"
-                {% if not game.getWinner() %}disabled{% endif %}>Nytt spel
-            </button>
+            {# Nytt spel-knapp #}
+			<button class="button" onclick="window.location.href='{{ path('game_init') }}'"
+                {% if not game.getWinner() %} disabled {% endif %}>
+                Nytt spel
+			</button>
 
-        </div>
-
-		<div class="player
-            {% if not game.getWinner() and game.getCurrentPlayer() is same as game.getPlayer() %} active{% endif %}
-            {% if game.getWinner() is same as game.getPlayer() %} winner{% endif %}">
-            <div class="header">
-			<h3>{{ game.getPlayer().getName() }}</h3>
-            <h3>{% if game.getWinner() is same as game.getPlayer() %} Vinnare{% endif %}</h3>
-            </div>
-			Poäng:
-			{{game.getPlayer().getScore()}}
-
-			<div class="cardrow">
-				{% for card in game.getPlayer().getHand().getCards() %}
-					<div class="card {{ card.getSuit() }}">{{ card.getAsString() }}</div>
-				{% endfor %}
-			</div>
 		</div>
 
-		<div class="player
-            {% if not game.getWinner() and game.getCurrentPlayer() is same as game.getDealer() %} active{% endif %}
-            {% if game.getWinner() is same as game.getDealer() %} winner{% endif %}">
-            <div class="header">
-			<h3>{{ game.getDealer().getName() }}</h3>
-            <h3>{% if game.getWinner() is same as game.getDealer() %} Vinnare{% endif %}</h3>
+
+        {# Spelare och banken #}
+        {% for player in [game.getPlayer(), game.getDealer()] %}
+            <div class="player {% if player == game.getCurrentPlayer() and not game.getWinner() %}active{% endif %}
+                {% if player == game.getWinner() %}winner{% endif %}">
+                <div class="header">
+                    <h3>{{ player.getName() }}</h3>
+                    <h3>{% if player == game.getWinner() %}Vinnare{% endif %}</h3>
+                </div>
+                Poäng: {{ player.getScore() }}
+                <div class="cardrow">
+                    {% for card in player.getHand().getCards() %}
+                        <div class="card {{ card.getSuit() }}">{{ card.getAsString() }}</div>
+                    {% endfor %}
+                </div>
+                {% if player == game.getDealer() and game.getWinner() and game.getDealer().getScore() > 0 %}
+                    <span class="score">Banken drog {{ game.getDealer().getHand().getCards()|length }} kort och stannade på {{ game.getDealer().getScore() }} poäng.</span>
+                {% endif %}
             </div>
-			Poäng:
-			<span class="score">{{game.getDealer().getScore()}}</span>
-			<div class="cardrow">
-				{% for card in game.getDealer().getHand().getCards() %}
-					<div class="card {{ card.getSuit() }}">{{ card.getAsString() }}</div>
-				{% endfor %}
-			</div>
-            {% if game.getWinner() and game.getDealer().getScore() > 0 %}
-            <span class="score">Banken drog {{game.getDealer().getHand().getCards()|length}} kort och stannade på {{game.getDealer().getScore()}} poäng.</span>
-            {% endif %}
-		</div>
+        {% endfor %}
 
 	</div>
 

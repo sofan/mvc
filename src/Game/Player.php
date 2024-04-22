@@ -98,7 +98,7 @@ class Player
         $this->stopped = true;
     }
 
-    public function isStopped() : bool
+    public function isStopped(): bool
     {
         return $this->stopped;
     }

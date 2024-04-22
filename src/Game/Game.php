@@ -68,7 +68,7 @@ class Game
     }
 
 
-    public function getCurrentPlayer() : Player | null
+    public function getCurrentPlayer(): Player | null
     {
         return $this->currentPlayer;
     }

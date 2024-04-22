@@ -15,7 +15,7 @@ class Dealer extends Player
     }
 
 
-    public function checkStopThreshold() : void
+    public function checkStopThreshold(): void
     {
 
         // Stop dealer if
