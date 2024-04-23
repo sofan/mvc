@@ -64,10 +64,31 @@
     </article>
 
 
-    <article id="kmom03">
-        <h2>Kursmoment 3 - </h2>
+    <article id="kmom03" class="report">
+        <h2>Kursmoment 3 - Kortspel</h2>
         <div>
-            Innehåll kommer...
+            <p>
+                Att inleda uppgiften med att skriva pseudokod trodde jag skulle bli jobbigt men visade sig vara jättebra och till och med kul.
+                Det gav mig tid att tänka igenom hur jag sedan skulle implementera koden. Jag kunde sedan gå tillbaka till denna för
+                att påminnas om hur jag hade tänkt.
+            </p>
+            <p>
+                Jag utgick från de klasser jag skapat i kmom02, men lade till klasserna Player, Dealer och Game. Dealer ärver från Player (då de båda
+                är spelare) men har även funktioner för att kolla när den ska stanna. Klassen Game tar hand om all spellogik och är den klass som
+                initierar spelarna och kortleken som används. Den controller som används behöver därför endast hantera klassen Game.
+                Jag har försökt att ha så lite kod som möjligt i controllern och tycker att jag lyckats skapligt bra med det.</p>
+                <p>Jag valde också att göra den valfria uppgiften som ger spelaren möjlighet att satsa pengar. Den summa som spelaren har lade jag till
+                som en medlemsvariabel i klassen Player. Kanske hade det varit bättre att hantera den utanför klassen, kanske i en annan klass som hanterar
+                ställningen, eller i sessionen.
+            </p>
+            <p>
+                Jag tycker fortfarande att Symfony är trevligt att använda. Dokumentationen kan vara lite svår att hitta i, men i stort så gillar jag det.
+
+            </p>
+            <p>
+                TIL detta kursmoment är det jag lärt mig genom att använda linters. Jag gillade artikeln "Clean Code PHP" och ser att det finns massor
+                att lära sig där. Jag gillar att hitta smartare sätt att skriva koden på.
+            </p>
         </div>
     </article>
     </div>
