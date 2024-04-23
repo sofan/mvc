@@ -4,9 +4,43 @@
 {% endblock %}
 
 {% block main %}
-<h2>Game startsida</h2>
+	<h1>21 startsida</h1>
 
-<a href="{{ path('game_doc') }}">Dokumentation</a>
-<a href="{{ path('game_init') }}">Starta spel</a>
+	<a class="button" href="{{ path('game_doc') }}">Dokumentation</a>
+	<a class="button" href="{{ path('game_init') }}">Starta spel</a>
+
+	<h3>
+		Regler:
+	</h3>
+
+	<p>21 är ett kortspel där målet är att komma så nära 21 som möjligt utan att gå över.
+	Både spelaren och banken startar med 100 kr i potten. Spelet pågår med nya rundor tills dess att någon spelare har slut på pengar.
+	</p>
+
+	<h4>Spelaren</h4>
+    <p>
+		Spelaren kan innan sitt första drag välja att ändra insatsen (minsta insats är 10 kr).
+		Därefter börjar han dra kort. Antingen tills han uppnått 21 (= vinst), hamnat över 21 (= förlust) eller tills
+		han väljer att stanna.
+	</p>
+	<h4>Banken</h4>
+	<p>
+		Banken drar kort och stannar automatiskt då den uppnått 17.
+	</p>
+	<h4>Vinnare</h4>
+		Den spelare som kommer närmast 21 utan att gå över vinner.
+		Banken vinner vid lika eller om den har mer än spelaren.
+		Spelaren vinner om banken får över 21.
+	</p>
+    <h4>Kort</h4>
+	<ul class="no-disc">
+		<li>Kung = 13</li>
+		<li>Dam = 12</li>
+		<li>Knekt = 11</li>
+		<li>Ess är värt 1 eller 11 poäng, beroende på vad som är mest förmånligt för spelarens hand.</li>
+		<li>Numrerade kort (2-10) är värda sina respektive nummer.</li>
+	</ul>
+
+
 
 {% endblock %}

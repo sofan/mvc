@@ -33,6 +33,18 @@ main {
     min-width: 700px;
 }
 
+a {
+    color: #333;
+}
+
+h3,h4 {
+    margin-top: 0.5rem;
+}
+
+ul.no-disc {
+    list-style: none;
+}
+
 
 @media (max-width: 700px) {
     main {

@@ -17,16 +17,12 @@ class Player
      */
     private $name;
 
-
-
     /**
      * Tells of player has stopped
      *
      * @var bool
      */
     private $stopped;
-
-
 
     /**
      * Players card hand
@@ -35,13 +31,22 @@ class Player
      */
     private $hand;
 
-    public function __construct(string $name)
+
+    /**
+     * Players money
+     *
+     * @var int
+     */
+    private $money;
+
+
+    public function __construct(string $name, int $money)
     {
         $this->name = $name;
         $this->hand = new CardHand();
         $this->stopped = false;
+        $this->money = $money;
     }
-
 
 
     /**
@@ -49,12 +54,10 @@ class Player
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
-
-
 
 
     /**
@@ -76,6 +79,15 @@ class Player
     public function getHand()
     {
         return $this->hand;
+    }
+
+
+
+    public function resetHand(): void
+    {
+        // Create new hand and set stopped to false
+        $this->hand = new CardHand();
+        $this->stopped = false;
     }
 
     /**
@@ -103,7 +115,21 @@ class Player
         return $this->stopped;
     }
 
+    public function getMoney(): int
+    {
+        return $this->money;
+    }
 
+    /**
+     * Update player money, $change can be positive or negative
+     *
+     * @param integer $change
+     * @return void
+     */
+    public function updateMoney(int $change)
+    {
+        $this->money += (int)$change;
+    }
 
 
 }

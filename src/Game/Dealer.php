@@ -9,9 +9,14 @@ use App\Card\Card;
  */
 class Dealer extends Player
 {
-    public function __construct()
+    /**
+     * Constructor
+     *
+     * @param integer $money
+     */
+    public function __construct(int $money)
     {
-        parent::__construct("Bank"); // Anropa Players konstruktor
+        parent::__construct("Bank", $money); // Anropa Players konstruktor
     }
 
 

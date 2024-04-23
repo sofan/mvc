@@ -45,27 +45,26 @@ class Game
      */
     private $deck;
 
-    public function __construct()
+    /**
+     * Bet for current round
+     *
+     * @var int
+     */
+    private $bet;
+
+
+
+
+    public function __construct(int $startMoney = 100)
     {
         // Create player and bank
-        $this->player = new Player('Spelare');
-        $this->dealer = new Dealer();
+        $this->player = new Player('Spelare', $startMoney);
+        $this->dealer = new Dealer($startMoney);
 
-        // Let the player start
-        $this->currentPlayer = $this->player;
-
-        // Create and shuffle the cards
-        $this->deck = new DeckOfCards();
-        foreach ($this->deck->getSuits() as $suit) {
-            foreach ($this->deck->getValues() as $value) {
-                $this->deck->addCard(new CardGraphic($suit, $value));
-            }
-        }
-        $this->deck->shuffle();
-
-        $this->winner = null;
+        $this->newRound();
 
     }
+
 
 
     public function getCurrentPlayer(): Player | null
@@ -122,6 +121,34 @@ class Game
         $this->checkResult();
     }
 
+    public function getBet(): int
+    {
+        return $this->bet;
+    }
+
+
+
+    public function setBet(int $bet): void
+    {
+        $this->bet = $bet;
+    }
+
+    public function newRound(): void
+    {
+
+        // Reset hands for player and dealer
+        $this->player->resetHand();
+        $this->dealer->resetHand();
+        $this->deck = new DeckOfCards();
+        $this->deck->fillWithGraphicCards();
+        $this->deck->shuffle();
+
+        // Let the player start
+        $this->currentPlayer = $this->player;
+        $this->bet = 10; // Default bet
+        $this->winner = null;
+    }
+
 
 
     /**
@@ -147,8 +174,33 @@ class Game
             $this->winner = ($dealerScore >= $playerScore) ? $this->dealer : $this->player;
         }
 
+        $this->updateMoney();
+
     }
 
+    /**
+     * Function to update money when round is over
+     *
+     * @return void
+     */
+    public function updateMoney(): void
+    {
+
+        // Vinnaren får från banken lika mycket som den satsat
+        if ($this->winner) {
+            $this->winner->updateMoney($this->bet);
+
+            if ($this->player === $this->winner) {
+                // Dra pengar från banken
+                $this->dealer->updateMoney(-$this->bet);
+            }
+
+            if ($this->dealer === $this->winner) {
+                // Dra pengar från spelaren
+                $this->player->updateMoney(-$this->bet);
+            }
+        }
+    }
 
     /**
      * Get winner
@@ -159,5 +211,14 @@ class Game
     {
         return $this->winner;
     }
+
+
+    public function gameIsOver(): bool
+    {
+        return $this->player->getMoney() <= 0 || $this->dealer->getMoney() <= 0;
+
+    }
+
+
 
 }

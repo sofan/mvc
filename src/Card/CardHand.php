@@ -81,9 +81,30 @@ class CardHand
     {
 
         $totalScore = 0;
+        $numAces = 0;
+
         foreach ($this->cards as $card) {
-            $totalScore += $card->getScore();
+
+            $value = $card->getScore();
+
+            if ($value === 1) {
+                // Hantera Ess separat
+                $numAces++;
+            }
+
+            if ($value > 1) {
+                $totalScore += $value;
+            }
+
         }
+
+        // Lägg till essens värde baserat på den totala poängen
+        for ($i = 0; $i < $numAces; $i++) {
+            // Lägg till 1 eller 11 beroende på handens värde
+            $valueToAdd = ($totalScore + 11 <= 21) ? 11 : 1;
+            $totalScore += $valueToAdd;
+        }
+
         return $totalScore;
     }
 

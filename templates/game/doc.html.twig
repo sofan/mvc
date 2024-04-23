@@ -5,12 +5,12 @@
 
 {% block main %}
 
-<div class="game-doc">
-<h2>Flödesschema</h2>
-<img src="{{ asset('img/21_flowchart.webp') }}" alt="Flowchart" title="Flowchart">
+	<div class="game-doc">
+		<h2>Flödesschema</h2>
+		<img src="{{ asset('img/21_flowchart.webp') }}" alt="Flowchart" title="Flowchart">
 
-<h2>Presudokod</h2>
-<pre class="pseudo">
+		<h2>Presudokod</h2>
+		<pre class="pseudo">
 <code>
 BEGIN
 
@@ -58,13 +58,13 @@ END
 </code>
 </pre>
 
-<h2>Klasser</h2>
+		<h2>Klasser</h2>
 
-<h3>Game</h3> Hanterar spelet som helhet, genom att dela ut kort, hantera spelarnas drag och avgöra vinnaren.
-<h3>ScoreBoard</h3>Ansvarar för att lagra poängställning av varje spelomgång.
-<h3>Player</h3>Representerar en spelare i spelet. Även banken är tillhör denna klass.
-<h3>Card</h3>Representerar ett enskilt kort i kortleken.
-<h3>DeckOfCard</h3>Hanterar alla kort i kortleken och har funktioner för att blanda korten och dra kort från kortleken.
-<h3>CardHand</h3>Representerar en spelares hand, vilken kan bestå av ett visst antal kort.
-</div>
+		<h3>Game</h3>
+		Hanterar spelet som helhet, genom att dela ut kort, hantera spelarnas drag och avgöra vinnaren.
+		<h3>Player</h3>Representerar en spelare i spelet. Även banken är tillhör denna klass.
+		<h3>Card</h3>Representerar ett enskilt kort i kortleken.
+		<h3>DeckOfCard</h3>Hanterar alla kort i kortleken och har funktioner för att blanda korten och dra kort från kortleken.
+		<h3>CardHand</h3>Representerar en spelares hand, vilken kan bestå av ett visst antal kort.
+	</div>
 {% endblock %}

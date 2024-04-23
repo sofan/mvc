@@ -8,13 +8,25 @@
 
 	<div class="game">
 
+
 		<div class="info">
 
+            {# Current player name #}
 			{% if game.getCurrentPlayer() %}
 				<h3>På tur att spela:
 					{{ game.getCurrentPlayer().getName() }}
 				</h3>
 			{% endif %}
+
+            {# Flash message #}
+            {{ include('flash.html.twig') }}
+
+            {# Bet form #}
+            <form action="{{ path('game_bet') }}" method="post">
+                <label for="bet_amount">Spelares insats:</label>
+                <input type="number" id="bet_amount" name="bet_amount" min="10" max="{{ game.getPlayer().getMoney() }}" value="{{game.getBet()}}" required>
+                <button class="button" {% if game.getPlayer().getScore() > 0 %} disabled {% endif %} type="submit">Ändra insats</button>
+            </form>
 
             {# Dra kort-knapp #}
 			<button class="button" onclick="window.location.href='{{ path('game_draw_card') }}'"
@@ -28,11 +40,21 @@
                 Stanna
 			</button>
 
+            {# Ny omgång-knapp #}
+            {% if not game.gameIsOver() %}
+			<button class="button" onclick="window.location.href='{{ path('game_new_round') }}'"
+                {% if not game.getWinner() %} disabled {% endif %}>
+                Ny runda
+			</button>
+            {% endif %}
+
             {# Nytt spel-knapp #}
+            {% if game.gameIsOver() %}
 			<button class="button" onclick="window.location.href='{{ path('game_init') }}'"
                 {% if not game.getWinner() %} disabled {% endif %}>
                 Nytt spel
 			</button>
+            {% endif %}
 
 		</div>
 
@@ -41,11 +63,18 @@
         {% for player in [game.getPlayer(), game.getDealer()] %}
             <div class="player {% if player == game.getCurrentPlayer() and not game.getWinner() %}active{% endif %}
                 {% if player == game.getWinner() %}winner{% endif %}">
+
                 <div class="header">
-                    <h3>{{ player.getName() }}</h3>
-                    <h3>{% if player == game.getWinner() %}Vinnare{% endif %}</h3>
+                    <h3>{{ player.getName() }} </h3>
+                    <h3>{% if player == game.getWinner() %}
+                        Vinnare (+{{ game.getBet()}} kr)
+                        {% elseif game.getWinner() %}
+                        Förlorare (-{{game.getBet() }} kr)
+                        {% endif %}
+                    </h3>
                 </div>
-                Poäng: {{ player.getScore() }}
+                <p>Pengar: {{ player.getMoney() }} kr</p>
+                <p>Poäng: {{ player.getScore() }}</p>
                 <div class="cardrow">
                     {% for card in player.getHand().getCards() %}
                         <div class="card {{ card.getSuit() }}">{{ card.getAsString() }}</div>

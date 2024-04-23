@@ -18,6 +18,14 @@
     flex-direction: column;
     gap: 1rem;
 
+    form {
+        max-width: 100%;
+    }
+
+    input [type=number] {
+        width: 80px;
+    }
+
     .player {
         background-color: #f3eedc;
         border: 1px solid #333;
