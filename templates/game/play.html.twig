@@ -18,8 +18,7 @@
 				</h3>
 			{% endif %}
 
-            {# Flash message #}
-            {{ include('flash.html.twig') }}
+            <div class="flash">
 
             {# Bet form #}
             <form action="{{ path('game_bet') }}" method="post">
@@ -27,6 +26,13 @@
                 <input type="number" id="bet_amount" name="bet_amount" min="10" max="{{ game.getPlayer().getMoney() }}" value="{{game.getBet()}}" required>
                 <button class="button" {% if game.getPlayer().getScore() > 0 %} disabled {% endif %} type="submit">Ändra insats</button>
             </form>
+
+
+            {# Flash message #}
+            {{ include('flash.html.twig') }}
+
+
+            </div>
 
             {# Dra kort-knapp #}
 			<button class="button" onclick="window.location.href='{{ path('game_draw_card') }}'"

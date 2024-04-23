@@ -117,7 +117,7 @@ class GameController extends AbstractController
 
         $this->addFlash(
             'notice',
-            'Insats uppdaterad till ' . $betAmount . ' kr!'
+            'Insats ändrad till ' . $betAmount . ' kr!'
         );
 
         return $this->redirectToRoute('game_play');
