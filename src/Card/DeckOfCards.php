@@ -28,17 +28,6 @@ class DeckOfCards
     }
 
 
-    public function fillWithGraphicCards(): void
-    {
-
-        foreach ($this->suits as $suit) {
-            foreach ($this->values as $value) {
-                $this->cards[] = new CardGraphic($suit, $value);
-            }
-        }
-    }
-
-
 
     /**
      * Get suits

@@ -133,6 +133,8 @@ class Game
         $this->bet = $bet;
     }
 
+
+
     public function newRound(): void
     {
 
@@ -140,7 +142,14 @@ class Game
         $this->player->resetHand();
         $this->dealer->resetHand();
         $this->deck = new DeckOfCards();
-        $this->deck->fillWithGraphicCards();
+
+        foreach ($this->deck->getSuits() as $suit) {
+            foreach ($this->deck->getValues() as $value) {
+                $this->deck->addCard(new CardGraphic($suit, $value));
+            }
+        }
+
+        //$this->deck->fillWithGraphicCards();
         $this->deck->shuffle();
 
         // Let the player start
@@ -175,7 +184,6 @@ class Game
         }
 
         $this->updateMoney();
-
     }
 
     /**
@@ -216,7 +224,6 @@ class Game
     public function gameIsOver(): bool
     {
         return $this->player->getMoney() <= 0 || $this->dealer->getMoney() <= 0;
-
     }
 
 

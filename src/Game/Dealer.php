@@ -22,7 +22,6 @@ class Dealer extends Player
 
     public function checkStopThreshold(): void
     {
-
         // Stop dealer if
         if ($this->getScore() >= 17) {
             $this->stop();

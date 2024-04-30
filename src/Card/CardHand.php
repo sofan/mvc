@@ -12,7 +12,9 @@ class CardHand
     private $cards = [];
 
 
-
+    /**
+     * CardHand contructor, intit an empty hand
+     */
     public function __construct()
     {
         $this->cards = [];
@@ -54,7 +56,7 @@ class CardHand
 
 
     /**
-     * Undocumented function
+     * Get cards as array in JSON format
      *
      * @return array{cards: array<int<0, max>, array{suit: string, value: string}>}
      */

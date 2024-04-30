@@ -5,15 +5,6 @@ namespace App\Card;
 class CardGraphic extends Card
 {
     /**
-     *
-     * @param string $suit
-     * @param string $value
-     */
-    public function __construct(string $suit, string $value)
-    {
-        parent::__construct($suit, $value);
-    }
-    /**
      * Get suit as graphic
      *
      * @return string
