@@ -7,8 +7,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * GameControllerJSON class
+ */
 class GameControllerJson
 {
+    /**
+     * Route to generate json api for game position
+     *
+     * @param SessionInterface $session
+     * @return JsonResponse
+     */
     #[Route("/api/game", name: "api_game")]
     public function apiGame(SessionInterface $session): JsonResponse
     {

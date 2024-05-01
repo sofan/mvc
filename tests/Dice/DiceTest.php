@@ -58,7 +58,7 @@ class DiceTest extends TestCase
         }
 
         // Kontrollera att alla värden är inom det förväntade intervallet (1 till 6).
-        $this->assertContainsOnly('integer', $values );
+        $this->assertContainsOnly('integer', $values);
 
         foreach ($values as $value) {
             $this->assertLessThanOrEqual(6, $value);
@@ -72,7 +72,8 @@ class DiceTest extends TestCase
      *
      * @return void
      */
-    public function testGetValue() : void {
+    public function testGetValue(): void
+    {
 
         $dice = new Dice();
 

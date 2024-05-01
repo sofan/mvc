@@ -137,7 +137,7 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">Dealer class</p>
+            <p class="phpdocumentor-summary">Dealer class - Respresents a Dealer type of Player</p>
 
 
 
@@ -205,20 +205,22 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Constructor</dd>
+<dd>Dealer Constructor</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Dealer.html#method_addCard">addCard()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Override player</dd>
+<dd>Add card to dealer</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Dealer.html#method_checkStopThreshold">checkStopThreshold()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Function to check if dealer shall stop current round,
+sets player to stopped if total score &gt;= 17</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Player.html#method_getHand">getHand()</a>
@@ -232,6 +234,7 @@
     <span>
                                 &nbsp;: int    </span>
 </dt>
+<dd>Get players money</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Player.html#method_getName">getName()</a>
@@ -252,12 +255,14 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
+<dd>Returns players stopped status</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Player.html#method_resetHand">resetHand()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
+<dd>Reset the CardHand and stop players round</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-Player.html#method_stop">stop()</a>
@@ -317,7 +322,9 @@
     </code>
 
     
-    
+        <section class="phpdocumentor-description"><p>Players card hand</p>
+</section>
+
     
 
 </article>
@@ -351,7 +358,9 @@
     </code>
 
     
-    
+        <section class="phpdocumentor-description"><p>players money</p>
+</section>
+
     
 
 </article>
@@ -385,7 +394,9 @@
     </code>
 
     
-    
+        <section class="phpdocumentor-description"><p>Name of the player</p>
+</section>
+
     
 
 </article>
@@ -419,7 +430,9 @@
     </code>
 
     
-    
+        <section class="phpdocumentor-description"><p>Trus if player has stopped current round</p>
+</section>
+
     
 
 </article>
@@ -449,7 +462,7 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Constructor</p>
+        <p class="phpdocumentor-summary">Dealer Constructor</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -465,7 +478,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>money to start with</p>
+</section>
+
             </dd>
             </dl>
 
@@ -487,11 +502,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Dealer.php"><a href="files/src-game-dealer.html"><abbr title="src/Game/Dealer.php">Dealer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Override player</p>
+        <p class="phpdocumentor-summary">Add card to dealer</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -507,7 +522,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Card-Card.html"><abbr title="\App\Card\Card">Card</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Card to add</p>
+</section>
+
             </dd>
             </dl>
 
@@ -529,11 +546,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Dealer.php"><a href="files/src-game-dealer.html"><abbr title="src/Game/Dealer.php">Dealer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Function to check if dealer shall stop current round,
+sets player to stopped if total score &gt;= 17</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">checkStopThreshold</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -560,7 +579,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
@@ -579,6 +598,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><a href="classes/App-Card-CardHand.html"><abbr title="\App\Card\CardHand">CardHand</abbr></a></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Players CardHand</p>
+</section>
+
             </section>
 
 </article>
@@ -596,11 +619,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Get players money</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getMoney</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
@@ -614,6 +638,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>money</p>
+</section>
+
             </section>
 
 </article>
@@ -631,7 +659,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">63</span>
 
     </aside>
 
@@ -650,6 +678,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The name of the player</p>
+</section>
+
             </section>
 
 </article>
@@ -667,7 +699,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 
     </aside>
 
@@ -686,6 +718,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>score</p>
+</section>
+
             </section>
 
 </article>
@@ -703,11 +739,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">113</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns players stopped status</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">isStopped</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
@@ -721,6 +758,10 @@
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>Trus if player has stopped</p>
+</section>
+
             </section>
 
 </article>
@@ -738,11 +779,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Reset the CardHand and stop players round</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">resetHand</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
@@ -769,7 +811,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">108</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 
     </aside>
 
@@ -801,7 +843,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/Player.php"><a href="files/src-game-player.html"><abbr title="src/Game/Player.php">Player.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">129</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 
     </aside>
 
@@ -821,7 +863,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Money change, can be positive or negative</p>
+</section>
+
             </dd>
             </dl>
 

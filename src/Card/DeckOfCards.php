@@ -4,27 +4,29 @@ namespace App\Card;
 
 use App\Card\Card;
 
+/**
+ * Class DeckOfCards - represents a deck of playing cards
+ */
 class DeckOfCards
 {
     /**
-     * @var Card[]
+     * @var Card[] array of playering cards
      */
     private $cards = [];
 
     /**
-     * @var string[]
+     * @var string[] array of valid suits
      */
     private $suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds'];
 
     /**
-     * @var string[]
+     * @var string[] array of valid values
      */
     private $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
     public function __construct()
     {
         $this->cards = [];
-
     }
 
 
@@ -32,7 +34,7 @@ class DeckOfCards
     /**
      * Get suits
      *
-     * @return string[]
+     * @return string[] Array of card suits
      */
     public function getSuits(): array
     {
@@ -42,13 +44,19 @@ class DeckOfCards
     /**
      * Get values
      *
-     * @return string[]
+     * @return string[] Array of card values
      */
     public function getValues()
     {
         return $this->values;
     }
 
+    /**
+     * function to Add card to deck of cards
+     *
+     * @param Card $card The card to add
+     * @return void
+     */
     public function addCard(Card $card): void
     {
         $this->cards[] = $card;
@@ -57,7 +65,7 @@ class DeckOfCards
     /**
      * Get cards
      *
-     * @return Card[]
+     * @return Card[] Array of cards
      */
     public function getCards()
     {
@@ -66,7 +74,7 @@ class DeckOfCards
 
 
     /**
-     * Function to sort cards
+     * Function to sort the deck of cards
      *
      * @return void
      */
@@ -103,9 +111,10 @@ class DeckOfCards
 
 
     /**
-     * Draw card from deck
+     * Draw cards from deck
      *
-     * @return Card[]
+     * @param integer $num Number of cards to draw
+     * @return Card[] The array of drawn cards
      */
     public function draw(int $num = 1): array
     {
@@ -119,7 +128,7 @@ class DeckOfCards
     /**
      * Get number of cards left
      *
-     * @return int
+     * @return int Number of cards
      */
     public function getNumberOfCards()
     {
@@ -131,7 +140,7 @@ class DeckOfCards
     /**
      * Get cards as array, to use for JSON
      *
-     * @return array<int<0, max>, array<string, string>>
+     * @return array<int<0, max>, array<string, string>> Cards as json string
      */
     public function getCardArray(): array
     {

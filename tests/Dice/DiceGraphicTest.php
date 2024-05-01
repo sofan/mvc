@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class DiceGraphicTest extends TestCase
 {
-
     public function testGetAsString(): void
     {
 
@@ -29,11 +28,11 @@ class DiceGraphicTest extends TestCase
 
             $dice->roll();
 
-            $expectedRepresentation = $representation[$dice->getValue() - 1];
+            $exp = $representation[$dice->getValue() - 1];
 
-            $actualRepresentation = $dice->getAsString();
+            $res = $dice->getAsString();
 
-            $this->assertEquals($expectedRepresentation, $actualRepresentation);
+            $this->assertEquals($exp, $res);
         }
     }
 

@@ -5,14 +5,14 @@ namespace App\Game;
 use App\Card\Card;
 
 /**
- * Dealer class
+ * Dealer class - Respresents a Dealer type of Player
  */
 class Dealer extends Player
 {
     /**
-     * Constructor
+     * Dealer Constructor
      *
-     * @param integer $money
+     * @param integer $money money to start with
      */
     public function __construct(int $money)
     {
@@ -20,6 +20,12 @@ class Dealer extends Player
     }
 
 
+    /**
+     * Function to check if dealer shall stop current round,
+     * sets player to stopped if total score >= 17
+     *
+     * @return void
+     */
     public function checkStopThreshold(): void
     {
         // Stop dealer if
@@ -29,9 +35,9 @@ class Dealer extends Player
     }
 
     /**
-     * Override player
+     * Add card to dealer
      *
-     * @param Card $card
+     * @param Card $card Card to add
      * @return void
      */
     public function addCard(Card $card)

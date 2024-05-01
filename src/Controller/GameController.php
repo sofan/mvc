@@ -9,8 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * GameController class - controls the game
+ */
 class GameController extends AbstractController
 {
+    /**
+     * Start the game
+     *
+     * @return Response
+     */
     #[Route("/game", name: "game_start")]
     public function gameStart(): Response
     {
@@ -18,6 +26,11 @@ class GameController extends AbstractController
     }
 
 
+    /**
+     * Show game documentation
+     *
+     * @return Response
+     */
     #[Route("/game/doc", name: "game_doc")]
     public function gameDoc(): Response
     {
@@ -25,6 +38,9 @@ class GameController extends AbstractController
     }
 
 
+    /**
+     * Initiate a new game
+     */
     #[Route("/game/init", name: "game_init")]
     public function gameInit(SessionInterface $session): Response
     {
@@ -35,6 +51,9 @@ class GameController extends AbstractController
         return $this->redirectToRoute('game_new_round');
     }
 
+    /**
+     * Initiate a new game round
+     */
     #[Route("/game/round", name: "game_new_round")]
     public function gameNewRound(SessionInterface $session): Response
     {
@@ -50,6 +69,9 @@ class GameController extends AbstractController
     }
 
 
+    /**
+     * Show card game
+     */
     #[Route("/game/play", name: "game_play")]
     public function gamePlay(SessionInterface $session): Response
     {
@@ -65,6 +87,12 @@ class GameController extends AbstractController
 
 
 
+    /**
+     * Route to draw card
+     *
+     * @param SessionInterface $session
+     * @return Response
+     */
     #[Route("/game/draw", name: "game_draw_card")]
     public function gameDraw(SessionInterface $session): Response
     {
@@ -88,6 +116,10 @@ class GameController extends AbstractController
     }
 
 
+    /**
+     * Route to switch to next player
+     */
+
     #[Route("/game/switch", name: "game_switch_player")]
     public function gameSwitchPlayer(SessionInterface $session): Response
     {
@@ -103,6 +135,14 @@ class GameController extends AbstractController
         return $this->redirectToRoute('game_play');
     }
 
+
+    /**
+     * Route to set game bet
+     *
+     * @param SessionInterface $session
+     * @param Request $request
+     * @return Response
+     */
     #[Route("/game/bet", name: "game_bet", methods: ["POST"])]
     public function gameBet(SessionInterface $session, Request $request): Response
     {

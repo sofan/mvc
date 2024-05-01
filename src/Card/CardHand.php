@@ -1,7 +1,11 @@
 <?php
 
+
 namespace App\Card;
 
+/**
+ * CardHand class - respresents a hand of playering cards
+ */
 class CardHand
 {
     /**
@@ -23,7 +27,7 @@ class CardHand
     /**
      * Add card to hand
      *
-     * @param Card $card
+     * @param Card $card The card to add
      * @return void
      */
     public function addCard(Card $card)
@@ -35,7 +39,7 @@ class CardHand
     /**
      * Add card to hand
      *
-     * @param Card[] $cards
+     * @param Card[] $cards Array of card to add
      * @return void
      */
     public function addCards($cards)
@@ -47,7 +51,7 @@ class CardHand
     /**
      * Get cards in hand
      *
-     * @return Card[]
+     * @return Card[] The cards array
      */
     public function getCards(): array
     {
@@ -59,6 +63,7 @@ class CardHand
      * Get cards as array in JSON format
      *
      * @return array{cards: array<int<0, max>, array{suit: string, value: string}>}
+     *
      */
     public function toArray(): array
     {
@@ -77,7 +82,7 @@ class CardHand
     /**
      * Get total score for card hand
      *
-     * @return int
+     * @return int Total score of hand
      */
     public function getTotalScore()
     {

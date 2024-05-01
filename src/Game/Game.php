@@ -6,33 +6,33 @@ use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 
 /**
- * Game class
+ * Game class - takes care of the Game logic
  */
 class Game
 {
     /**
      * Players
      *
-     * @var Player
+     * @var Player The player
      */
     private $player;
 
     /**
      * Dealer, the bank
      *
-     * @var Player
+     * @var Player The Bank
      */
     private $dealer;
 
     /**
-     * Takes care of which turn it is to draw a card
+     * Current player, takes care of which turn it is to draw a card
      *
      * @var Player | null
      */
     private $currentPlayer;
 
     /**
-     * The winner
+     * The winner, represents the winner of the game
      *
      * @var Player|null
      */
@@ -41,20 +41,25 @@ class Game
     /**
      * Deck of cards
      *
-     * @var DeckOfCards
+     * @var DeckOfCards The deck of cards
      */
     private $deck;
 
     /**
      * Bet for current round
      *
-     * @var int
+     * @var int Game bet
      */
     private $bet;
 
 
 
 
+    /**
+     * Game constructor
+     *
+     * @param integer $startMoney money to start with for both player and bank
+     */
     public function __construct(int $startMoney = 100)
     {
         // Create player and bank
@@ -67,6 +72,11 @@ class Game
 
 
 
+    /**
+     * Get current player
+     *
+     * @return Player | null Returns the current player
+     */
     public function getCurrentPlayer(): Player | null
     {
         return $this->currentPlayer;
@@ -75,7 +85,7 @@ class Game
     /**
      * Get player
      *
-     * @return Player
+     * @return Player The player
      */
     public function getPlayer()
     {
@@ -85,7 +95,7 @@ class Game
     /**
      * Get player
      *
-     * @return Player
+     * @return Dealer The dealer/bank
      */
     public function getDealer()
     {
@@ -93,7 +103,7 @@ class Game
     }
 
     /**
-     * Switch player
+     * Switch to next player
      *
      * @return void
      */
@@ -121,6 +131,12 @@ class Game
         $this->checkResult();
     }
 
+
+    /**
+     * Get game bet
+     *
+     * @return integer the bet
+     */
     public function getBet(): int
     {
         return $this->bet;
@@ -128,6 +144,12 @@ class Game
 
 
 
+    /**
+     * Set game bet
+     *
+     * @param integer $bet game bet to set
+     * @return void
+     */
     public function setBet(int $bet): void
     {
         $this->bet = $bet;
@@ -135,6 +157,11 @@ class Game
 
 
 
+    /**
+     * Initiate a new round. Create a new deckOfCards and clear player and dealers CardHand
+     *
+     * @return void
+     */
     public function newRound(): void
     {
 
@@ -161,7 +188,7 @@ class Game
 
 
     /**
-     * Get game result
+     * Check game result. Set winner if it exists
      *
      * @return void
      */
@@ -185,6 +212,7 @@ class Game
 
         $this->updateMoney();
     }
+
 
     /**
      * Function to update money when round is over
@@ -221,6 +249,11 @@ class Game
     }
 
 
+    /**
+     * Check if game is over (if player or dealer has no money left)
+     *
+     * @return boolean gameover
+     */
     public function gameIsOver(): bool
     {
         return $this->player->getMoney() <= 0 || $this->dealer->getMoney() <= 0;

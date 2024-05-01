@@ -2,12 +2,15 @@
 
 namespace App\Card;
 
+/**
+ * GraphicCard class - Represents a graphic playing card
+ */
 class CardGraphic extends Card
 {
     /**
      * Get suit as graphic
      *
-     * @return string
+     * @return string Graphic string value
      */
     public function getAsString(): string
     {

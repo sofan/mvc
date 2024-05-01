@@ -2,27 +2,30 @@
 
 namespace App\Card;
 
+/**
+ * Card class - Represents a playing card
+ */
 class Card
 {
     /**
      * Suit value
      *
-     * @var string
+     * @var string The suit of the card (e.g., Hearts, Diamonds, etc.).
      */
     private $suit;
 
     /**
      * Card value
      *
-     * @var string
+     * @var string The value of the card
      */
     private $value;
 
     /**
      * Card constructor
      *
-     * @param string $suit
-     * @param string $value
+     * @param string $suit The suit of the card.
+     * @param string $value The value of the card.
      */
     public function __construct(string $suit, string $value)
     {
@@ -34,7 +37,7 @@ class Card
     /**
      * Get card suit
      *
-     * @return string
+     * @return string The suit
      */
     public function getSuit(): string
     {
@@ -44,7 +47,7 @@ class Card
     /**
      * Get card value
      *
-     * @return string
+     * @return string The value
      */
     public function getValue(): string
     {
@@ -52,9 +55,9 @@ class Card
     }
 
     /**
-     * Get card scort
+     * Get card score
      *
-     * @return int
+     * @return int The score
      */
     public function getScore(): int
     {
@@ -76,7 +79,7 @@ class Card
     /**
      * Get card suit and value as string
      *
-     * @return string
+     * @return string Card as string
      */
     public function getAsString(): string
     {

@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
-            "summary": "",
+            "summary": "Card\u0020class\u0020\u002D\u0020Represents\u0020a\u0020playing\u0020card",
             "url": "classes/App-Card-Card.html"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
@@ -23,7 +23,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetScore\u0028\u0029",
             "name": "getScore",
-            "summary": "Get\u0020card\u0020scort",
+            "summary": "Get\u0020card\u0020score",
             "url": "classes/App-Card-Card.html#method_getScore"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetAsString\u0028\u0029",
@@ -43,7 +43,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "",
+            "summary": "GraphicCard\u0020class\u0020\u002D\u0020Represents\u0020a\u0020graphic\u0020playing\u0020card",
             "url": "classes/App-Card-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AgetAsString\u0028\u0029",
@@ -53,7 +53,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardHand",
             "name": "CardHand",
-            "summary": "",
+            "summary": "CardHand\u0020class\u0020\u002D\u0020respresents\u0020a\u0020hand\u0020of\u0020playering\u0020cards",
             "url": "classes/App-Card-CardHand.html"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003A__construct\u0028\u0029",
@@ -93,7 +93,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards",
             "name": "DeckOfCards",
-            "summary": "",
+            "summary": "Class\u0020DeckOfCards\u0020\u002D\u0020represents\u0020a\u0020deck\u0020of\u0020playing\u0020cards",
             "url": "classes/App-Card-DeckOfCards.html"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003A__construct\u0028\u0029",
@@ -113,7 +113,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "",
+            "summary": "function\u0020to\u0020Add\u0020card\u0020to\u0020deck\u0020of\u0020cards",
             "url": "classes/App-Card-DeckOfCards.html#method_addCard"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetCards\u0028\u0029",
@@ -123,7 +123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Asort\u0028\u0029",
             "name": "sort",
-            "summary": "Function\u0020to\u0020sort\u0020cards",
+            "summary": "Function\u0020to\u0020sort\u0020the\u0020deck\u0020of\u0020cards",
             "url": "classes/App-Card-DeckOfCards.html#method_sort"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Ashuffle\u0028\u0029",
@@ -133,7 +133,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Adraw\u0028\u0029",
             "name": "draw",
-            "summary": "Draw\u0020card\u0020from\u0020deck",
+            "summary": "Draw\u0020cards\u0020from\u0020deck",
             "url": "classes/App-Card-DeckOfCards.html#method_draw"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetNumberOfCards\u0028\u0029",
@@ -323,57 +323,57 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\GameController",
             "name": "GameController",
-            "summary": "",
+            "summary": "GameController\u0020class\u0020\u002D\u0020controls\u0020the\u0020game",
             "url": "classes/App-Controller-GameController.html"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameStart\u0028\u0029",
             "name": "gameStart",
-            "summary": "",
+            "summary": "Start\u0020the\u0020game",
             "url": "classes/App-Controller-GameController.html#method_gameStart"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameDoc\u0028\u0029",
             "name": "gameDoc",
-            "summary": "",
+            "summary": "Show\u0020game\u0020documentation",
             "url": "classes/App-Controller-GameController.html#method_gameDoc"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameInit\u0028\u0029",
             "name": "gameInit",
-            "summary": "",
+            "summary": "Initiate\u0020a\u0020new\u0020game",
             "url": "classes/App-Controller-GameController.html#method_gameInit"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameNewRound\u0028\u0029",
             "name": "gameNewRound",
-            "summary": "",
+            "summary": "Initiate\u0020a\u0020new\u0020game\u0020round",
             "url": "classes/App-Controller-GameController.html#method_gameNewRound"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgamePlay\u0028\u0029",
             "name": "gamePlay",
-            "summary": "",
+            "summary": "Show\u0020card\u0020game",
             "url": "classes/App-Controller-GameController.html#method_gamePlay"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameDraw\u0028\u0029",
             "name": "gameDraw",
-            "summary": "",
+            "summary": "Route\u0020to\u0020draw\u0020card",
             "url": "classes/App-Controller-GameController.html#method_gameDraw"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameSwitchPlayer\u0028\u0029",
             "name": "gameSwitchPlayer",
-            "summary": "",
+            "summary": "Route\u0020to\u0020switch\u0020to\u0020next\u0020player",
             "url": "classes/App-Controller-GameController.html#method_gameSwitchPlayer"
         },                {
             "fqsen": "\\App\\Controller\\GameController\u003A\u003AgameBet\u0028\u0029",
             "name": "gameBet",
-            "summary": "",
+            "summary": "Route\u0020to\u0020set\u0020game\u0020bet",
             "url": "classes/App-Controller-GameController.html#method_gameBet"
         },                {
             "fqsen": "\\App\\Controller\\GameControllerJson",
             "name": "GameControllerJson",
-            "summary": "",
+            "summary": "GameControllerJSON\u0020class",
             "url": "classes/App-Controller-GameControllerJson.html"
         },                {
             "fqsen": "\\App\\Controller\\GameControllerJson\u003A\u003AapiGame\u0028\u0029",
             "name": "apiGame",
-            "summary": "",
+            "summary": "Route\u0020to\u0020generate\u0020json\u0020api\u0020for\u0020game\u0020position",
             "url": "classes/App-Controller-GameControllerJson.html#method_apiGame"
         },                {
             "fqsen": "\\App\\Controller\\MyController",
@@ -466,11 +466,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Dice-DiceGraphic.html"
         },                {
-            "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-Dice-DiceGraphic.html#method___construct"
-        },                {
             "fqsen": "\\App\\Dice\\DiceGraphic\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
             "summary": "",
@@ -523,37 +518,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Dealer",
             "name": "Dealer",
-            "summary": "Dealer\u0020class",
+            "summary": "Dealer\u0020class\u0020\u002D\u0020Respresents\u0020a\u0020Dealer\u0020type\u0020of\u0020Player",
             "url": "classes/App-Game-Dealer.html"
         },                {
             "fqsen": "\\App\\Game\\Dealer\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Constructor",
+            "summary": "Dealer\u0020Constructor",
             "url": "classes/App-Game-Dealer.html#method___construct"
         },                {
             "fqsen": "\\App\\Game\\Dealer\u003A\u003AcheckStopThreshold\u0028\u0029",
             "name": "checkStopThreshold",
-            "summary": "",
+            "summary": "Function\u0020to\u0020check\u0020if\u0020dealer\u0020shall\u0020stop\u0020current\u0020round,\nsets\u0020player\u0020to\u0020stopped\u0020if\u0020total\u0020score\u0020\u003E\u003D\u002017",
             "url": "classes/App-Game-Dealer.html#method_checkStopThreshold"
         },                {
             "fqsen": "\\App\\Game\\Dealer\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "Override\u0020player",
+            "summary": "Add\u0020card\u0020to\u0020dealer",
             "url": "classes/App-Game-Dealer.html#method_addCard"
         },                {
             "fqsen": "\\App\\Game\\Game",
             "name": "Game",
-            "summary": "Game\u0020class",
+            "summary": "Game\u0020class\u0020\u002D\u0020takes\u0020care\u0020of\u0020the\u0020Game\u0020logic",
             "url": "classes/App-Game-Game.html"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Game\u0020constructor",
             "url": "classes/App-Game-Game.html#method___construct"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetCurrentPlayer\u0028\u0029",
             "name": "getCurrentPlayer",
-            "summary": "",
+            "summary": "Get\u0020current\u0020player",
             "url": "classes/App-Game-Game.html#method_getCurrentPlayer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetPlayer\u0028\u0029",
@@ -568,7 +563,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AswichPlayer\u0028\u0029",
             "name": "swichPlayer",
-            "summary": "Switch\u0020player",
+            "summary": "Switch\u0020to\u0020next\u0020player",
             "url": "classes/App-Game-Game.html#method_swichPlayer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AcurrentPlayerTurn\u0028\u0029",
@@ -578,22 +573,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetBet\u0028\u0029",
             "name": "getBet",
-            "summary": "",
+            "summary": "Get\u0020game\u0020bet",
             "url": "classes/App-Game-Game.html#method_getBet"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AsetBet\u0028\u0029",
             "name": "setBet",
-            "summary": "",
+            "summary": "Set\u0020game\u0020bet",
             "url": "classes/App-Game-Game.html#method_setBet"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AnewRound\u0028\u0029",
             "name": "newRound",
-            "summary": "",
+            "summary": "Initiate\u0020a\u0020new\u0020round.\u0020Create\u0020a\u0020new\u0020deckOfCards\u0020and\u0020clear\u0020player\u0020and\u0020dealers\u0020CardHand",
             "url": "classes/App-Game-Game.html#method_newRound"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AcheckResult\u0028\u0029",
             "name": "checkResult",
-            "summary": "Get\u0020game\u0020result",
+            "summary": "Check\u0020game\u0020result.\u0020Set\u0020winner\u0020if\u0020it\u0020exists",
             "url": "classes/App-Game-Game.html#method_checkResult"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AupdateMoney\u0028\u0029",
@@ -608,7 +603,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgameIsOver\u0028\u0029",
             "name": "gameIsOver",
-            "summary": "",
+            "summary": "Check\u0020if\u0020game\u0020is\u0020over\u0020\u0028if\u0020player\u0020or\u0020dealer\u0020has\u0020no\u0020money\u0020left\u0029",
             "url": "classes/App-Game-Game.html#method_gameIsOver"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024player",
@@ -623,12 +618,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024currentPlayer",
             "name": "currentPlayer",
-            "summary": "Takes\u0020care\u0020of\u0020which\u0020turn\u0020it\u0020is\u0020to\u0020draw\u0020a\u0020card",
+            "summary": "Current\u0020player,\u0020takes\u0020care\u0020of\u0020which\u0020turn\u0020it\u0020is\u0020to\u0020draw\u0020a\u0020card",
             "url": "classes/App-Game-Game.html#property_currentPlayer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024winner",
             "name": "winner",
-            "summary": "The\u0020winner",
+            "summary": "The\u0020winner,\u0020represents\u0020the\u0020winner\u0020of\u0020the\u0020game",
             "url": "classes/App-Game-Game.html#property_winner"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024deck",
@@ -643,12 +638,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Player",
             "name": "Player",
-            "summary": "Player\u0020class",
+            "summary": "Player\u0020class\u0020\u002D\u0020represents\u0020a\u0020card\u0020game\u0020player",
             "url": "classes/App-Game-Player.html"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Player\u0020constructor",
             "url": "classes/App-Game-Player.html#method___construct"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AgetName\u0028\u0029",
@@ -658,7 +653,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "Add\u0020card\u0020to\u0020hand",
+            "summary": "Add\u0020card",
             "url": "classes/App-Game-Player.html#method_addCard"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AgetHand\u0028\u0029",
@@ -668,7 +663,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AresetHand\u0028\u0029",
             "name": "resetHand",
-            "summary": "",
+            "summary": "Reset\u0020the\u0020CardHand\u0020and\u0020stop\u0020players\u0020round",
             "url": "classes/App-Game-Player.html#method_resetHand"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AgetScore\u0028\u0029",
@@ -683,12 +678,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AisStopped\u0028\u0029",
             "name": "isStopped",
-            "summary": "",
+            "summary": "Returns\u0020players\u0020stopped\u0020status",
             "url": "classes/App-Game-Player.html#method_isStopped"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AgetMoney\u0028\u0029",
             "name": "getMoney",
-            "summary": "",
+            "summary": "Get\u0020players\u0020money",
             "url": "classes/App-Game-Player.html#method_getMoney"
         },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AupdateMoney\u0028\u0029",
