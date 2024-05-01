@@ -17,10 +17,7 @@ class DiceGraphic extends Dice
         '⚅',
     ];
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
+
 
     public function getAsString(): string
     {

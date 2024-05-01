@@ -30,4 +30,63 @@ class DiceHandTest extends TestCase
         $res = $dicehand->sum();
         $this->assertEquals(12, $res);
     }
+
+    /**
+     * test add dice to hand
+     *
+     * @return void
+     */
+    public function testAddAddsDieToHand(): void
+    {
+
+        $diceHand = new DiceHand();
+
+        $dice = new Dice();
+        $diceHand->add($dice);
+
+        $this->assertEquals(1, $diceHand->getNumberDices());
+    }
+
+
+    public function testRollRollsAllDiceInHand(): void
+    {
+        $diceHand = new DiceHand();
+
+        $dice1 = new Dice();
+        $dice2 = new Dice();
+        $diceHand->add($dice1);
+        $diceHand->add($dice2);
+
+        $diceHand->roll();
+
+
+        $values = $diceHand->getValues();
+
+        foreach ($values as $value) {
+            $this->assertGreaterThanOrEqual(1, $value);
+            $this->assertLessThanOrEqual(6, $value);
+        }
+    }
+
+
+    public function testGetStringReturnsArrayOfStrings(): void
+    {
+        $diceHand = new DiceHand();
+
+        // Skapa två mock-objekt för Dice.
+        $mockDice1 = $this->createMock(Dice::class);
+        $mockDice2 = $this->createMock(Dice::class);
+
+        // konfigurera beteende
+        $mockDice1->method('getAsString')->willReturn('[1]');
+        $mockDice2->method('getAsString')->willReturn('[2]');
+
+        // Lägg till de mockade Dice-objekten
+        $diceHand->add($mockDice1);
+        $diceHand->add($mockDice2);
+
+        $stringArray = $diceHand->getString();
+
+        $this->assertEquals(['[1]', '[2]'], $stringArray);
+    }
 }
