@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1714487680">
-  <project timestamp="1714487680">
+<coverage generated="1714488138">
+  <project timestamp="1714488138">
     <file name="/home/sofie/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="10" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="20" coveredelements="20"/>
@@ -85,8 +85,8 @@
       <class name="App\Card\DeckOfCards" namespace="global">
         <metrics complexity="12" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="26" elements="36" coveredelements="36"/>
       </class>
-      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="22"/>
-      <line num="26" type="stmt" count="22"/>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
+      <line num="26" type="stmt" count="21"/>
       <line num="37" type="method" name="getSuits" visibility="public" complexity="1" crap="1" count="12"/>
       <line num="39" type="stmt" count="12"/>
       <line num="47" type="method" name="getValues" visibility="public" complexity="1" crap="1" count="12"/>
