@@ -159,6 +159,62 @@ class GameTest extends TestCase
         $this->assertEquals($winner, $dealer);
     }
 
+    /**
+    * test check result with dealer as winner
+    *
+    * @return void
+    */
+    public function testCheckResultPlayerOver21()
+    {
+
+        $game = new Game();
+
+        $player = $game->getPlayer();
+        $dealer = $game->getDealer();
+
+        // Make dealer winner
+        $player->addCard(new Card('Hearts', 'J'));
+        $player->addCard(new Card('Hearts', '10'));
+        $player->addCard(new Card('Hearts', '5'));
+
+        $game->checkResult();
+
+        $winner = $game->getWinner();
+
+        $this->assertEquals($winner, $dealer);
+    }
+
+    /**
+    * test check result with dealer as winner
+    *
+    * @return void
+    */
+    public function testCheckResultDealerOver21()
+    {
+
+        $game = new Game();
+
+        $player = $game->getPlayer();
+        $dealer = $game->getDealer();
+
+        $dealer->addCard(new Card('Hearts', 'J'));
+
+        // Make player winner
+        $player->addCard(new Card('Hearts', 'J'));
+        $player->addCard(new Card('Hearts', '3'));
+
+        $dealer->addCard(new Card('Hearts', 'J'));
+        $dealer->addCard(new Card('Hearts', '10'));
+        $dealer->addCard(new Card('Hearts', '5'));
+
+        $game->checkResult();
+
+        $winner = $game->getWinner();
+
+        $this->assertEquals($winner, $player);
+    }
+
+
 
     /**
      * test check result when scores are equal (dealer wins)

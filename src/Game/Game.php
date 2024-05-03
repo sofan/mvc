@@ -20,7 +20,7 @@ class Game
     /**
      * Dealer, the bank
      *
-     * @var Player The Bank
+     * @var Dealer The Bank
      */
     private $dealer;
 
@@ -93,11 +93,11 @@ class Game
     }
 
     /**
-     * Get player
+     * Get dealer
      *
      * @return Dealer The dealer/bank
      */
-    public function getDealer()
+    public function getDealer(): Dealer
     {
         return $this->dealer;
     }

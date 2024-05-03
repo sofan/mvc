@@ -558,7 +558,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetDealer\u0028\u0029",
             "name": "getDealer",
-            "summary": "Get\u0020player",
+            "summary": "Get\u0020dealer",
             "url": "classes/App-Game-Game.html#method_getDealer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AswichPlayer\u0028\u0029",

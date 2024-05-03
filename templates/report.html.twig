@@ -91,12 +91,41 @@
             </p>
         </div>
     </article>
+
+     <article id="kmom04" class="report">
+        <h2>Kursmoment 4 - Enhetstestning</h2>
+        <div>
+            <p>
+                Att skriva tester känns alltid lite jobbigt och krångligt innan man kommer igång. Men phpunit påminnde mycket om hur vi tidigare
+                gjorde enhetstester i Python, så jag tyckte det gick bra att komma igång då jag kände igen mig.
+                Jag lyckades för mina klasser få 100% kodtäckning. När det kom till test av controllers blev det svårare. Jag kunde med assert testa min
+                GameControllerJSon som genererar JSON till api. Men den andra GameController blev svårare. Jag hittade i Symfonys dokumentation att jag kunde
+                använda WebTestCase, men nöjde mig med att testa endast två av funktionerna, de enklaste, där jag kunde kontrollera att en viss text finns i responsen.
+            </p>
+            <p>
+                Jag var glad i detta kursmoment att jag i de tidigare kmom hade strukturerat funktionerna i klasserna som jag gjort. Jag upplever att
+                min kod var skapligt lätt att testa då jag har nästan all kod i klasserna och väldigt lite kod i controllerna.
+                Det enda stället där jag ändrat i koden är för DeckOfCards. Tidigare lät jag den klassen själv fylla på kortleken, men jag ändrade nu så att
+                den injektas utifrån. Klassen uppfyller då bättre Single Responsibility principen och är lättare att testa.
+                Jag tycker nog att kod som är lätt att testa kan anses som ren och kanske också snygg.
+            </p>
+            <p>
+
+                Min TIL detta kursmoment var hur viktigt det är att skiva enkel och tydlig kod, och gärna dela upp det i många mindre funktioner, så att en jag själv eller en annan utvecklare
+                vid senare tillfälle kan komma tillbaka och förstå vad den gör.
+            </p>
+
+        </div>
+    </article>
+
+
     </div>
     <div>
         <ul class="linkstyle">
             <li><a href="#kmom01">kmom01</a></li>
             <li><a href="#kmom02">kmom02</a></li>
             <li><a href="#kmom03">kmom03</a></li>
+            <li><a href="#kmom04">kmom04</a></li>
         </ul>
     </div>
 </div>
