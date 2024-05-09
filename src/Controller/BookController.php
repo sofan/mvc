@@ -92,11 +92,8 @@ class BookController extends AbstractController
      * Route to show update form
      */
     #[Route('/book/update/{id}', name: 'book_update_form', methods: ["GET"])]
-    public function updateBookGet(BookRepository $bookRepository, int $id): Response
+    public function updateBookGet(Book $book): Response
     {
-
-        $book = $bookRepository->find($id);
-
         $data = [
             'book' => $book
         ];
@@ -109,10 +106,9 @@ class BookController extends AbstractController
      * Route to update book
      */
     #[Route('/book/update/{id}', name: 'book_update', methods: ["POST"])]
-    public function updateBook(Request $request, ManagerRegistry $doctrine, int $id): Response
+    public function updateBook(Book $book, Request $request, ManagerRegistry $doctrine, int $id): Response
     {
         $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($id);
 
         $title = strval($request->request->get('title'));
         $author = strval($request->request->get('author'));
@@ -145,10 +141,8 @@ class BookController extends AbstractController
      * Route to show book by ID
      */
     #[Route('/book/show/{id}', name: 'book_by_id')]
-    public function viewBookById(BookRepository $bookRepository, int $id): Response
+    public function viewBookById(Book $book): Response
     {
-        $book = $bookRepository->find($id);
-
         $books = $book ? [$book] : [];
 
         $data = [
@@ -159,30 +153,27 @@ class BookController extends AbstractController
     }
 
 
+
     /**
      * Route to delete book by ID
      */
     #[Route('/book/delete/{id}', name: 'book_delete_by_id')]
-    public function deleteProductById(ManagerRegistry $doctrine, int $id): Response
+    public function deleteProductById(Book $book, ManagerRegistry $doctrine): Response
     {
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($id);
-
-        // Get book title to show in flash
-        $name = $book ? $book->getTitle() : '-';
-
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id'
             );
         }
+
+        $entityManager = $doctrine->getManager();
 
         $entityManager->remove($book);
         $entityManager->flush();
 
         $this->addFlash(
             'notice',
-            'Bok ' . $name . ' borttagen!'
+            'Bok ' . $book->getTitle() . ' borttagen!'
         );
 
         return $this->redirectToRoute('library');
