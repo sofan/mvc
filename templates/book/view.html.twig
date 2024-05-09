@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of Books{% endblock %}
+
+{% block main %}
+
+
+<div>
+
+    <h1>Böcker</h1>
+    <a href="{{ path('book_create') }}">Lägg till ny bok</a>
+    <a href="{{ path('library') }}">Visa alla böcker</a>
+
+
+    {{ include('flash.html.twig') }}
+
+    {% if books is not empty %}
+        <table class="book">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Bild</th>
+                    <th>Författare</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('book_by_id', {'id': book.getId}) }}">{{book.getTitle}}</a>
+                            <p class="isbn"><b>ISBN</b><br>{{ book.getIsbn|e }}</p>
+                        </td>
+                        <td><img src="{{ book.getImage|e }}" alt="{{ book.getImage|e }}" title="{{ book.getImage|e }}"></td>
+
+                        <td>{{ book.getAuthor|e }}</td>
+
+                        <td>
+                            <a href="{{ path('book_delete_by_id', {'id': book.getId}) }}">Radera</a><br>
+                            <a href="{{ path('book_update_form', {'id': book.getId}) }}">Uppdatera</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No books available</p>
+    {% endif %}
+
+
+</div>
+{% endblock %}
