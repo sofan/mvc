@@ -30,6 +30,11 @@ class Book
         return $this->id;
     }
 
+    /**
+     * Get book title
+     *
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
