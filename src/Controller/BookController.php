@@ -41,7 +41,8 @@ class BookController extends AbstractController
      * @return Response
      */
     #[Route('/book/create', name: 'book_create_form', methods: ["GET"])]
-    public function createBookGet(): Response    {
+    public function createBookGet(): Response
+    {
 
         return $this->render('book/create.html.twig');
     }
@@ -106,20 +107,22 @@ class BookController extends AbstractController
      * Route to update book
      */
     #[Route('/book/update/{id}', name: 'book_update', methods: ["POST"])]
-    public function updateBook(Book $book, Request $request, ManagerRegistry $doctrine, int $id): Response
+    public function updateBook(Request $request, ManagerRegistry $doctrine, int $id): Response
     {
         $entityManager = $doctrine->getManager();
+
+        $book = $entityManager->getRepository(Book::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id'
+            );
+        }
 
         $title = strval($request->request->get('title'));
         $author = strval($request->request->get('author'));
         $isbn = strval($request->request->get('isbn'));
         $image = strval($request->request->get('image'));
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
 
         $book->setTitle($title);
         $book->setAuthor($author);
@@ -143,10 +146,9 @@ class BookController extends AbstractController
     #[Route('/book/show/{id}', name: 'book_by_id')]
     public function viewBookById(Book $book): Response
     {
-        $books = $book ? [$book] : [];
 
         $data = [
-            'books' => $books
+            'books' => [$book]
         ];
 
         return $this->render('book/view.html.twig', $data);
@@ -158,8 +160,11 @@ class BookController extends AbstractController
      * Route to delete book by ID
      */
     #[Route('/book/delete/{id}', name: 'book_delete_by_id')]
-    public function deleteProductById(Book $book, ManagerRegistry $doctrine): Response
+    public function deleteProductById(ManagerRegistry $doctrine, int $id): Response
     {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->find($id);
+
         if (!$book) {
             throw $this->createNotFoundException(
                 'No book found for id'
