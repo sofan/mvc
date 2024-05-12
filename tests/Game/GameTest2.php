@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
  */
 class GameTest2 extends TestCase
 {
-
     /**
      * test check result when dealer has lower score
      *
