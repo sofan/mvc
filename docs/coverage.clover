@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715523079">
-  <project timestamp="1715523079">
+<coverage generated="1715523643">
+  <project timestamp="1715523643">
     <file name="/home/sofie/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="10" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="20" coveredelements="20"/>
@@ -480,12 +480,12 @@
     </file>
     <file name="/home/sofie/dbwebb-kurser/mvc/me/report/src/Controller/GameController.php">
       <class name="App\Controller\GameController" namespace="global">
-        <metrics complexity="10" methods="8" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="2" elements="43" coveredelements="4"/>
+        <metrics complexity="10" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="43" coveredelements="0"/>
       </class>
-      <line num="22" type="method" name="gameStart" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="25" type="stmt" count="1"/>
-      <line num="34" type="method" name="gameDoc" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="37" type="stmt" count="1"/>
+      <line num="22" type="method" name="gameStart" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="34" type="method" name="gameDoc" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="37" type="stmt" count="0"/>
       <line num="44" type="method" name="gameInit" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="48" type="stmt" count="0"/>
       <line num="49" type="stmt" count="0"/>
@@ -525,7 +525,7 @@
       <line num="160" type="stmt" count="0"/>
       <line num="161" type="stmt" count="0"/>
       <line num="163" type="stmt" count="0"/>
-      <metrics loc="168" ncloc="112" classes="1" methods="8" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="2" elements="43" coveredelements="4"/>
+      <metrics loc="168" ncloc="112" classes="1" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="43" coveredelements="0"/>
     </file>
     <file name="/home/sofie/dbwebb-kurser/mvc/me/report/src/Controller/GameControllerJson.php">
       <class name="App\Controller\GameControllerJson" namespace="global">
@@ -916,6 +916,6 @@
       <line num="56" type="stmt" count="0"/>
       <metrics loc="86" ncloc="49" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
     </file>
-    <metrics files="24" loc="2634" ncloc="1982" classes="23" methods="141" coveredmethods="61" conditionals="0" coveredconditionals="0" statements="630" coveredstatements="183" elements="771" coveredelements="244"/>
+    <metrics files="24" loc="2634" ncloc="1982" classes="23" methods="141" coveredmethods="59" conditionals="0" coveredconditionals="0" statements="630" coveredstatements="181" elements="771" coveredelements="240"/>
   </project>
 </coverage>
