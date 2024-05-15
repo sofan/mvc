@@ -2,6 +2,8 @@ imports:
     - php
 
 filter:
+    paths:
+        - php-cs-fixer.dist.php
     excluded_paths: [vendor/*, test/*]
 
 build:
