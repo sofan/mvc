@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block main %}
+
+<div class="metrics">
+
+    <h2>Introduktion</h2>
+
+    <ul>
+        <li>Codestyle</li>
+        <p>Koden ska vara lätt att förstå och underhålla. Den ska vara enhetligt formaterad och tydliga namn ska användas för variabler.</p>
+        <li>Coverage</li><p>Anger hur stor del av koden som täcks av tester.
+        <li>Complexity</li><p>Mäter hur komplex koden är. En låg komplexitet är att föredra då det ger kod som är lättare att förstå och underhålla.</p>
+        <li>Cohesion</li><p>Anger hur väl olika delar av koögre den hänger samman. En hög cohesion är att föredra då det innebär att varje klass har ett avgränsat ansvarsområde.
+        Önskat värde på cohesion är 1, vilket tyder på att allt som finns i klassen hänger ihop. Ett högre värde på cohesion innebär att klassen har
+        för många ansvarsområden vilket inte är önskvärt.
+        </p>
+        <li>Coupling</li><p>Anger hur beroende klasserna är av varandra. En låg coupling är att föredra då klasserna är mer fristående och lättare att underhålla, t.ex. vid buggrättning.</p>
+        <li>CRAP</li><p>Ett mått på kodkvalitet baserat på komplexitet och coverage. Hög komplexitet och låg coverage ger ett högt CRAP-värde, vilket indikerar att koden kan vara svår att underhålla.</p>
+
+    </ul>
+
+    <h2>Phpmetrics</h2>
+
+    <ul>
+    <li>Bubbles
+    </li>
+    <p>Den visuella översikten av den första analysen visar på att jag har några Controller klasser som är röda, dvs de har högt Maintainability index.
+    Jag kan också se att där finns en stor gul bubbla (vilken representerar klassen Game) vilket tyder på hög Cyclomatic Complexity.</p>
+    <p><img src="{{ asset('img/phpmetrics_bubbles.png') }}" height="150" alt="phpmetrics" title="phpmetrics"></p>
+    <li>Violations</li>
+    Här får jag 2 errors, varav båda på Controllers och handlar om Single responsibility principle.
+    <p><img src="{{ asset('img/metrics_violations.png') }}" width="100%" alt="violations" title="violations"></p>
+
+    <li>Enhetstestning</li>
+    Jag kan se att 13 av mina klasser ej är testade. Nästan alla dessa är Controllers vilka jag är medveten om att jag inte har tester för.
+    Jag kan dessutom se högt Cyclomatic värde för CardControllerJson och DiceGameController, vilket innebär att koden är komplex. Dessa har även en större risk för buggar.
+
+    <li>Komplexitet</li>De klasser som får högts komplexitet är Controllers.<br>Medelvärden för alla klasser:
+    <p class="bold">Average weighted method count by class (CC): 6.96</p>
+    <p class="bold">Average cyclomatic complexity by class: 3.29</p>
+    <p class="bold">Average relative System complexity: 86.18</p>
+    <p class="bold">Average bugs by class(Halstead): 0.13</p>
+    <p class="bold">Average defects by class (Kan): 0.38</p>
+    <br>
+    Positivt att utläsa från detta är att min kod är relativt fri från buggar och skapligt stabil. <br>
+    Negativt är att mina klasser har ett ganska högt antal metoder och den relativa kodkomplexiteten är hög med många interaktioner
+    mellan klasser, vilket kan göra koden komplex och svårare att underhålla.
+
+
+    <li>Volym</li>Även här ligger Controllers i topp och har störst volym med kod. Jag kan också utläsa att koden har ganska hög andel kommentarer.
+
+    <li>Coupling</li>Den klass som används mest av andra klasser är Card, vilket inte var helt oväntat.
+    De klasser som har flest utgående kopplingar till andra klasser är inte oväntat alla Controllers, med CardControllerJson i topp. Jag kan
+    se att dessa klasser på grund av deras beroende av andra klasser har en hög instabilitet.
+    </ul>
+
+    <h3>Svagheter</h3>
+
+    Controllers har ofta hög komplexitet. Dessa skulle eventuellt kunna delas upp i mindre för att.<br>
+    Det finns brist på enhetstester för Controllers vilket ökar risken för oupptäckta buggar.<br>
+    Två kontrollers brister i Single Responslbility Principle och har för många ansvardsområden.
+
+
+
+    <h2>Scrutinizer</h2>
+    Då den första rapporten var gjord fick jag följande översiktsbild. Ett resultat på 9.97 ser vid första anblick ut som ett bra resultat.
+    Jag kan samtidigt se att test converage endast är 31% vilket känns lågt.
+    <p><img src="{{ asset('img/Scrutinizer_start.png') }}" width="100%" alt="Scrutinizer first report" title="Scrutinizer first report"></p>
+    <ul>
+        <li></li>
+    </ul>
+
+    <h2>Förbättringar</h2>
+
+    <h2>Diskussion</h2>
+
+
+
+
+</div>
+{% endblock %}

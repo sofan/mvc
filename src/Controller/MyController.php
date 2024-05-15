@@ -76,4 +76,11 @@ class MyController extends AbstractController
         return $this->redirectToRoute('session_info');
     }
 
+
+    #[Route('/metrics', name: "metrics")]
+    public function metrics(): Response
+    {
+        return $this->render('metrics/metrics.html.twig');
+    }
+
 }
