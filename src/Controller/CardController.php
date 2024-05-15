@@ -13,6 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardController extends AbstractController
 {
+    /**
+     * Create deck of graphic cards
+     *
+     * @return DeckOfCards
+     */
     public function createDeckOfCards(): DeckOfCards
     {
         $deck = new DeckOfCards();
@@ -27,6 +32,11 @@ class CardController extends AbstractController
 
 
 
+    /**
+     * Card start route
+     *
+     * @return Response
+     */
     #[Route("/card", name: "card_start")]
     public function cardStart(): Response
     {

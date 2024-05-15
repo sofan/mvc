@@ -198,21 +198,29 @@ class Game
         $playerScore = $this->player->getScore();
         $dealerScore = $this->dealer->getScore();
 
-        if ($playerScore === 21) {
-            $this->winner = $this->player;
-        } elseif ($dealerScore === 21) {
-            $this->winner = $this->dealer;
-        } elseif ($playerScore > 21) {
-            $this->winner = $this->dealer;
-        } elseif ($dealerScore > 21) {
-            $this->winner = $this->player;
-        } elseif ($this->dealer->isStopped()) {
-            $this->winner = ($dealerScore >= $playerScore) ? $this->dealer : $this->player;
+        switch (true) {
+            case $playerScore === 21:
+                $this->winner = $this->player;
+                break;
+            case $dealerScore === 21:
+                $this->winner = $this->dealer;
+                break;
+            case $playerScore > 21:
+                $this->winner = $this->dealer;
+                break;
+            case $dealerScore > 21:
+                $this->winner = $this->player;
+                break;
+            case $this->dealer->isStopped():
+                $this->winner = ($dealerScore >= $playerScore) ? $this->dealer : $this->player;
+                break;
+            default:
+                // Ingen vinnare
+                break;
         }
 
         $this->updateMoney();
     }
-
 
     /**
      * Function to update money when round is over
