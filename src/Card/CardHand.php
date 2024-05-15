@@ -61,7 +61,7 @@ class CardHand
     /**
      * Get cards as array in JSON format
      *
-     * @return array{cards: array<int<0, max>, array{suit: string, value: string}>}
+     * @return array{cards: array<int, array{suit: string, value: string}>}
      *
      */
     public function toArray(): array

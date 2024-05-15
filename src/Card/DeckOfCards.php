@@ -140,7 +140,7 @@ class DeckOfCards
     /**
      * Get cards as array, to use for JSON
      *
-     * @return array<int<0, max>, array<string, string>> Cards as json string
+     * @return array<int, array<string, string>> Cards as json string
      */
     public function getCardArray(): array
     {
