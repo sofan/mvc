@@ -105,12 +105,18 @@
     <li>Issues</li>
     Jag vill rätta till de issues som hittats av Scrutinizer.
     <li>Komplexitet och Cohesion</li>
-    Klasserna ProductController och BookController visar brister i Single responsibility principle. Dessa bör fixas så de inte hanterar fler
-    ansvarsområden.
+    Vissa Controller klasser visar brister i Single responsibility principle. Dessa bör fixas så de inte hanterar fler
+    ansvarsområden. Jag planerar att dela upp dessa controllers i fler klasser då de idag både används för att visa templates och för att generera Json till API.
     <li>Kodtäckning och CRAP</li>
     De klasser som har sämst kodtäckning är Controllers. Jag är osäker på om jag vill fixa full kodtäckning på dessa då jag läst mig till att det kanske inte alltid är till nytta.
     Däremot vill jag gärna att de funktioner med högt CRAP värde ska testas bättre så att betyget blir bättre.
 
+    </ul>
+
+    <h3>Analys efter genomförande</h3>
+    <ul>
+        <li>Komplexitet och Cohesion</li>
+        Genom att dela upp Controllers i mindre klasser försvann felet med Single Responslbility i phpmtrics.
     </ul>
 
     <h2>Diskussion</h2>

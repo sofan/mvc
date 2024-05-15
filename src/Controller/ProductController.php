@@ -12,6 +12,11 @@ use App\Repository\ProductRepository;
 
 class ProductController extends AbstractController
 {
+    /**
+     * Product controller start
+     *
+     * @return Response
+     */
     #[Route('/product', name: 'app_product')]
     public function index(): Response
     {
@@ -21,6 +26,12 @@ class ProductController extends AbstractController
     }
 
 
+    /**
+     * Create procuct route
+     *
+     * @param ManagerRegistry $doctrine
+     * @return Response
+     */
     #[Route('/product/create', name: 'product_create')]
     public function createProduct(
         ManagerRegistry $doctrine
@@ -42,6 +53,12 @@ class ProductController extends AbstractController
     }
 
 
+    /**
+     * Show all products
+     *
+     * @param ProductRepository $productRepository
+     * @return Response
+     */
     #[Route('/product/show', name: 'product_show_all')]
     public function showAllProduct(
         ProductRepository $productRepository
@@ -56,6 +73,9 @@ class ProductController extends AbstractController
     }
 
 
+    /**
+     * Show product by ID
+     */
     #[Route('/product/show/{id}', name: 'product_by_id')]
     public function showProductById(
         ProductRepository $productRepository,
@@ -73,6 +93,9 @@ class ProductController extends AbstractController
     }
 
 
+    /**
+     * Delete product by ID
+     */
     #[Route('/product/delete/{id}', name: 'product_delete_by_id')]
     public function deleteProductById(
         ManagerRegistry $doctrine,
@@ -93,6 +116,9 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_show_all');
     }
 
+    /**
+     * Update product by ID
+     */
     #[Route('/product/update/{id}/{value}', name: 'product_update')]
     public function updateProduct(
         ManagerRegistry $doctrine,
@@ -116,44 +142,7 @@ class ProductController extends AbstractController
 
 
 
-    #[Route('/product/view', name: 'product_view_all')]
-    public function viewAllProduct(
-        ProductRepository $productRepository
-    ): Response {
-        $products = $productRepository->findAll();
 
-        $data = [
-            'products' => $products
-        ];
-
-        return $this->render('product/view.html.twig', $data);
-    }
-
-
-    #[Route('/product/view/{value}', name: 'product_view_minimum_value')]
-    public function viewProductWithMinimumValue(
-        ProductRepository $productRepository,
-        int $value
-    ): Response {
-        $products = $productRepository->findByMinimumValue($value);
-
-        $data = [
-            'products' => $products
-        ];
-
-        return $this->render('product/view.html.twig', $data);
-    }
-
-
-    #[Route('/product/show/min/{value}', name: 'product_by_min_value')]
-    public function showProductByMinimumValue(
-        ProductRepository $productRepository,
-        int $value
-    ): Response {
-        $products = $productRepository->findByMinimumValue2($value);
-
-        return $this->json($products);
-    }
 
 
 }
