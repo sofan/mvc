@@ -190,4 +190,78 @@ class CardControllerTest extends WebTestCase
     }
 
 
+    /**
+     * test draw card route
+     *
+     * @return void
+     */
+    public function testDrawCard(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/card/deck/draw');
+
+        $this->assertResponseIsSuccessful();
+
+        // Check some content in the twig template
+        $this->assertSelectorTextContains('h2', 'Dragna kort');
+    }
+
+
+    /**
+     * test draw num cards route
+     *
+     * @return void
+     */
+    public function testDrawCardNum(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/card/deck/draw/3');
+
+        $this->assertResponseIsSuccessful();
+
+        // Check some content in the twig template
+        $this->assertSelectorTextContains('h2', 'Dragna kort');
+    }
+
+
+    /**
+     * test create card hand
+     *
+     * @return void
+     */
+    public function testCardHand(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/card/deck/deal/2/5');
+
+        $this->assertResponseIsSuccessful();
+
+        // Check some content in the twig template
+        $this->assertSelectorTextContains('h2', '2 Spelare med 5 kort i handen');
+    }
+
+
+    /**
+     * test create card hand
+     *
+     * @return void
+     */
+    public function testcreateCardHand(): void
+    {
+        $client = static::createClient();
+
+        $client->request('POST', '/card/hand/init');
+
+        $crawler = $client->followRedirect();
+
+        //$this->assertCount(4, $crawler->filter('.comment'));
+
+        // Check some content in the twig template
+        $this->assertSelectorTextContains('h2', '0 Spelare med 0 kort i handen');
+    }
+
+
 }
