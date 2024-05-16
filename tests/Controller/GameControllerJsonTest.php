@@ -52,7 +52,7 @@ class GameControllerJsonTest extends TestCase
         $content = $response->getContent();
         $this->assertIsString($content);
 
-        if ($content != false) {
+        if ($content !== '') {
             // Get content and json decode
             $res = json_decode($content, true);
             $this->assertEquals($exp, $res);
