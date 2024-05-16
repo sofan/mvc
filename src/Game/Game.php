@@ -234,12 +234,12 @@ class Game
         if ($this->winner) {
             $this->winner->updateMoney($this->bet);
 
-            if ($this->player === $this->winner) {
+            if ($this->player == $this->winner) {
                 // Dra pengar från banken
                 $this->dealer->updateMoney(-$this->bet);
             }
 
-            if ($this->dealer === $this->winner) {
+            if ($this->dealer == $this->winner) {
                 // Dra pengar från spelaren
                 $this->player->updateMoney(-$this->bet);
             }
