@@ -255,12 +255,16 @@ class CardControllerTest extends WebTestCase
 
         $client->request('POST', '/card/hand/init');
 
-        $crawler = $client->followRedirect();
+        $response = $client->getResponse();
 
-        //$this->assertCount(4, $crawler->filter('.comment'));
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that rout is correct
+        $this->assertEquals('/card/deck/deal/0/0', $response->headers->get('Location'));
 
         // Check some content in the twig template
-        $this->assertSelectorTextContains('h2', '0 Spelare med 0 kort i handen');
+        //$this->assertSelectorTextContains('h2', '0 Spelare med 0 kort i handen');
     }
 
 

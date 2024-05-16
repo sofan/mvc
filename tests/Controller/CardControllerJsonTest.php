@@ -2,19 +2,18 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
+
+use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
-use App\Game\Dealer;
-use App\Game\Game;
-use App\Game\Player;
-use PHPUnit\Framework\TestCase;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Test cases for class GameControllerJson
  */
-class CardControllerJsonTest extends TestCase
+class CardControllerJsonTest extends WebTestCase
 {
     /**
      * Test API for apiDeck
@@ -68,5 +67,57 @@ class CardControllerJsonTest extends TestCase
         }
 
     }
+
+    /**
+     * test route /api/deck/shuffle
+     *
+     * @return void
+     */
+    public function testDeckShufflePost() {
+
+        $client = static::createClient();
+
+        // Send POST request
+        $client->request('POST', '/api/deck/shuffle');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that rout is correct
+        $this->assertEquals('/api/deck/shuffle', $response->headers->get('Location'));
+
+    }
+
+
+    public function testApiDeckShuffleGet()
+    {
+        // Skapa en klient för att simulera en webbläsare
+        $client = static::createClient();
+
+        // Skicka en GET-begäran till den angivna routen
+        $client->request('GET', '/api/deck/shuffle');
+
+        // Få responsen
+        $response = $client->getResponse();
+
+        // Kontrollera att responsen är en JsonResponse
+        $this->assertInstanceOf(JsonResponse::class, $response);
+
+        // Kontrollera att responsen har statuskod 200
+        $this->assertEquals(200, $response->getStatusCode());
+
+        // Hämta och dekoda JSON-innehållet
+        $content = $response->getContent();
+        $data = json_decode($content, true);
+
+        // Kontrollera att JSON-innehållet innehåller en kortlek med 52 kort
+        $this->assertArrayHasKey('deckOfCards', $data);
+        $this->assertCount(52, $data['deckOfCards']);
+    }
+
+
 
 }
