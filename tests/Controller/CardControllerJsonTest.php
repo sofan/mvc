@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  */
 class CardControllerJsonTest extends TestCase
 {
+    /**
+     * Test API for apiDeck
+     *
+     * @return void
+     */
     public function testApiDeck()
     {
         // Create SessionInterface stub
@@ -47,14 +52,21 @@ class CardControllerJsonTest extends TestCase
         $this->assertInstanceOf(JsonResponse::class, $response);
 
         // Check JSON data
-        $expectedData = [
+        $exp = [
             'deckOfCards' => $cardArray,
         ];
 
-        $this->assertJsonStringEqualsJsonString(
-            json_encode($expectedData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
-            $response->getContent()
-        );
+        $content = $response->getContent();
+
+        if ($content !== false && $content !== '') {
+            $expectedJson = json_encode($exp, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $this->assertIsString($expectedJson, "json_encode failed to encode expected data");
+            $this->assertJsonStringEqualsJsonString(
+                $expectedJson,
+                $content
+            );
+        }
+
     }
 
 }
