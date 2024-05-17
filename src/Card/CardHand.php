@@ -105,13 +105,30 @@ class CardHand
         }
 
         // Lägg till essens värde baserat på den totala poängen
+        $totalScore = $this->addAces($numAces, $totalScore);
+
+        return $totalScore;
+    }
+
+    /**
+     * Add aces
+     *
+     * @param int $numAces
+     * @param int $totalScore
+     * @return int
+     */
+    private function addAces(int $numAces, int $totalScore) {
+
+        $score = $totalScore;
+
         for ($i = 0; $i < $numAces; $i++) {
             // Lägg till 1 eller 11 beroende på handens värde
             $valueToAdd = ($totalScore + 11 <= 21) ? 11 : 1;
-            $totalScore += $valueToAdd;
+            $score += $valueToAdd;
         }
 
-        return $totalScore;
+        return $score;
+
     }
 
 }
