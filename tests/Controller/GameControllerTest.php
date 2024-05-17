@@ -47,4 +47,23 @@ class GameControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h2', 'Flödesschema');
     }
 
+
+    public function testGameDraw() {
+
+        $client = static::createClient();
+
+        // Send request
+        $client->request('GET', '/game/draw');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that route is correct
+        $this->assertEquals('/game/play', $response->headers->get('Location'));
+
+    }
+
 }

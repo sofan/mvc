@@ -243,5 +243,21 @@ class GameTest extends TestCase
 
 
 
+    /**
+     * test if game is over
+     *
+     * @return void
+     */
+    public function testGameOver()
+    {
+
+        $game = new Game();
+
+        $isOver = $game->gameIsOver();
+
+        $this->assertFalse($isOver);
+    }
+
+
 
 }
