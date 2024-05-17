@@ -239,24 +239,15 @@ class GameTest extends TestCase
         $winner = $game->getWinner();
 
         $this->assertEquals($winner, $dealer);
-    }
 
-
-
-    /**
-     * test if game is over
-     *
-     * @return void
-     */
-    public function testGameOver()
-    {
-
-        $game = new Game();
-
+        // Test game over
         $isOver = $game->gameIsOver();
 
         $this->assertFalse($isOver);
     }
+
+
+
 
 
 

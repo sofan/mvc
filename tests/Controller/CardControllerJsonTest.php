@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 
+use App\Service\DeckService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -24,6 +24,9 @@ class CardControllerJsonTest extends WebTestCase
         // Create SessionInterface stub
         $sessionStub = $this->createMock(SessionInterface::class);
 
+        // Mock DeckService
+        $deckService = $this->createMock(DeckService::class);
+
         // Mock DeckOfCards
         $deckOfCards = $this->createMock(DeckOfCards::class);
         $cardArray = [
@@ -32,16 +35,15 @@ class CardControllerJsonTest extends WebTestCase
         ];
 
         // Set expected result
+        $deckService->method('createDeckOfCards')->willReturn($deckOfCards);
         $deckOfCards->method('getCardArray')->willReturn($cardArray);
+
         $sessionStub->expects($this->once())
                 ->method('set')
                 ->with($this->equalTo('deck'), $this->equalTo($deckOfCards));
 
-        // Skapa en instans av CardController och mocka createDeckOfCards metoden
-        $controller = $this->getMockBuilder(CardControllerJson::class)
-                           ->onlyMethods(['createDeckOfCards'])
-                           ->getMock();
-        $controller->method('createDeckOfCards')->willReturn($deckOfCards);
+        // Skapa en instans av CardControllerJson och mocka createDeckOfCards metoden
+        $controller = new CardControllerJson($deckService);
 
         // Get apiDeck
         $response = $controller->apiDeck($sessionStub);

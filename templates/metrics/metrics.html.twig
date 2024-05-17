@@ -115,7 +115,7 @@
     Vissa Controller klasser visar brister i Single responsibility principle. Dessa bör fixas så de inte hanterar fler
     ansvarsområden. Jag planerar att dela upp dessa controllers i fler klasser då de idag både används för att visa templates och för att generera Json till API.
     <li>Kodtäckning och CRAP</li>
-    De klasser som har sämst kodtäckning är Controllers. Jag är osäker på om jag vill fixa full kodtäckning på dessa då jag läst mig till att det kanske inte alltid är till nytta.
+    De klasser som har sämst kodtäckning är Controllers. Jag tänker försöka komplettera med fler tester för dessa.
     Däremot vill jag gärna att de funktioner med högt CRAP värde ska testas bättre så att betyget blir bättre.
 
     </ul>
@@ -125,6 +125,10 @@
         <li>Komplexitet och Cohesion</li>
         Genom att dela upp Controllers i mindre klasser försvann felet med Single Responslbility i phpmtrics.
         Functionen Game::checkResult ansågs komplex. Jag delade därför upp den i flera separate funktioner vilket gav en mindre komplexitet.
+        I samband med detta såg jag även nytta av mina enhetstester som hitta fel som jag gjorde.
+        <li>CRAP</li>
+        Jag fick högt CRAP värde på CardControllerJson som
+
         <li>CardHand</li>
         Documentation
     </ul>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+use App\Service\DeckService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,22 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardControllerJson extends AbstractController
 {
-    public function createDeckOfCards(): DeckOfCards
-    {
-        $deck = new DeckOfCards();
+    /**
+     * Deckservice variable
+     *
+     * @var DeckService
+     */
+    private $deckService;
 
-        foreach ($deck->getSuits() as $suit) {
-            foreach ($deck->getValues() as $value) {
-                $deck->addCard(new CardGraphic($suit, $value));
-            }
-        }
-        return $deck;
+    public function __construct(DeckService $deckService)
+    {
+        $this->deckService = $deckService;
     }
 
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(SessionInterface $session): JsonResponse
     {
-        $deck = $this->createDeckOfCards();
+        $deck = $this->deckService->createDeckOfCards();
 
         $session->set("deck", $deck);
 
@@ -63,7 +64,7 @@ class CardControllerJson extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get('deck', $this->createDeckOfCards());
+        $deck = $session->get('deck', $this->deckService->createDeckOfCards());
         $deck->shuffle();
 
         $cards = [];
@@ -111,7 +112,7 @@ class CardControllerJson extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get('deck', $this->createDeckOfCards());
+        $deck = $session->get('deck', $this->deckService->createDeckOfCards());
 
         $drawnCards = $deck->draw($number);
         $session->set("deck", $deck);
@@ -149,11 +150,13 @@ class CardControllerJson extends AbstractController
         return $this->redirectToRoute('api_card_hand', ['players' => $numPlayers, 'cards' => $numCards ]);
     }
 
+
+
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_card_hand", methods: ['GET'])]
     public function apiCardHandGet(int $players, int $cards): JsonResponse
     {
         // Create new deck of cards (or get from session), shuffle and add to session
-        $deckOfCards = $this->createDeckOfCards();
+        $deckOfCards = $this->deckService->createDeckOfCards();
         $deckOfCards->shuffle();
 
         $cardHands = [];

@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Card\DeckOfCards;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -48,7 +46,13 @@ class GameControllerTest extends WebTestCase
     }
 
 
-    public function testGameDraw() {
+    /**
+     * test Game Draw
+     *
+     * @return void
+     */
+    public function testGameDraw()
+    {
 
         $client = static::createClient();
 
@@ -64,6 +68,121 @@ class GameControllerTest extends WebTestCase
         // Check that route is correct
         $this->assertEquals('/game/play', $response->headers->get('Location'));
 
+    }
+
+
+    /**
+     * test game init
+     *
+     * @return void
+     */
+    public function testGameInit()
+    {
+
+        $client = static::createClient();
+
+        // Send request
+        $client->request('GET', '/game/init');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that route is correct
+        $this->assertEquals('/game/round', $response->headers->get('Location'));
+
+    }
+
+
+    /**
+     * test new round route
+     *
+     * @return void
+     */
+    public function testGameNewRound()
+    {
+
+        $client = static::createClient();
+
+        // Send request
+        $client->request('GET', '/game/round');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that route is correct
+        $this->assertEquals('/game/play', $response->headers->get('Location'));
+    }
+
+
+    /**
+     * test game play route
+     *
+     * @return void
+     */
+    public function testGamePlay(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/game/play');
+
+        $this->assertResponseIsSuccessful();
+
+        // Check some content in the twig template
+        $this->assertSelectorTextContains('h3', 'På tur att spela');
+    }
+
+
+    /**
+     * test switch player
+     *
+     * @return void
+     */
+    public function testSwitchPlayer()
+    {
+
+        $client = static::createClient();
+
+        // Send request
+        $client->request('GET', '/game/switch');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that route is correct
+        $this->assertEquals('/game/play', $response->headers->get('Location'));
+    }
+
+
+    /**
+     * test game bet
+     *
+     * @return void
+     */
+    public function testGameBet()
+    {
+
+        $client = static::createClient();
+
+        // Send request
+        $client->request('POST', '/game/bet');
+
+        // Get response
+        $response = $client->getResponse();
+
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
+
+        // Check that route is correct
+        $this->assertEquals('/game/play', $response->headers->get('Location'));
     }
 
 }
