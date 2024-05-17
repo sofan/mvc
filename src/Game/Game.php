@@ -128,8 +128,6 @@ class Game
         if ($this->currentPlayer) {
             $this->currentPlayer->addCard($card[0]);
         }
-
-        $this->checkIf21();
         $this->checkResult();
     }
 
@@ -188,54 +186,95 @@ class Game
     }
 
 
-    /**
-     * Check of player or dealer has 21
-     *
-     * @return void
-     */
-    function checkIf21() {
 
+    /**
+ * Check game result. Set winner if it exists
+ *
+ * @return void
+ */
+    public function checkResult()
+    {
+        if ($this->checkForBlackjack()) {
+            $this->updateMoney();
+            return;
+        }
+
+        if ($this->checkForBust()) {
+            $this->updateMoney();
+            return;
+        }
+
+        if ($this->checkDealerStopped()) {
+            $this->updateMoney();
+            return;
+        }
+
+        // Ingen vinnare än
+    }
+
+    /**
+     * Check if any player has a Blackjack (score of 21).
+     *
+     * @return bool
+     */
+    private function checkForBlackjack(): bool
+    {
         $playerScore = $this->player->getScore();
         $dealerScore = $this->dealer->getScore();
 
         if ($playerScore === 21) {
-            $this->winner == $this->player;
+            $this->winner = $this->player;
+            return true;
         }
 
         if ($dealerScore === 21) {
-            $this->winner == $this->player;
+            $this->winner = $this->dealer;
+            return true;
         }
+
+        return false;
     }
 
     /**
-     * Check game result. Set winner if it exists
+     * Check if any player has busted (score over 21).
      *
-     * @return void
+     * @return bool
      */
-    public function checkResult()
+    private function checkForBust(): bool
     {
-
         $playerScore = $this->player->getScore();
         $dealerScore = $this->dealer->getScore();
 
-        switch (true) {
-
-            case $playerScore > 21:
-                $this->winner = $this->dealer;
-                break;
-            case $dealerScore > 21:
-                $this->winner = $this->player;
-                break;
-            case $this->dealer->isStopped():
-                $this->winner = ($dealerScore >= $playerScore) ? $this->dealer : $this->player;
-                break;
-            default:
-                // Ingen vinnare
-                break;
+        if ($playerScore > 21) {
+            $this->winner = $this->dealer;
+            return true;
         }
 
-        $this->updateMoney();
+        if ($dealerScore > 21) {
+            $this->winner = $this->player;
+            return true;
+        }
+
+        return false;
     }
+
+    /**
+     * Check if the dealer has stopped, and determine the winner based on scores.
+     *
+     * @return bool
+     */
+    private function checkDealerStopped(): bool
+    {
+        if ($this->dealer->isStopped()) {
+            $playerScore = $this->player->getScore();
+            $dealerScore = $this->dealer->getScore();
+            $this->winner = ($dealerScore >= $playerScore) ? $this->dealer : $this->player;
+            return true;
+        }
+
+        return false;
+    }
+
 
     /**
      * Function to update money when round is over
