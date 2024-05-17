@@ -117,7 +117,8 @@ class CardHand
      * @param int $totalScore
      * @return int
      */
-    private function addAces(int $numAces, int $totalScore) {
+    private function addAces(int $numAces, int $totalScore)
+    {
 
         $score = $totalScore;
 

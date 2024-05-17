@@ -159,19 +159,7 @@ class CardControllerJson extends AbstractController
         $deckOfCards = $this->deckService->createDeckOfCards();
         $deckOfCards->shuffle();
 
-        $cardHands = [];
-
-        // Create players
-        for ($i = 1; $i <= $players; $i++) {
-
-            $hand = new CardHand();
-
-            // Draw cards from deck and add to players hand
-            $playerCards = $deckOfCards->draw((int)$cards);
-            $hand->addCards($playerCards);
-            $cardHands[] = $hand;
-        }
-
+        $cardHands = $this->deckService->dealCardsToPlayers($deckOfCards, $players, $cards);
 
         $cardHandsData = [];
         foreach ($cardHands as $hand) {

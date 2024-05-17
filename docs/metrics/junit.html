@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-17 07:59:29        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-17 08:53:12        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,14 +60,14 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                18            </div>
+                17            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                510            </div>
+                513            </div>
         </div>
     </div>
     <div class="column">
@@ -330,24 +330,13 @@
                                                                     </td>
                             </tr>
                                                     <tr>
-                                <td valign="top"><span class="path">App\Controller\BookControllerTest</span></td>
-                                <td style="padding-bottom: 1em;">
-                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
-                                            -                                        </span>
-                                        <span class="path">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            -                                        </span>
-                                        <span class="path">static</span>
-                                                                    </td>
-                            </tr>
-                                                    <tr>
                                 <td valign="top"><span class="path">App\Controller\CardControllerJsonTest</span></td>
                                 <td style="padding-bottom: 1em;">
                                                                                                                     <span class="badge" title="Cyclomatic complexity of class">
                                             -                                        </span>
                                         <span class="path">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            5                                        </span>
+                                            4                                        </span>
                                         <span class="path">App\Controller\CardControllerJson</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             -                                        </span>
@@ -481,8 +470,11 @@
                                             -                                        </span>
                                         <span class="path">PHPUnit\Framework\TestCase</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            3                                        </span>
+                                            5                                        </span>
                                         <span class="path">App\Service\DeckService</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            3                                        </span>
+                                        <span class="path">App\Card\DeckOfCards</span>
                                                                     </td>
                             </tr>
                                             </table>
@@ -729,7 +721,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.013266},{"name":"App\\Card\\CardHandTest","time":0.008428},{"name":"App\\Card\\CardTest","time":0.002848},{"name":"App\\Card\\DeckOfCardsTest","time":0.013603},{"name":"App\\Controller\\BookControllerTest","time":0.000878},{"name":"App\\Controller\\CardControllerJsonTest","time":0.480655},{"name":"App\\Controller\\CardControllerTest","time":0.212368},{"name":"App\\Controller\\GameControllerJsonTest","time":0.00694},{"name":"App\\Controller\\GameControllerTest","time":0.175738},{"name":"App\\Dice\\DiceGraphicTest","time":0.001461},{"name":"App\\Dice\\DiceHandTest","time":0.006079},{"name":"App\\Dice\\DiceTest","time":0.010458},{"name":"App\\Game\\GameTest","time":0.010868},{"name":"App\\Game\\DealerTest","time":0.001759},{"name":"App\\Game\\PlayerTest","time":0.004064},{"name":"App\\Tests\\Service\\DeckServiceTest","time":0.000725}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.012557},{"name":"App\\Card\\CardHandTest","time":0.010202},{"name":"App\\Card\\CardTest","time":0.003353},{"name":"App\\Card\\DeckOfCardsTest","time":0.014018},{"name":"App\\Controller\\CardControllerJsonTest","time":0.576754},{"name":"App\\Controller\\CardControllerTest","time":0.23684},{"name":"App\\Controller\\GameControllerJsonTest","time":0.005218},{"name":"App\\Controller\\GameControllerTest","time":0.176775},{"name":"App\\Dice\\DiceGraphicTest","time":0.001711},{"name":"App\\Dice\\DiceHandTest","time":0.008029},{"name":"App\\Dice\\DiceTest","time":0.013087},{"name":"App\\Game\\GameTest","time":0.012302},{"name":"App\\Game\\DealerTest","time":0.001083},{"name":"App\\Game\\PlayerTest","time":0.004243},{"name":"App\\Tests\\Service\\DeckServiceTest","time":0.001263}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {
