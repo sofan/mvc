@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-17 11:33:24        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-17 12:45:05        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -67,17 +67,17 @@
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                513            </div>
+                510            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(48.15 %)</small>
+                <small>(51.85 %)</small>
             </div>
             <div class="number">
-                13            </div>
+                14            </div>
         </div>
     </div>
 </div>
@@ -166,6 +166,17 @@
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.2);">
                                         0.2                                        </span>
+                                    </td>
+                                                            </tr>
+                                                        <tr>
+                                <td><span class="path">App\Controller\CardController</span></td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.06);">
+                                        2                                        </span>
+                                    </td>
+                                                                    <td>
+                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.38);">
+                                        0.38                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -350,14 +361,8 @@
                                             -                                        </span>
                                         <span class="path">Symfony\Bundle\FrameworkBundle\Test\WebTestCase</span>
                                                                             <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            4                                        </span>
-                                        <span class="path">App\Controller\CardController</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
                                             -                                        </span>
                                         <span class="path">static</span>
-                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
-                                            -                                        </span>
-                                        <span class="path">Symfony\Component\HttpFoundation\RedirectResponse</span>
                                                                     </td>
                             </tr>
                                                     <tr>
@@ -721,7 +726,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.01388},{"name":"App\\Card\\CardHandTest","time":0.008229},{"name":"App\\Card\\CardTest","time":0.003696},{"name":"App\\Card\\DeckOfCardsTest","time":0.01346},{"name":"App\\Controller\\CardControllerJsonTest","time":0.583102},{"name":"App\\Controller\\CardControllerTest","time":0.209608},{"name":"App\\Controller\\GameControllerJsonTest","time":0.004003},{"name":"App\\Controller\\GameControllerTest","time":0.168991},{"name":"App\\Dice\\DiceGraphicTest","time":0.002305},{"name":"App\\Dice\\DiceHandTest","time":0.006396},{"name":"App\\Dice\\DiceTest","time":0.010765},{"name":"App\\Game\\GameTest","time":0.012209},{"name":"App\\Game\\DealerTest","time":0.001043},{"name":"App\\Game\\PlayerTest","time":0.003592},{"name":"App\\Tests\\Service\\DeckServiceTest","time":0.001306}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Card\\CardGraphicTest","time":0.011706},{"name":"App\\Card\\CardHandTest","time":0.007393},{"name":"App\\Card\\CardTest","time":0.003725},{"name":"App\\Card\\DeckOfCardsTest","time":0.013801},{"name":"App\\Controller\\CardControllerJsonTest","time":0.432755},{"name":"App\\Controller\\CardControllerTest","time":0.234817},{"name":"App\\Controller\\GameControllerJsonTest","time":0.0048},{"name":"App\\Controller\\GameControllerTest","time":0.154449},{"name":"App\\Dice\\DiceGraphicTest","time":0.001195},{"name":"App\\Dice\\DiceHandTest","time":0.005449},{"name":"App\\Dice\\DiceTest","time":0.009585},{"name":"App\\Game\\GameTest","time":0.009879},{"name":"App\\Game\\DealerTest","time":0.001084},{"name":"App\\Game\\PlayerTest","time":0.003368},{"name":"App\\Tests\\Service\\DeckServiceTest","time":0.003693}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\DeckService;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
@@ -14,20 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardController extends AbstractController
 {
     /**
-     * Create deck of graphic cards
+     * Deckservice variable
      *
-     * @return DeckOfCards
+     * @var \App\Service\DeckService
      */
-    public function createDeckOfCards(): DeckOfCards
-    {
-        $deck = new DeckOfCards();
+    private $deckService;
 
-        foreach ($deck->getSuits() as $suit) {
-            foreach ($deck->getValues() as $value) {
-                $deck->addCard(new CardGraphic($suit, $value));
-            }
-        }
-        return $deck;
+    public function __construct(DeckService $deckService)
+    {
+        $this->deckService = $deckService;
     }
 
 
@@ -50,7 +46,7 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get("deck", $this->createDeckOfCards());
+        $deck = $session->get("deck", $this->deckService->createDeckOfCards());
         //$deck->sort();
 
         // Add to session
@@ -77,12 +73,11 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get("deck", $this->createDeckOfCards());
+        $deck = $session->get("deck", $this->deckService->createDeckOfCards());
 
         $deck->sort();
         $session->set("deck", $deck);
         return $this->redirectToRoute('card_deck');
-
     }
 
 
@@ -96,12 +91,11 @@ class CardController extends AbstractController
     public function cardDeckInit(SessionInterface $session): Response
     {
         // Create new deck of cards
-        $deck = $this->createDeckOfCards();
+        $deck = $this->deckService->createDeckOfCards();
 
         $session->set("deck", $deck);
 
         return $this->redirectToRoute('card_deck');
-
     }
 
 
@@ -112,7 +106,7 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get("deck", $this->createDeckOfCards());
+        $deck = $session->get("deck", $this->deckService->createDeckOfCards());
 
         $deck->shuffle();
         $session->set("deck", $deck);
@@ -139,7 +133,7 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get("deck", $this->createDeckOfCards());
+        $deck = $session->get("deck", $this->deckService->createDeckOfCards());
 
         $drawnCards = $deck->draw($number);
         $session->set("deck", $deck);
@@ -176,7 +170,7 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deck = $session->get("deck", $this->createDeckOfCards());
+        $deck = $session->get("deck", $this->deckService->createDeckOfCards());
 
         $cardHands = [];
 
@@ -219,7 +213,7 @@ class CardController extends AbstractController
         /**
          * @var DeckOfCards
          */
-        $deckOfCards = $this->createDeckOfCards();
+        $deckOfCards = $this->deckService->createDeckOfCards();
         $deckOfCards->shuffle();
         $session->set("deck", $deckOfCards);
 

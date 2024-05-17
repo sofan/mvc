@@ -226,10 +226,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardController.html"
         },                {
-            "fqsen": "\\App\\Controller\\CardController\u003A\u003AcreateDeckOfCards\u0028\u0029",
-            "name": "createDeckOfCards",
-            "summary": "Create\u0020deck\u0020of\u0020graphic\u0020cards",
-            "url": "classes/App-Controller-CardController.html#method_createDeckOfCards"
+            "fqsen": "\\App\\Controller\\CardController\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Controller-CardController.html#method___construct"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AcardStart\u0028\u0029",
             "name": "cardStart",
@@ -280,6 +280,11 @@ Search.appendIndex(
             "name": "createCardHand",
             "summary": "Route\u0020to\u0020init\u0020CardHand",
             "url": "classes/App-Controller-CardController.html#method_createCardHand"
+        },                {
+            "fqsen": "\\App\\Controller\\CardController\u003A\u003A\u0024deckService",
+            "name": "deckService",
+            "summary": "Deckservice\u0020variable",
+            "url": "classes/App-Controller-CardController.html#property_deckService"
         },                {
             "fqsen": "\\App\\Controller\\CardControllerJson",
             "name": "CardControllerJson",

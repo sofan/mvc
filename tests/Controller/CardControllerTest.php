@@ -2,56 +2,13 @@
 
 namespace App\Controller;
 
-use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Test cases for class GameController
  */
 class CardControllerTest extends WebTestCase
 {
-    /**
-     * Test create deckOfCards
-     *
-     * @return void
-     */
-    public function testCreateDeckOfCards(): void
-    {
-        // Mocka DeckOfCards och CardGraphic om det behövs
-        $suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds'];
-        $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
-        // Skapa en instans av CardController
-        $controller = new CardController();
-
-        // Anropa metoden createDeckOfCards
-        $deck = $controller->createDeckOfCards();
-
-        // Kontrollera att resultatet är en instans av DeckOfCards
-        $this->assertInstanceOf(DeckOfCards::class, $deck);
-
-        // Kontrollera att kortleken innehåller rätt antal kort
-        $expNumCards = count($suits) * count($values);
-        $this->assertCount($expNumCards, $deck->getCards());
-
-        // Kontrollera att alla kort är unika
-        $uniqueCards = array_unique(array_map(function ($card) {
-            return $card->getSuit() . $card->getValue();
-        }, $deck->getCards()));
-
-        $this->assertCount($expNumCards, $uniqueCards);
-
-        // Kontrollera att kortleken innehåller kort med rätt färger och värden
-        foreach ($deck->getCards() as $card) {
-            $this->assertContains($card->getSuit(), $suits);
-            $this->assertContains($card->getValue(), $values);
-        }
-    }
-
-
-
     /**
      * Test card start response
      *
@@ -96,41 +53,18 @@ class CardControllerTest extends WebTestCase
      */
     public function testDeckSort(): void
     {
-        // Mock SessionInterface
-        $sessionStub = $this->createMock(SessionInterface::class);
+        $client = static::createClient();
 
-        // Mock DeckOfCards
-        $deckOfCards = $this->createMock(DeckOfCards::class);
+        $client->request('POST', '/card/deck/sort');
 
-        // Set expected mock
-        $sessionStub->method('get')
-                ->with('deck', $this->isInstanceOf(DeckOfCards::class))
-                ->willReturn($deckOfCards);
+        $response = $client->getResponse();
 
-        $deckOfCards->expects($this->once())
-                    ->method('sort');
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
 
-        $sessionStub->expects($this->once())
-                ->method('set')
-                ->with('deck', $deckOfCards);
+        // Check that route is correct
+        $this->assertEquals('/card/deck', $response->headers->get('Location'));
 
-        // Create CardController och mock createDeckOfCards function
-        $controller = $this->getMockBuilder(CardController::class)
-                           ->onlyMethods(['createDeckOfCards', 'redirectToRoute'])
-                           ->getMock();
-        $controller->method('createDeckOfCards')->willReturn($deckOfCards);
-
-        // Mock redirectToRoute to return a RedirectResponse
-        $controller->method('redirectToRoute')
-                   ->with('card_deck')
-                   ->willReturn(new RedirectResponse('/card/deck'));
-
-        // Run deckSort function
-        $response = $controller->deckSort($sessionStub);
-
-        // Check that answer is a RedirectResponse
-        $this->assertInstanceOf(RedirectResponse::class, $response);
-        $this->assertEquals('/card/deck', $response->getTargetUrl());
     }
 
 
@@ -141,33 +75,17 @@ class CardControllerTest extends WebTestCase
      */
     public function testDeckInit(): void
     {
-        // Mock SessionInterface
-        $sessionStub = $this->createMock(SessionInterface::class);
+        $client = static::createClient();
 
-        // Mock DeckOfCards
-        $deckOfCards = $this->createMock(DeckOfCards::class);
+        $client->request('POST', '/card/deck/init');
 
-        $sessionStub->expects($this->once())
-        ->method('set')
-        ->with('deck', $deckOfCards);
+        $response = $client->getResponse();
 
-        // Create CardController och mock createDeckOfCards function
-        $controller = $this->getMockBuilder(CardController::class)
-                           ->onlyMethods(['createDeckOfCards', 'redirectToRoute'])
-                           ->getMock();
-        $controller->method('createDeckOfCards')->willReturn($deckOfCards);
+        // Check that response is a redirect
+        $this->assertTrue($response->isRedirect());
 
-        // Mock redirectToRoute to return a RedirectResponse
-        $controller->method('redirectToRoute')
-                   ->with('card_deck')
-                   ->willReturn(new RedirectResponse('/card/deck'));
-
-        // Run deckSort function
-        $response = $controller->cardDeckInit($sessionStub);
-
-        // Check that answer is a RedirectResponse
-        $this->assertInstanceOf(RedirectResponse::class, $response);
-        $this->assertEquals('/card/deck', $response->getTargetUrl());
+        // Check that route is correct
+        $this->assertEquals('/card/deck', $response->headers->get('Location'));
     }
 
 
@@ -263,8 +181,6 @@ class CardControllerTest extends WebTestCase
         // Check that rout is correct
         $this->assertEquals('/card/deck/deal/0/0', $response->headers->get('Location'));
 
-        // Check some content in the twig template
-        //$this->assertSelectorTextContains('h2', '0 Spelare med 0 kort i handen');
     }
 
 

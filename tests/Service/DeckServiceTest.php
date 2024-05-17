@@ -24,6 +24,45 @@ class DeckServiceTest extends TestCase
     }
 
 
+    /**
+     * Test create deckOfCards
+     *
+     * @return void
+     */
+    public function testCreateDeckOfCards2(): void
+    {
+        // Mocka DeckOfCards och CardGraphic om det behövs
+        $suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds'];
+        $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+        // Skapa en instans av CardController
+        $deckService = new DeckService();
+
+        // Anropa metoden createDeckOfCards
+        $deck = $deckService->createDeckOfCards();
+
+        // Kontrollera att resultatet är en instans av DeckOfCards
+        $this->assertInstanceOf(DeckOfCards::class, $deck);
+
+        // Kontrollera att kortleken innehåller rätt antal kort
+        $expNumCards = count($suits) * count($values);
+        $this->assertCount($expNumCards, $deck->getCards());
+
+        // Kontrollera att alla kort är unika
+        $uniqueCards = array_unique(array_map(function ($card) {
+            return $card->getSuit() . $card->getValue();
+        }, $deck->getCards()));
+
+        $this->assertCount($expNumCards, $uniqueCards);
+
+        // Kontrollera att kortleken innehåller kort med rätt färger och värden
+        foreach ($deck->getCards() as $card) {
+            $this->assertContains($card->getSuit(), $suits);
+            $this->assertContains($card->getValue(), $values);
+        }
+    }
+
+
 
     /**
      * Test create deckOfCards
