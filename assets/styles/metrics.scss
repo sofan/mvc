@@ -37,4 +37,10 @@
     .new-value {
         color: green;
     }
+
+    .image-row {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 }

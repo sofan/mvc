@@ -69,6 +69,10 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-datafixtures.html" class="">DataFixtures</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-dice.html" class="">Dice</a>
                 
             </li>
@@ -82,6 +86,10 @@
             </li>
                     <li>
                 <a href="namespaces/app-repository.html" class="">Repository</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-service.html" class="">Service</a>
                 
             </li>
             </ul>
@@ -222,9 +230,16 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Card-CardHand.html#method_toArray">toArray()</a>
     <span>
-                                &nbsp;: array{cards: array<int<0, max>,array{suit: string, value: string}>}    </span>
+                                &nbsp;: array{cards: array<int,array{suit: string, value: string}>}    </span>
 </dt>
 <dd>Get cards as array in JSON format</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/App-Card-CardHand.html#method_addAces">addAces()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Add aces</dd>
 
     </dl>
 
@@ -504,7 +519,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{cards: array<int<0, max>,array{suit: string, value: string}>}</span></code>
+                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array{cards: array<int,array{suit: string, value: string}>}</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -514,7 +529,60 @@
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array{cards: array<int<0, max>,array{suit: string, value: string}>}</span>
+        <span class="phpdocumentor-signature__response_type">array{cards: array<int,array{suit: string, value: string}>}</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addAces">
+        addAces()
+        <a href="classes/App-Card-CardHand.html#method_addAces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Card/CardHand.php"><a href="files/src-card-cardhand.html"><abbr title="src/Card/CardHand.php">CardHand.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Add aces</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">addAces</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$numAces</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$totalScore</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$numAces</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$totalScore</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
             </section>
 
 </article>
@@ -644,6 +712,7 @@
                                             <li><a href="classes/App-Card-CardHand.html#method_getCards">getCards()</a></li>
                                             <li><a href="classes/App-Card-CardHand.html#method_getTotalScore">getTotalScore()</a></li>
                                             <li><a href="classes/App-Card-CardHand.html#method_toArray">toArray()</a></li>
+                                            <li><a href="classes/App-Card-CardHand.html#method_addAces">addAces()</a></li>
                                     </ul>
             </li>
                     </ul>

@@ -141,9 +141,37 @@
                 Min TIL detta kmom var hur enkelt det var att med Doctrine och kommandon i terminalen att skapa en databas med tabeller.
                 Man fick väldigt mycket automatgenererat vilket underlättade.
             </p>
-
-
         </div>
+
+        <article id="kmom06" class="report">
+        <h2>Kursmoment 6 - Automatiserad test</h2>
+        <p>
+            Att komma igång med Phpmetrics var lätt. Att sen analysera resultatet var desto svårare. Det är enormt många mätvärden att grotta ner sig i, och
+            det är svårt att veta var man ska börja för att förbättra resultatet. Jag gillade den översiktliga vyn, men saknade att det inte går att se vilka funktioner
+            som ingår i klasserna och var förbättring behövs.
+        </p>
+        <p>
+            Att integrera Scrutinizer var först lite problematiskt, jag tror att jag hade fel konfiguration. Men efter lite uppdateringar av dbwebb och
+            i min kod så fungerade det bra. Jag gillade översikten i Scrutinizer bätter än Phpmetrics, då det på ett tydligare sätt presenterades vad i koden som brister.
+            Vid första bygget var min kodtäkning 31% och kodkvaliteten 9.97.
+            Efter förbättringar av koden steg kodtäckning till 66% och kvarlitet till 10.
+            Att kunna visualisera detta med badges är smidigt och tydligt och ger användaren en bra bild om hur väl koden är byggd.
+
+        </p>
+        <p>
+            Efter detta kursmoment ser jag ännu mer nyttan med kodkvalitet. Om man redan från början är medveten om detta så skrivs bättre kod som kan underhållas och
+            förstås av andra än en själv. Jag inser nyttan med att redan från start skriva tester för en bra kodtäckning samt tänka på Single Responsibility för de olika klasserna.
+            Det kan annars ta orimligt lång tid att rätta upp allt i efterhand, och risken finns att man då slarvar bara för att få fina testresultat.
+            Jag tror absolut att badges kan användas för att påvisa kodkvalitet. Det ger en snabb överblick över projektets hälsa vilket är användbart för
+            både andra utvecklare och användare som överväger att använda koden.
+        </p>
+        <p>
+        TIL detta kmom är att man alltid ska ha enhetstester i tanken redan från början. Samt att det finns väldigt bra verktyg för att kontrollera om
+        du har tydlig och lättunderhållen kod.
+        </p>
+
+
+        </article>
     </article>
 
 
@@ -155,6 +183,7 @@
             <li><a href="#kmom03">kmom03</a></li>
             <li><a href="#kmom04">kmom04</a></li>
             <li><a href="#kmom05">kmom05</a></li>
+            <li><a href="#kmom06">kmom06</a></li>
         </ul>
     </div>
 </div>

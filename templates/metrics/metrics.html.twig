@@ -125,7 +125,7 @@
         Genom att dela upp Controllers i mindre klasser försvann felet med Single Responslbility i phpmetrics.
         Functionen Game::checkResult ansågs komplex. Jag delade därför upp den i flera separate funktioner vilket gav en mindre komplexitet.
         I samband med detta såg jag även nytta av mina enhetstester som hitta fel som jag gjorde. Phpmetric violation error försvann.
-        <p class="bold">Phpmetrics Violations: 2 &#9658; <span class="new-value">0</span></p>
+        <p class="bold">Phpmetrics Violations Errors: 2 &#9658; <span class="new-value">0</span></p>
 
 
         <li>CRAP</li>
@@ -134,13 +134,20 @@
         Detta förbättrade Maintainability-värdet i phpmetrics och de röda bubblorna försvann.
         Några gula bubblor kvarstår, troligen på grund av ofullständig täckning av enhetstester.
         <br>
-        <p><img src="{{ asset('img/phpmetrics_bubbles_after.png') }}" height="150" alt="phpmetrics" title="phpmetrics"></p>
-
+        Bilden nedan visar före och efter:
+        <br>
+        <div class="image-row">
+            <img src="{{ asset('img/phpmetrics_bubbles.png') }}" height="150" alt="phpmetrics" title="phpmetrics">
+            &#9658;
+            <img src="{{ asset('img/phpmetrics_bubbles_after.png') }}" height="150" alt="phpmetrics" title="phpmetrics">
+        </div>
         I Scrutinizer har funktioner med höga CRAP-värden (tidigare 12) nu minskats till 6, vilket innebär att koden blivit enklare att underhålla och ändra.
         <p><img src="{{ asset('img/crap_after.png') }}"  alt="CRAP after" title="CRAP after"></p>
 
         <li>Phpmetrics Komplexitet</li>Förändring av komplexitet efter uppdaterad kod. Förändringen ser inte jättestor ut men ger ändå en
         indikation på att det går åt rätt håll.
+        <br>
+        Värden före och efter:
         <p class="bold">Average weighted method count by class (CC): 6.96 &#9658; <span class="new-value">6.04</span></p>
         <p class="bold">Average cyclomatic complexity by class: 3.29 &#9658; <span class="new-value">3</span></p>
         <p class="bold">Average relative System complexity: 86.18 &#9658;<span class="new-value">66.69</span></p>
