@@ -67,7 +67,7 @@
 
     <h2>Scrutinizer</h2>
     Då den första rapporten var gjord fick jag följande översiktsbild. Ett resultat på 9.97 ser vid första anblick ut som ett bra resultat.
-    Jag kan samtidigt se att kodtäckning endast är 31% vilket känns lågt (badgen nedan missade jag först att kopiera, därav texten 38%).
+    Jag kan samtidigt se att kodtäckning endast är 31% vilket känns lågt.
 
     <p>
     <a href="https://scrutinizer-ci.com/g/sofan/mvc/?branch=main" target="blank"><img src="https://scrutinizer-ci.com/g/sofan/mvc/badges/quality-score.png?b=main" alt="badge" title="badge">
@@ -112,32 +112,77 @@
     <li>Issues</li>
     Jag vill rätta till de issues som hittats av Scrutinizer.
     <li>Komplexitet och Cohesion</li>
-    Vissa Controller klasser visar brister i Single responsibility principle. Dessa bör fixas så de inte hanterar fler
-    ansvarsområden. Jag planerar att dela upp dessa controllers i fler klasser då de idag både används för att visa templates och för att generera Json till API.
+    Vissa Controller-klasser visar brister i principen om Single Responsibility.
+    Dessa bör åtgärdas så att de inte hanterar flera ansvarsområden. Jag planerar att dela upp dessa controllers i flera klasser då de idag både används för att visa templates och för att generera JSON till API.
     <li>Kodtäckning och CRAP</li>
-    De klasser som har sämst kodtäckning är Controllers. Jag tänker försöka komplettera med fler tester för dessa.
-    Däremot vill jag gärna att de funktioner med högt CRAP värde ska testas bättre så att betyget blir bättre.
+    De klasser som har sämst kodtäckning är Controllers. Jag tänker komplettera med fler tester för dessa. Funktioner med höga CRAP-värden ska testas bättre för att förbättra betyget.
 
     </ul>
 
     <h3>Analys efter genomförande</h3>
     <ul>
         <li>Komplexitet och Cohesion</li>
-        Genom att dela upp Controllers i mindre klasser försvann felet med Single Responslbility i phpmtrics.
+        Genom att dela upp Controllers i mindre klasser försvann felet med Single Responslbility i phpmetrics.
         Functionen Game::checkResult ansågs komplex. Jag delade därför upp den i flera separate funktioner vilket gav en mindre komplexitet.
-        I samband med detta såg jag även nytta av mina enhetstester som hitta fel som jag gjorde.
-        <li>CRAP</li>
-        Jag fick högt CRAP värde på CardControllerJson. För att minska detta lyfta jag ut hjälpfunktionen createDeckOfCards till en egen Service klass.
+        I samband med detta såg jag även nytta av mina enhetstester som hitta fel som jag gjorde. Phpmetric violation error försvann.
+        <p class="bold">Phpmetrics Violations: 2 &#9658; <span class="new-value">0</span></p>
 
-        <li>CardHand</li>
-        Documentation
+
+        <li>CRAP</li>
+        Jag fick högt CRAP värde på CardControllerJson. För att minska detta lyfter jag ut hjälpfunktionerna createDeckOfCards och dealCardsToPlayer
+        till en egen Service klass.
+        Detta förbättrade Maintainability-värdet i phpmetrics och de röda bubblorna försvann.
+        Några gula bubblor kvarstår, troligen på grund av ofullständig täckning av enhetstester.
+        <br>
+        <p><img src="{{ asset('img/phpmetrics_bubbles_after.png') }}" height="150" alt="phpmetrics" title="phpmetrics"></p>
+
+        I Scrutinizer har funktioner med höga CRAP-värden (tidigare 12) nu minskats till 6, vilket innebär att koden blivit enklare att underhålla och ändra.
+        <p><img src="{{ asset('img/crap_after.png') }}"  alt="CRAP after" title="CRAP after"></p>
+
+        <li>Phpmetrics Komplexitet</li>Förändring av komplexitet efter uppdaterad kod. Förändringen ser inte jättestor ut men ger ändå en
+        indikation på att det går åt rätt håll.
+        <p class="bold">Average weighted method count by class (CC): 6.96 &#9658; <span class="new-value">6.04</span></p>
+        <p class="bold">Average cyclomatic complexity by class: 3.29 &#9658; <span class="new-value">3</span></p>
+        <p class="bold">Average relative System complexity: 86.18 &#9658;<span class="new-value">66.69</span></p>
+        <p class="bold">Average bugs by class(Halstead): 0.13 &#9658;<span class="new-value">0.1</span></p>
+        <p class="bold">Average defects by class (Kan): 0.38 &#9658;<span class="new-value">0.36</span></p>
+
+
+        <li>Kodtäckning</li>
+        Jag har lagt till enhetstester för framförallt Controllers vilket gjort att kodtäckningen stigit från 31% till 66%.
+        Fortfarande inte helt komplett täckning men åt det bättre hållet.
+        <p class="bold">Coverage: 31% &#9658; <span class="new-value">66%</span></p>
+
+        <li>Sammanlagt betyg Scrutinizer</li>
+        Alla förbättringar om gjort ovan ledde till att betyget i Scrutinizer steg från 9.97 till 10.
+        <p class="bold">Scrutinizer betyg: 9.97% &#9658; <span class="new-value">10</span></p>
+        <p><img src="{{ asset('img/scr_score.png') }}"  alt="Scrutinizer total score" title="Scrutinizer total score"></p>
     </ul>
 
 
     <h2>Diskussion</h2>
-    Phpmetrics och Scrutinizer är båda väldigt bra verktyg för att hitta brister i koden.
-    Jag tycker dock att det är svårt att veta exakt vad som menas. Framförallt i phpmetrics får man ofta gissa sig till vilken funktion som
+    Phpmetrics och Scrutinizer är båda väldigt bra verktyg för att hitta förbättringar som kan göras.
+    Genom att regelbundet granska koden med hjälp av verktyg som dessa kan man tidigat i utvecklingen identifiera problemområden som hög komplexitet,
+    och dålig kodtäckning. Det hjälper till att hålla koden lättunderhållen och fri från buggar.
+    Jag tycker ibland dock att det är svårt att veta exakt vad som menas. Framförallt i phpmetrics får man ofta gissa sig till vilken funktion som
     behöver åtgärdas. Scrutinizer ger en tydligare rapport.
+    <ul>
+    <li>Fördelar: </li>
+    Genom att följa principerna för "clean code" blir koden mer läsbar och lättare att underhålla.
+    Regelbundna tester och analyser identifierar potentiella buggar tidigt, vilket minskar risken för kritiska fel i slutprodukten.
+    En grupp av utvecklare får mer enhetlig kod som är lättare att sätta sig in i.
+    <li>Nackdelar</li>
+    Det är tidskrävande att analysera koden på detta sätt. Men på lång sikt kan det vara värt det.
+    Det finns även en risk att man försöker göra koden överdrivet perfekt då man strävar efter högsta betyg i alla bedömningar. Ibland kan det räcka med lagom perfekt kod
+    men samtidigt ha en medvetenhet om vad som kan förbättras.
+    <li>Andra möjligheter för Clean Code</li>
+    Alternativt till den automatiska tesningen kan man även göra en mer manuell granskning där man t.ex. granskar kollegornas kod.
+    Även parprogrammering är bra för detta, då man med dubbla ögon kan identifiera problem och upprätthålla bra kodkvalitet.
+    <li>Sammanfattning</li>
+    Att testa och granska sin kod var mycket mer tidskrävande än vad jag trodde. Jag upplever att nästan lika mycket tid läggs på detta som
+    att skriva själva koden. Men det är väldigt nyttigt, och även om jag inte lyckats lösa allt som phpmeterics och Scrutinizer påpekar, så
+    harjag lärt mig otroligt mycket om hur jag bör tänka redan då jag skriver koden för att inte hamna i de största granskning-fällorna.
+    </ul>
 
 
 
