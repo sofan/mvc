@@ -128,6 +128,8 @@ class Game
         if ($this->currentPlayer) {
             $this->currentPlayer->addCard($card[0]);
         }
+
+        $this->checkIf21();
         $this->checkResult();
     }
 
@@ -186,6 +188,24 @@ class Game
     }
 
 
+    /**
+     * Check of player or dealer has 21
+     *
+     * @return void
+     */
+    function checkIf21() {
+
+        $playerScore = $this->player->getScore();
+        $dealerScore = $this->dealer->getScore();
+
+        if ($playerScore === 21) {
+            $this->winner == $this->player;
+        }
+
+        if ($dealerScore === 21) {
+            $this->winner == $this->player;
+        }
+    }
 
     /**
      * Check game result. Set winner if it exists
@@ -199,12 +219,7 @@ class Game
         $dealerScore = $this->dealer->getScore();
 
         switch (true) {
-            case $playerScore === 21:
-                $this->winner = $this->player;
-                break;
-            case $dealerScore === 21:
-                $this->winner = $this->dealer;
-                break;
+
             case $playerScore > 21:
                 $this->winner = $this->dealer;
                 break;
