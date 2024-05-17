@@ -14,7 +14,7 @@ class BookControllerTest extends WebTestCase
      *
      * @return void
      */
-    public function testViewAllBook(): void
+    public function ViewAllBook_test(): void
     {
         $client = static::createClient();
 
@@ -32,7 +32,7 @@ class BookControllerTest extends WebTestCase
      *
      * @return void
      */
-    public function testCreateBookGet(): void
+    public function CreateBookGet_test(): void
     {
         $client = static::createClient();
 
