@@ -3,10 +3,24 @@
 {% block title %}Projekt - Start{% endblock %}
 
 {% block main %}
-<h1>Projekt</h1>
-<a href="{{ path('start_game') }}">Starta spel</a>
-<div>
+<h1>Poker Squares</h1>
 
-</div>
+<form method="POST" action="{{ path('start_game') }}">
+    <div>
+        <label for="playerName">Namn på spelare:</label>
+        <input type="text" id="playerName" name="playerName" required>
+    </div>
+    <div>
+        <label for="scoring">Poängberäkning:</label>
+        <select id="scoring" name="scoring" required>
+            <option value="american">Amerikansk</option>
+            <option value="british">Brittisk</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Börja spela</button>
+    </div>
+</form>
+
 
 {% endblock %}

@@ -28,15 +28,29 @@ class DeckOfCards
     {
         $this->cards = [];
 
-        foreach ($this->suits as $suit) {
+        /* foreach ($this->suits as $suit) {
             foreach ($this->values as $value) {
                 $this->cards[] = new CardGraphic($suit, $value);
             }
         }
 
-        $this->shuffle();
+        $this->shuffle(); */
     }
 
+
+    /**
+     * Fill with GraphicCards
+     *
+     * @return void
+     */
+    public function fill()
+    {
+        foreach ($this->suits as $suit) {
+            foreach ($this->values as $value) {
+                $this->cards[] = new CardGraphic($suit, $value);
+            }
+        }
+    }
 
 
     /**

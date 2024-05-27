@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\PokerSquares\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -13,21 +14,40 @@ class ProjectController extends AbstractController
 {
     private Game $game;
 
-    private function getGame(SessionInterface $session) {
+    /**
+     * Get current game from session
+     *
+     * @param SessionInterface $session
+     * @return void
+     */
+    private function getGame(SessionInterface $session): void
+    {
+        // Get game from session. If it not exists, create a new game
+        $game = $session->get('square_game', new Game('Username'));
 
-        // Get game from session, or create if it not exists in session
-        $this->game = $session->get('square_game', new Game());
+        if ($game instanceof Game) {
+            $this->game = $game;
+        }
     }
 
+    /**
+     * Save current game to session
+     *
+     * @param SessionInterface $session
+     * @return void
+     */
     private function saveGame(SessionInterface $session): void
     {
         $session->set('square_game', $this->game);
     }
 
     #[Route('/proj', name: "project")]
-    public function proj(): Response
+    public function proj(SessionInterface $session): Response
     {
+        // Remove game session if it exists
+        $session->remove('square_game');
         return $this->render('project/project.html.twig');
+
     }
 
 
@@ -38,11 +58,20 @@ class ProjectController extends AbstractController
     }
 
 
-    #[Route('/proj/start', name: "start_game")]
-    public function startGame(SessionInterface $session): Response
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
+     */
+    #[Route('/proj/start', name: "start_game", methods: ["POST"])]
+    public function startGame(Request $request, SessionInterface $session): Response
     {
+        $playerName = (string)$request->request->get('playerName');
+        $scoring = (string)$request->request->get('scoring');
 
-        $this->game = new Game();
+        $this->game = new Game($playerName, $scoring);
         $session->set('square_game', $this->game);
 
 
@@ -50,7 +79,9 @@ class ProjectController extends AbstractController
             'grid' => $this->game->getGrid(),
             'card' => $this->game->getCurrentCard(),
             'emptyCells' => $this->game->getEmptyCells(),
-            'scores' => $this->game->calculateScores()
+            'scores' => $this->game->calculateScores($this->game->getScoringSystem()),
+            'scoring' => $this->game->getScoringSystem(),
+            'player' => $this->game->getPlayerName()
         ];
 
         return $this->render('project/board.html.twig', $data);
@@ -65,7 +96,9 @@ class ProjectController extends AbstractController
             'grid' => $this->game->getGrid(),
             'card' => $this->game->drawCard(),
             'emptyCells' => $this->game->getEmptyCells(),
-            'scores' => $this->game->calculateScores()
+            'scores' => $this->game->calculateScores($this->game->getScoringSystem()),
+            'scoring' => $this->game->getScoringSystem(),
+            'player' => $this->game->getPlayerName()
         ];
 
         $this->saveGame($session);
@@ -89,15 +122,15 @@ class ProjectController extends AbstractController
 
         $this->saveGame($session);
 
-        $scores = $this->game->calculateScores();
-
-
+        $scores = $this->game->calculateScores($this->game->getScoringSystem());
 
         $data = [
             'grid' => $this->game->getGrid(),
             'card' => $nextCard,
             'emptyCells' => $this->game->getEmptyCells(),
-            'scores' => $this->game->calculateScores()
+            'scores' => $scores,
+            'scoring' => $this->game->getScoringSystem(),
+            'player' => $this->game->getPlayerName()
         ];
 
         //var_dump($scores);
@@ -105,5 +138,6 @@ class ProjectController extends AbstractController
         return $this->render('project/board.html.twig', $data);
 
     }
+
 
 }

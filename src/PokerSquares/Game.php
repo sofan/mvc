@@ -2,28 +2,83 @@
 
 namespace App\PokerSquares;
 
-use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 use App\Card\Card;
 
+/**
+ * Square Game Class
+ */
 class Game
 {
+    public const SCORING_AMERICAN = 'american';
+    public const SCORING_BRITISH = 'british';
+
+    /**
+     * Deck of Cards
+     *
+     * @var DeckOfCards
+     */
     private DeckOfCards $deck;
+
+    /**
+     * Game grid to place cards
+     *
+     * @var Grid
+     */
     private Grid $grid;
+
+    /**
+     * Hand evaluator to calculate scores
+     *
+     * @var HandEvaluator
+     */
     private HandEvaluator $evaluator;
 
-    private ?CardGraphic $currentCard;
+    /**
+     * Current card to place
+     *
+     * @var Card|null
+     */
+    private ?Card $currentCard;
 
-    public function __construct()
+    /**
+     * player name
+     *
+     * @var string
+     */
+    private string $playerName;
+
+    /**
+     * scoring system to use
+     *
+     * @var string
+     */
+    private string $scoringSystem;
+
+    /**
+     * Game constructor
+     *
+     * @param string $playerName
+     * @param string $scoringSystem
+     */
+    public function __construct(string $playerName, string $scoringSystem = self::SCORING_AMERICAN)
     {
         $this->deck = new DeckOfCards();
+        $this->deck->fill();
+        $this->deck->shuffle();
         $this->currentCard = null;
         $this->grid = new Grid();
         $this->evaluator = new HandEvaluator();
-
+        $this->playerName = $playerName;
+        $this->scoringSystem = $scoringSystem;
     }
 
-    public function drawCard(): ?CardGraphic
+    /**
+     * Draw card
+     *
+     * @return Card|null
+     */
+    public function drawCard(): ?Card
     {
         if ($this->currentCard === null && $this->deck->getNumberOfCards() > 0) {
             $drawnCards = $this->deck->draw(1);
@@ -32,6 +87,13 @@ class Game
         return $this->currentCard;
     }
 
+    /**
+     * Place card on grid
+     *
+     * @param integer $row
+     * @param integer $col
+     * @return boolean
+     */
     public function placeCard(int $row, int $col): bool
     {
         if ($this->currentCard !== null) {
@@ -44,78 +106,78 @@ class Game
         return false;
     }
 
+    /**
+     * Get current card
+     *
+     * @return Card|null
+     */
     public function getCurrentCard(): ?Card
     {
         return $this->currentCard;
     }
 
-    public function calculateScores(): array
+
+    /**
+     * Get Scoring system (american or brittish)
+     *
+     * @return string
+     */
+    public function getScoringSystem(): string
     {
-        $scores = [
-            'rows' => [],
-            'cols' => [],
-            'total' => 0
-        ];
-
-        $grid = $this->grid->getGrid();
-
-        // Get row scores if row is a full hand
-        for ($i=0; $i<5; $i++) {
-            $row = $grid[$i];
-            if ($this->isFullHand($row)) {
-                $scores['rows'][$i] = $this->evaluator->evaluateHand($row);
-            }
-            else {
-                $scores['rows'][$i] = null;
-            }
-        }
-
-
-        // Get column scores if column is a full hand
-        for ($i=0; $i<5; $i++) {
-            $col = array_column($grid, $i);
-            if ($this->isFullHand($col)) {
-                $scores['cols'][$i] = $this->evaluator->evaluateHand($col);
-            }
-            else {
-                $scores['cols'][$i] = null;
-            }
-        }
-
-        $scores['total'] = array_sum($scores['rows']) + array_sum($scores['cols']);
-
-        return $scores;
+        return $this->scoringSystem;
     }
 
-    private function isFullHand(array $hand): bool
+    /**
+     * Get player name
+     *
+     * @return string
+     */
+    public function getPlayerName(): string
     {
-
-        foreach ($hand as $card) {
-            if ($card === null) {
-                return false;
-            }
-        }
-        return true;
+        return $this->playerName;
     }
 
-    private function calculateHandScore($values) : ?int {
 
-        $sum = 0;
-        foreach ($values as $val) {
-            $sum += $val->getScore();
-        }
-        return $sum;
+    /**
+     * Calculate score for game board
+     *
+     * @return array<string, array<int, int|null>|int>
+     */
+    public function calculateScores(string $scoringSystem): array
+    {
+        return $this->grid->calculateScores($this->evaluator, $this->scoringSystem);
     }
 
+
+
+    /**
+     * Get game grid
+     *
+     * @return array<int, array<int, Card|null>>
+     */
     public function getGrid(): array
     {
         return $this->grid->getGrid();
     }
 
-    public function getEmptyCells() : int {
-        return $this->grid->getNumEmptyCells();
+    /**
+     * Get grid as json string
+     *
+     * @return array<int<0, max>, array<string, array<int<0, max>, string|null>|int<0, max>>>
+     */
+    public function getJsonGrid(): array
+    {
+        return $this->grid->getGridJson();
     }
 
-
+    /**
+     * Check if there are cards left to place on grid
+     *
+     * @return integer
+     */
+    public function getEmptyCells(): int
+    {
+        return $this->grid->getNumEmptyCells();
+    }
 
 }

@@ -1,0 +1,48 @@
+{% extends "project/projbase.html.twig" %}
+
+{% block title %}API
+{% endblock %}
+
+{% block main %}
+	<h1>Api
+	</h1>
+	<div class="api">
+
+		<div>
+			<p>Square Game Board</p>
+			<a href="{{ path('proj_api_game') }}" >/proj/api/game</a>
+		</div>
+
+		<div>
+			<p>Poäng per rad och kolumn</p>
+			<a href="{{ path('proj_api_score') }}">/proj/api/score</a>
+		</div>
+
+		<div>
+			<p>Spelare</p>
+			<a href="{{ path('proj_api_player') }}">/proj/api/player</a>
+		</div>
+
+
+		<div>
+			<p>Antal kort kvar att placera</p>
+			<a href="{{ path('proj_api_cells') }}" >/proj/api/cells</a>
+		</div>
+
+
+
+		<form method="POST" action="{{ path('proj_api_system_post') }}">
+			<div>
+				<p>Poäng efter system</p>
+				<select id="scoring" name="scoring" required>
+					<option value="american">Amerikansk</option>
+					<option value="british">Brittisk</option>
+				</select>
+				<input type="submit" value="System">
+			</div>
+		</form>
+
+
+	</div>
+
+{% endblock %}

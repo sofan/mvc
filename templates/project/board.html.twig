@@ -4,7 +4,12 @@
 {% endblock %}
 {% block main %}
 {# {{dump(scores)}} #}
-	<h1>Poker Squares Game</h1>
+	<div class="game-header">
+	<h1>Poker Squares</h1>
+	<b class="player-name">Player: {{player}}<br>
+	Poängsystem: {{scoring}}
+	</b>
+	</div>
 	<div class="game-container">
 		<div class="square">
 			<form method="POST" action="{{ path('place_card') }}" id="place-card-form">
@@ -36,7 +41,7 @@
                             {% endfor %}
                             <td class="score">
                                 {% if scores['total'] > 0 %}
-                                    {{ scores['total'] }}
+                                    <p class="total">Totalt:<br>{{ scores['total'] }}</p>
                                 {% endif %}
                             </td>
                         </tr>
@@ -48,9 +53,9 @@
         </div>
         <div class="card-container">
 			{% if card is not null and emptyCells > 0 %}
-				<h3>Draget kort:
-				</h3>
+				<h3>Draget kort:</h3>
 				<div class="card currentcard {{ card.getSuit() }}">{{ card.getAsString() }}</div>
+				<p>Klicka på en ruta på spelbrädet för att placera kortet.</p>
 
 			{% elseif emptyCells > 0 %}
 				<form method="POST" action="{{ path('draw_card') }}">
@@ -58,7 +63,7 @@
 				</form>
 			{% else %}
 				<p>Omgången är över </p>
-				<a href="{{ path('start_game') }}">Spela igen</a>
+				<a href="{{ path('project') }}">Spela igen</a>
 			{% endif %}
 
 			</div>

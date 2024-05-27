@@ -16,7 +16,6 @@ class DeckOfCardsTest extends TestCase
      */
     public function testCreateEmptyDeckOfCards()
     {
-
         $deck = new DeckOfCards();
 
         // Assert
@@ -115,6 +114,19 @@ class DeckOfCardsTest extends TestCase
         $sortedCards = $deck->getCards();
 
         $this->assertEquals($exp, $sortedCards);
+    }
+
+    /**
+     * test fill deck of cards
+     *
+     * @return void
+     */
+    public function testFillAndShuffle()
+    {
+
+        $deck = new DeckOfCards();
+        $deck->fill();
+        $this->assertCount(52, $deck->getCards());
     }
 
 

@@ -1,86 +1,105 @@
 <?php
 
 namespace App\PokerSquares;
+
 use App\Card\Card;
 
+/**
+ * Class to evaluate poker hand score
+ */
 class HandEvaluator
 {
     /**
+     * List of scores for american/british scoring
+     *
+     * @var array<string, array<int,int>>
+     */
+    private array $scoring = [
+        'RoyalFlush' => [100, 30],
+        'StraightFlush' => [75, 30],
+        'FourOfAKind' => [50, 16],
+        'FullHouse' => [25, 10],
+        'Flush' => [20, 5],
+        'Straight' => [15, 12],
+        'ThreeOfAKind' => [10, 6],
+        'TwoPairs' => [5, 3],
+        'OnePair' => [2, 1],
+    ];
+
+    /**
      * Evaluate score of card hand
      *
-     * @param array $hand
+     * @param array<Card> $hand
+     * @param string $scoringSystem
      * @return integer
      */
-    public function evaluateHand(array $hand): int
+    public function evaluateHand(array $hand, $scoringSystem): int
     {
-
         /* $hand = [];
         $hand[] = new Card('Hearts', '10');
-        $hand[] = new Card('Hearts', '10');
-        $hand[] = new Card('Spades', 'K');
-        $hand[] = new Card('Hearts', '3');
-        $hand[] = new Card('Hearts', 'J'); */
-
-         // Assuming $cards is an array of 5 cards
-         if (count($hand) !== 5) {
-            throw new \InvalidArgumentException('En pokerhand måste ha exakt 5 kort.');
-        }
+        $hand[] = new Card('Hearts', '8');
+        $hand[] = new Card('Hearts', '9');
+        $hand[] = new Card('Hearts', '7');
+        $hand[] = new Card('Hearts', 'J');
+ */
+        $scoringIndex = $scoringSystem === 'american' ? 0 : 1;
 
         // Sort cards by score
         $hand = $this->sortHand($hand);
 
+        //var_dump($hand);
 
         // Get ranks and suits
-        $ranks = array_map(fn(Card $card) => $card->getValue(), $hand);
-        $suits = array_map(fn(Card $card) => $card->getSuit(), $hand);
+        $ranks = array_map(fn (Card $card) => $card->getValue(), $hand);
+        $suits = array_map(fn (Card $card) => $card->getSuit(), $hand);
 
-        //var_dump($ranks);
-        //var_dump($suits);
-
+        $handType = '';
 
         if ($this->isRoyalFlush($suits, $ranks)) {
-            return 100;
+            return $this->scoring['RoyalFlush'][$scoringIndex];
         }
         if ($this->isStraightFlush($suits, $ranks)) {
-            return 75;
+            return $this->scoring['StraightFlush'][$scoringIndex];
         }
         if ($this->isFourOfAKind($ranks)) {
-            return 50;
+            return $this->scoring['FourOfAKind'][$scoringIndex];
         }
         if ($this->isFullHouse($ranks)) {
-            return 25;
+            return $this->scoring['FullHouse'][$scoringIndex];
         }
         if ($this->isFlush($suits)) {
-            return 20;
+            return $this->scoring['Flush'][$scoringIndex];
         }
         if ($this->isStraight($ranks)) {
-            return 15;
+            return $this->scoring['Straight'][$scoringIndex];
         }
         if ($this->isThreeOfAKind($ranks)) {
-            return 10;
+            return $this->scoring['ThreeOfAKind'][$scoringIndex];
         }
         if ($this->isTwoPairs($ranks)) {
-            return 5;
+            return $this->scoring['TwoPairs'][$scoringIndex];
         }
         if ($this->isOnePair($ranks)) {
-            return 2;
+            return $this->scoring['OnePair'][$scoringIndex];
         }
 
         return 0;
     }
 
+
+
     /**
      * Sort hand by score
      *
-     * @param array $hand
-     * @return array
+     * @param array<Card> $hand
+     * @return array<Card>
      */
-    private function sortHand($hand) : array {
-
-        usort($hand, function($a, $b) {
+    private function sortHand($hand): array
+    {
+        usort($hand, function ($first, $second) {
             // Set Ace to 14 when sorting
-            $valA = $a->getValue() === 'A' ? 14 : $a->getScore();
-            $valB = $b->getValue() === 'A' ? 14 : $b->getScore();
+            $valA = $first->getValue() === 'A' ? 14 : $first->getScore();
+            $valB = $second->getValue() === 'A' ? 14 : $second->getScore();
 
             return $valA - $valB;
         });
@@ -88,13 +107,16 @@ class HandEvaluator
         return $hand;
     }
 
+
+
     /**
      * Check if all cards in hand are of same suit
      *
-     * @param array $hand
+     * @param array<string> $suits
      * @return boolean
      */
-    private function isSameSuit(array $suits) : bool {
+    private function isSameSuit(array $suits): bool
+    {
 
         $firstSuit = $suits[0];
         foreach ($suits as $suit) {
@@ -107,12 +129,14 @@ class HandEvaluator
 
 
     /**
-     * Check if royal flush
+     * check if royal flush
      *
-     * @param [type] $hand
+     * @param array<string> $suits
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isRoyalFlush($suits, $ranks) : bool {
+    private function isRoyalFlush($suits, $ranks): bool
+    {
         if ($this->isSameSuit($suits)) {
 
             $requiredValues = ['A', 'K', 'Q', 'J', '10'];
@@ -131,11 +155,12 @@ class HandEvaluator
     /**
      * Check if straight flush
      *
-     * @param array $hand
+     * @param array<string> $suits
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isStraightFlush($suits, $ranks) : bool {
-
+    private function isStraightFlush($suits, $ranks): bool
+    {
         if ($this->isSameSuit($suits)) {
             return $this->isStraight($ranks);
         }
@@ -147,16 +172,16 @@ class HandEvaluator
     /**
      * Check id flush
      *
-     * @param array $hand
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isStraight($ranks) : bool {
-
+    private function isStraight($ranks): bool
+    {
         $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-        for ($i = 0; $i< count($ranks)-1; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             $currentValueIndex = array_search($ranks[$i], $values);
-            $nextValueIndex = array_search($ranks[$i+1], $values);
+            $nextValueIndex = array_search($ranks[$i + 1], $values);
 
             if ($nextValueIndex !== $currentValueIndex + 1) {
                 return false;
@@ -169,10 +194,11 @@ class HandEvaluator
     /**
      * check if four of a kind
      *
-     * @param array $ranks
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isFourOfAKind($ranks) : bool {
+    private function isFourOfAKind($ranks): bool
+    {
 
         $fourOfSame = max(array_count_values($ranks)) === 4;
         return $fourOfSame;
@@ -182,10 +208,11 @@ class HandEvaluator
     /**
      * Check if three if a kind
      *
-     * @param array $ranks
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isThreeOfAKind($ranks) : bool {
+    private function isThreeOfAKind($ranks): bool
+    {
 
         $fourOfSame = max(array_count_values($ranks)) === 3;
         return $fourOfSame;
@@ -195,10 +222,11 @@ class HandEvaluator
     /**
      * check if full house
      *
-     * @param array $ranks
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isFullHouse($ranks) {
+    private function isFullHouse($ranks): bool
+    {
 
         // There shall be 2 unique values
         $numUnique = count(array_unique($ranks));
@@ -211,10 +239,11 @@ class HandEvaluator
     /**
      * chech if flush
      *
-     * @param array $suits
+     * @param array<string> $suits
      * @return boolean
      */
-    private function isFlush($suits) {
+    private function isFlush($suits): bool
+    {
 
         // Check if all is same suit
         $numUnique = count(array_unique($suits));
@@ -225,10 +254,11 @@ class HandEvaluator
     /**
      * check if two pairs
      *
-     * @param array $ranks
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isTwoPairs($ranks) {
+    private function isTwoPairs(array $ranks): bool
+    {
 
         // Number unique values
         $numUnique = count(array_unique($ranks));
@@ -243,10 +273,11 @@ class HandEvaluator
     /**
      * check if one pair
      *
-     * @param array $ranks
+     * @param array<string> $ranks
      * @return boolean
      */
-    private function isOnePair($ranks) {
+    private function isOnePair(array $ranks): bool
+    {
 
         // Number of each value
         $arrayCount = array_count_values($ranks);
