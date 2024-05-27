@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+  <link rel="icon" href="{{ asset('img/girl.svg') }}">
+
+  {% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+  {% endblock %}
+
+  {% block javascripts %}
+  {{ encore_entry_script_tags('app') }}
+  {% endblock %}
+</head>
+
+<body class="proj">
+
+  <header class="proj-site-header" >
+    <div>
+      <span class="site-title">MVC - Projektsida</span>
+    </div>
+    <nav>
+      <ul>
+      <li><a href="{{ path('project') }}">Startsida</a></li>
+        <li><a href="{{ path('proj_about') }}">Om projektet</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    {% block main %}
+    {% endblock %}
+  </main>
+  <footer class="proj-site-footer">
+    <span>Projekt i kurs MVC vt-24</span>
+    <div>
+      <a href="https://github.com/sofan/mvc" target="_blank">
+        <img src="{{ asset('img/github_black.png') }}" alt="Min Github" title="Min Github">
+      </a>
+    </div>
+  </footer>
+</body>
+
+</html>

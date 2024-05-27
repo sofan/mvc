@@ -27,6 +27,14 @@ class DeckOfCards
     public function __construct()
     {
         $this->cards = [];
+
+        foreach ($this->suits as $suit) {
+            foreach ($this->values as $value) {
+                $this->cards[] = new CardGraphic($suit, $value);
+            }
+        }
+
+        $this->shuffle();
     }
 
 

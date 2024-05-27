@@ -1,0 +1,125 @@
+/* project */
+
+body.proj {
+
+    background-color: rgb(208 234 235);
+    font-family: 'Courier New', Courier, monospace;
+
+    main {
+        max-width: 100%;
+    }
+
+    .game-container {
+        background-color: #fff;
+        border: 1px solid #333;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .card-container {
+        width: 200px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .square {
+        width: 450px;
+    }
+
+
+    form {
+        background-color: transparent;
+        max-width: 100%;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    button.cell {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    button.cell:hover {
+        background-color: transparent;
+    }
+
+    button.cell:disabled {
+        cursor: auto;
+    }
+
+    .card {
+        width: 50px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+
+    .currentcard {
+        width: 60px;
+        height: 100px;
+        font-size: 2rem;
+    }
+}
+
+
+
+table.game-board  {
+    background-color: white;
+    border-collapse: collapse;
+
+    td {
+        border: 1px solid #333;
+        background-color:  #49853a;
+        min-width: 80px;
+        height: 100px;
+        text-align: center;
+    }
+
+    td.score {
+        background-color: #fff;
+        border: none;
+        font-weight: bold;
+    }
+
+    tr:nth-child(6) td{
+        height: 50px;
+    }
+}
+
+
+
+.proj-site-header {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 20px;
+    text-align: center;
+    height: 150px;
+    align-items: center;
+    border-bottom: 22px solid #fff;
+    background: orange;
+}
+
+.proj-site-footer {
+    flex: 0 0 auto;
+    background-color: #e79898;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-top: 20px solid #fff;
+
+    a {
+        color: #333;
+    }
+
+    img {
+        width: 25px;
+    }
+}

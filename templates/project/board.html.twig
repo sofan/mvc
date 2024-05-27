@@ -1,0 +1,67 @@
+{% extends "project/projbase.html.twig" %}
+
+{% block title %}Poker Squares - Board
+{% endblock %}
+{% block main %}
+{# {{dump(scores)}} #}
+	<h1>Poker Squares Game</h1>
+	<div class="game-container">
+		<div class="square">
+			<form method="POST" action="{{ path('place_card') }}" id="place-card-form">
+				<table class="game-board">
+					{% for rowIndex, row in grid %}
+						<tr>
+							{% for colIndex, cell in row %}
+								<td>
+									<button type="submit" class="cell" {% if card is null or cell is not null %} disabled {% endif %} onclick="document.getElementById('row-input').value = {{ rowIndex }}; document.getElementById('col-input').value = {{ colIndex }};">
+										{% if cell is not null %}
+											<div class="card {{ cell.getSuit() }}">{{ cell.getAsString() }}</div>
+										{% else %}
+											[placera]
+										{% endif %}
+									</button>
+								</td>
+							{% endfor %}
+                            <td class="score">
+                                {{ scores['rows'][rowIndex] }}
+                            </td>
+						</tr>
+					{% endfor %}
+                    {% if scores is not null %}
+                        <tr>
+                             {% for col in 0..4 %}
+                                <td class="score">
+                                    {{ scores['cols'][col] }}
+                                </td>
+                            {% endfor %}
+                            <td class="score">
+                                {% if scores['total'] > 0 %}
+                                    {{ scores['total'] }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endif %}
+				</table>
+				<input type="hidden" id="row-input" name="row">
+				<input type="hidden" id="col-input" name="col">
+			</form>
+        </div>
+        <div class="card-container">
+			{% if card is not null and emptyCells > 0 %}
+				<h3>Draget kort:
+				</h3>
+				<div class="card currentcard {{ card.getSuit() }}">{{ card.getAsString() }}</div>
+
+			{% elseif emptyCells > 0 %}
+				<form method="POST" action="{{ path('draw_card') }}">
+					<button type="submit">Börja dra kort</button>
+				</form>
+			{% else %}
+				<p>Omgången är över </p>
+				<a href="{{ path('start_game') }}">Spela igen</a>
+			{% endif %}
+
+			</div>
+		</div>
+
+	{% endblock %}
