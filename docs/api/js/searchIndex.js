@@ -106,6 +106,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-DeckOfCards.html#method___construct"
         },                {
+            "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Afill\u0028\u0029",
+            "name": "fill",
+            "summary": "Fill\u0020with\u0020GraphicCards",
+            "url": "classes/App-Card-DeckOfCards.html#method_fill"
+        },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetSuits\u0028\u0029",
             "name": "getSuits",
             "summary": "Get\u0020suits",
@@ -1061,6 +1066,11 @@ Search.appendIndex(
             "summary": "Get\u0020Scoring\u0020system\u0020\u0028american\u0020or\u0020brittish\u0029",
             "url": "classes/App-PokerSquares-Game.html#method_getScoringSystem"
         },                {
+            "fqsen": "\\App\\PokerSquares\\Game\u003A\u003AsetScoringSystem\u0028\u0029",
+            "name": "setScoringSystem",
+            "summary": "Set\u0020scoring\u0020system",
+            "url": "classes/App-PokerSquares-Game.html#method_setScoringSystem"
+        },                {
             "fqsen": "\\App\\PokerSquares\\Game\u003A\u003AgetPlayerName\u0028\u0029",
             "name": "getPlayerName",
             "summary": "Get\u0020player\u0020name",
@@ -1070,11 +1080,6 @@ Search.appendIndex(
             "name": "calculateScores",
             "summary": "Calculate\u0020score\u0020for\u0020game\u0020board",
             "url": "classes/App-PokerSquares-Game.html#method_calculateScores"
-        },                {
-            "fqsen": "\\App\\PokerSquares\\Game\u003A\u003AisFullHand\u0028\u0029",
-            "name": "isFullHand",
-            "summary": "Check\u0020of\u0020full\u0020hand",
-            "url": "classes/App-PokerSquares-Game.html#method_isFullHand"
         },                {
             "fqsen": "\\App\\PokerSquares\\Game\u003A\u003AgetGrid\u0028\u0029",
             "name": "getGrid",
@@ -1146,15 +1151,40 @@ Search.appendIndex(
             "summary": "Place\u0020card\u0020in\u0020grid",
             "url": "classes/App-PokerSquares-Grid.html#method_placeCard"
         },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetNumRows\u0028\u0029",
+            "name": "getNumRows",
+            "summary": "Get\u0020number\u0020of\u0020grid\u0020rows",
+            "url": "classes/App-PokerSquares-Grid.html#method_getNumRows"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetNumCols\u0028\u0029",
+            "name": "getNumCols",
+            "summary": "Get\u0020number\u0020of\u0020columns\u0020in\u0020grid",
+            "url": "classes/App-PokerSquares-Grid.html#method_getNumCols"
+        },                {
             "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetGrid\u0028\u0029",
             "name": "getGrid",
             "summary": "Get\u0020grid",
             "url": "classes/App-PokerSquares-Grid.html#method_getGrid"
         },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetRowIfFullHand\u0028\u0029",
+            "name": "getRowIfFullHand",
+            "summary": "Get\u0020grid\u0020row\u0020if\u0020hand\u0020is\u0020full,\u0020otherwise\u0020null",
+            "url": "classes/App-PokerSquares-Grid.html#method_getRowIfFullHand"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetColumnIfFullHand\u0028\u0029",
+            "name": "getColumnIfFullHand",
+            "summary": "Get\u0020grid\u0020column\u0020if\u0020full\u0020hand",
+            "url": "classes/App-PokerSquares-Grid.html#method_getColumnIfFullHand"
+        },                {
             "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetNumEmptyCells\u0028\u0029",
             "name": "getNumEmptyCells",
             "summary": "",
             "url": "classes/App-PokerSquares-Grid.html#method_getNumEmptyCells"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AcalculateScores\u0028\u0029",
+            "name": "calculateScores",
+            "summary": "Undocumented\u0020function",
+            "url": "classes/App-PokerSquares-Grid.html#method_calculateScores"
         },                {
             "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003AgetGridJson\u0028\u0029",
             "name": "getGridJson",
@@ -1163,8 +1193,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003A\u0024grid",
             "name": "grid",
-            "summary": "Pokser\u0020square\u0020grid",
+            "summary": "Poker\u0020square\u0020grid",
             "url": "classes/App-PokerSquares-Grid.html#property_grid"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003A\u0024numRows",
+            "name": "numRows",
+            "summary": "",
+            "url": "classes/App-PokerSquares-Grid.html#property_numRows"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\Grid\u003A\u003A\u0024numCols",
+            "name": "numCols",
+            "summary": "",
+            "url": "classes/App-PokerSquares-Grid.html#property_numCols"
         },                {
             "fqsen": "\\App\\PokerSquares\\HandEvaluator",
             "name": "HandEvaluator",
@@ -1175,16 +1215,6 @@ Search.appendIndex(
             "name": "evaluateHand",
             "summary": "Evaluate\u0020score\u0020of\u0020card\u0020hand",
             "url": "classes/App-PokerSquares-HandEvaluator.html#method_evaluateHand"
-        },                {
-            "fqsen": "\\App\\PokerSquares\\HandEvaluator\u003A\u003AcheckTop4\u0028\u0029",
-            "name": "checkTop4",
-            "summary": "Check\u0020top\u00204\u0020hands\u0020\u0028RoyalFlush,\u0020StraightFlush,\u0020FourOfAKind,\u0020FullHouse\u0029",
-            "url": "classes/App-PokerSquares-HandEvaluator.html#method_checkTop4"
-        },                {
-            "fqsen": "\\App\\PokerSquares\\HandEvaluator\u003A\u003AcheckPairs\u0028\u0029",
-            "name": "checkPairs",
-            "summary": "Check\u0020for\u0020one\u0020and\u0020two\u0020pairs",
-            "url": "classes/App-PokerSquares-HandEvaluator.html#method_checkPairs"
         },                {
             "fqsen": "\\App\\PokerSquares\\HandEvaluator\u003A\u003AsortHand\u0028\u0029",
             "name": "sortHand",
@@ -1240,6 +1270,11 @@ Search.appendIndex(
             "name": "isOnePair",
             "summary": "check\u0020if\u0020one\u0020pair",
             "url": "classes/App-PokerSquares-HandEvaluator.html#method_isOnePair"
+        },                {
+            "fqsen": "\\App\\PokerSquares\\HandEvaluator\u003A\u003A\u0024scoring",
+            "name": "scoring",
+            "summary": "List\u0020of\u0020scores\u0020for\u0020american\/british\u0020scoring",
+            "url": "classes/App-PokerSquares-HandEvaluator.html#property_scoring"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository",
             "name": "BookRepository",

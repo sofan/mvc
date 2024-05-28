@@ -175,6 +175,20 @@
 
 
 
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/App-PokerSquares-HandEvaluator.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/App-PokerSquares-HandEvaluator.html#property_scoring">$scoring</a>
+    <span>
+                        &nbsp;: array&lt;string, array&lt;int, int&gt;&gt;            </span>
+</dt>
+<dd>List of scores for american/british scoring</dd>
+
+    </dl>
 
 <h4 id="toc-methods">
     Methods
@@ -188,20 +202,6 @@
                                 &nbsp;: int    </span>
 </dt>
 <dd>Evaluate score of card hand</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/App-PokerSquares-HandEvaluator.html#method_checkPairs">checkPairs()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-<dd>Check for one and two pairs</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/App-PokerSquares-HandEvaluator.html#method_checkTop4">checkTop4()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-<dd>Check top 4 hands (RoyalFlush, StraightFlush, FourOfAKind, FullHouse)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/App-PokerSquares-HandEvaluator.html#method_isFlush">isFlush()</a>
@@ -288,6 +288,47 @@
         
 
         
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/App-PokerSquares-HandEvaluator.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_scoring">
+        $scoring
+        <a href="classes/App-PokerSquares-HandEvaluator.html#property_scoring" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">List of scores for american/british scoring</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">array&lt;string, array&lt;int, int&gt;&gt;</span>
+    <span class="phpdocumentor-signature__name">$scoring</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;RoyalFlush&#039; =&gt; [100, 30], &#039;StraightFlush&#039; =&gt; [75, 30], &#039;FourOfAKind&#039; =&gt; [50, 16], &#039;FullHouse&#039; =&gt; [25, 10], &#039;Flush&#039; =&gt; [20, 5], &#039;Straight&#039; =&gt; [15, 12], &#039;ThreeOfAKind&#039; =&gt; [10, 6], &#039;TwoPairs&#039; =&gt; [5, 3], &#039;OnePair&#039; =&gt; [2, 1]]</span></code>
+
+    
+    
+    
+
+</article>
+            </section>
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
@@ -309,7 +350,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -354,119 +395,6 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_checkPairs">
-        checkPairs()
-        <a href="classes/App-PokerSquares-HandEvaluator.html#method_checkPairs" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">116</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Check for one and two pairs</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">checkPairs</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ranks</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$scoringSystem</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$ranks</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$scoringSystem</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_checkTop4">
-        checkTop4()
-        <a href="classes/App-PokerSquares-HandEvaluator.html#method_checkTop4" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">89</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Check top 4 hands (RoyalFlush, StraightFlush, FourOfAKind, FullHouse)</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">checkTop4</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suits</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ranks</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$scoringSystem</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$suits</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$ranks</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$scoringSystem</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_isFlush">
         isFlush()
         <a href="classes/App-PokerSquares-HandEvaluator.html#method_isFlush" class="headerlink"><i class="fas fa-link"></i></a>
@@ -475,7 +403,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">285</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
@@ -521,7 +449,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">240</span>
+    <span class="phpdocumentor-element-found-in__line">199</span>
 
     </aside>
 
@@ -567,7 +495,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">268</span>
+    <span class="phpdocumentor-element-found-in__line">227</span>
 
     </aside>
 
@@ -613,7 +541,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">319</span>
+    <span class="phpdocumentor-element-found-in__line">278</span>
 
     </aside>
 
@@ -659,7 +587,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
@@ -712,7 +640,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">158</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
@@ -758,7 +686,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">218</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -804,7 +732,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">161</span>
 
     </aside>
 
@@ -857,7 +785,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">254</span>
+    <span class="phpdocumentor-element-found-in__line">213</span>
 
     </aside>
 
@@ -903,7 +831,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">300</span>
+    <span class="phpdocumentor-element-found-in__line">259</span>
 
     </aside>
 
@@ -949,7 +877,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/PokerSquares/HandEvaluator.php"><a href="files/src-pokersquares-handevaluator.html"><abbr title="src/PokerSquares/HandEvaluator.php">HandEvaluator.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">137</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -1086,17 +1014,22 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                                                <li><a href="classes/App-PokerSquares-HandEvaluator.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/App-PokerSquares-HandEvaluator.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/App-PokerSquares-HandEvaluator.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/App-PokerSquares-HandEvaluator.html#property_scoring">$scoring<a href="classes/App-PokerSquares-HandEvaluator.html"></li>
+                                            </ul>
+                </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_evaluateHand">evaluateHand()</a></li>
-                                            <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_checkPairs">checkPairs()</a></li>
-                                            <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_checkTop4">checkTop4()</a></li>
                                             <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_isFlush">isFlush()</a></li>
                                             <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_isFourOfAKind">isFourOfAKind()</a></li>
                                             <li><a href="classes/App-PokerSquares-HandEvaluator.html#method_isFullHouse">isFullHouse()</a></li>
