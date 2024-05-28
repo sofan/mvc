@@ -80,8 +80,10 @@ class ProjectControllerApi extends AbstractController
 
             $this->getGame($session);
 
-            $scoreAmerican = $this->game->calculateScores('american');
-            $scoreBrittish = $this->game->calculateScores('brittish');
+            $scoreAmerican = $this->game->calculateScores();
+
+            $this->game->setScoringSystem('british');
+            $scoreBrittish = $this->game->calculateScores();
 
             $data = [
                 'score' => [
@@ -171,7 +173,7 @@ class ProjectControllerApi extends AbstractController
 
             $this->getGame($session);
 
-            $score = $this->game->calculateScores($scoringSystem);
+            $score = $this->game->calculateScores();
 
             $data = [
                 'scoring' => [

@@ -108,10 +108,25 @@ class SquareGameTest extends TestCase
     {
 
         $game = new Game('player1', "american");
-
         $scoring = $game->getScoringSystem();
 
         $this->assertEquals($scoring, "american");
+    }
+
+
+    /**
+     * Test set scoring system
+     *
+     * @return void
+     */
+    public function testSetScoring()
+    {
+
+        $game = new Game('player1', "american");
+        $game->setScoringSystem('british');
+        $scoring = $game->getScoringSystem();
+
+        $this->assertEquals($scoring, "british");
     }
 
 
@@ -126,9 +141,9 @@ class SquareGameTest extends TestCase
         $game = new Game('player');
 
         $game->drawCard();
-        $game->placeCard(0,0);
+        $game->placeCard(0, 0);
 
-        $result = $game->calculateScores('american');
+        $result = $game->calculateScores();
 
         $expected = [
             'rows' => [0 => null, 1 => null, 2 => null, 3 => null, 4 => null],
@@ -152,7 +167,7 @@ class SquareGameTest extends TestCase
         $game = new Game('player');
 
         $game->drawCard();
-        $game->placeCard(0,0);
+        $game->placeCard(0, 0);
 
         $result = $game->getJsonGrid();
 

@@ -15,7 +15,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testOnePair() {
+    public function testOnePair()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -39,7 +40,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testTwoPairs() {
+    public function testTwoPairs()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -63,7 +65,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testThreeOfAKind() {
+    public function testThreeOfAKind()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -88,7 +91,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testStraight() {
+    public function testStraight()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -113,7 +117,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testFlush() {
+    public function testFlush()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -138,7 +143,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testFullHouse() {
+    public function testFullHouse()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -164,7 +170,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testFourOfAKind() {
+    public function testFourOfAKind()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -189,7 +196,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testStraightFlush() {
+    public function testStraightFlush()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -214,7 +222,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testRoyalFlush() {
+    public function testRoyalFlush()
+    {
 
         $evaluator = new HandEvaluator();
 
@@ -239,7 +248,8 @@ class HandEvaluatorTest extends TestCase
      *
      * @return void
      */
-    public function testNoScore() {
+    public function testNoScore()
+    {
 
         $evaluator = new HandEvaluator();
 

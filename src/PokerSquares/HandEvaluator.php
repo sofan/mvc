@@ -53,7 +53,6 @@ class HandEvaluator
         $ranks = array_map(fn (Card $card) => $card->getValue(), $hand);
         $suits = array_map(fn (Card $card) => $card->getSuit(), $hand);
 
-        $handType = '';
 
         if ($this->isRoyalFlush($suits, $ranks)) {
             return $this->scoring['RoyalFlush'][$scoringIndex];

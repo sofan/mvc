@@ -326,7 +326,8 @@ class GridTest extends TestCase
      *
      * @return void
      */
-    public function testCalulateScoresRow() {
+    public function testCalulateScoresRow()
+    {
 
         $grid = new Grid();
         $evaluator = new HandEvaluator();
@@ -358,7 +359,8 @@ class GridTest extends TestCase
      *
      * @return void
      */
-    public function testCalulateScoresCol() {
+    public function testCalulateScoresCol()
+    {
 
         $grid = new Grid();
         $evaluator = new HandEvaluator();

@@ -139,11 +139,11 @@ class Grid
 
 
     /**
-     * Calculate scores in grid rows and colums
+     * Undocumented function
      *
      * @param HandEvaluator $evaluator
      * @param string $scoringSystem
-     * @return array
+     * @return array<string, array<int, int|null>|int>
      */
     public function calculateScores(HandEvaluator $evaluator, string $scoringSystem): array
     {

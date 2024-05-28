@@ -41,6 +41,7 @@ class ProjectController extends AbstractController
         $session->set('square_game', $this->game);
     }
 
+
     #[Route('/proj', name: "project")]
     public function proj(SessionInterface $session): Response
     {
@@ -74,12 +75,11 @@ class ProjectController extends AbstractController
         $this->game = new Game($playerName, $scoring);
         $session->set('square_game', $this->game);
 
-
         $data = [
             'grid' => $this->game->getGrid(),
             'card' => $this->game->getCurrentCard(),
             'emptyCells' => $this->game->getEmptyCells(),
-            'scores' => $this->game->calculateScores($this->game->getScoringSystem()),
+            'scores' => $this->game->calculateScores(),
             'scoring' => $this->game->getScoringSystem(),
             'player' => $this->game->getPlayerName()
         ];
@@ -96,7 +96,7 @@ class ProjectController extends AbstractController
             'grid' => $this->game->getGrid(),
             'card' => $this->game->drawCard(),
             'emptyCells' => $this->game->getEmptyCells(),
-            'scores' => $this->game->calculateScores($this->game->getScoringSystem()),
+            'scores' => $this->game->calculateScores(),
             'scoring' => $this->game->getScoringSystem(),
             'player' => $this->game->getPlayerName()
         ];
@@ -122,7 +122,7 @@ class ProjectController extends AbstractController
 
         $this->saveGame($session);
 
-        $scores = $this->game->calculateScores($this->game->getScoringSystem());
+        $scores = $this->game->calculateScores();
 
         $data = [
             'grid' => $this->game->getGrid(),

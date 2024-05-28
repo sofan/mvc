@@ -128,6 +128,17 @@ class Game
     }
 
     /**
+     * Set scoring system
+     *
+     * @param string $scoring
+     * @return void
+     */
+    public function setScoringSystem($scoring): void
+    {
+        $this->scoringSystem = $scoring;
+    }
+
+    /**
      * Get player name
      *
      * @return string
@@ -143,7 +154,7 @@ class Game
      *
      * @return array<string, array<int, int|null>|int>
      */
-    public function calculateScores(string $scoringSystem): array
+    public function calculateScores(): array
     {
         return $this->grid->calculateScores($this->evaluator, $this->scoringSystem);
     }
