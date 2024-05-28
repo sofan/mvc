@@ -9,6 +9,16 @@ body.proj {
         max-width: 100%;
     }
 
+    .about {
+        max-width: 600px;
+        font-size: 1rem;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .about p {
+        margin-bottom: 0.5rem;
+    }
+
     .player-name {
         font-size: 1rem;
     }
@@ -153,3 +163,40 @@ table.game-board  {
         width: 25px;
     }
 }
+
+
+form.game-start {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 400px;
+    width: 400px;
+    margin: 0 auto;
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    div {
+        margin-bottom: 15px;
+    }
+
+
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+        width: 100%;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+}
+

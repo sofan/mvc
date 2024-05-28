@@ -3,6 +3,11 @@
 This is my course repo for exercises and reports in course MVC at BTH: https://dbwebb.se/mvc.
 
 
+## Scrutinizer
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sofan/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/?branch=main)
+[![Code Coverage](https://scrutinizer-ci.com/g/sofan/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/?branch=main)
+[![Build Status](https://scrutinizer-ci.com/g/sofan/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/build-status/main)
+
 ![Bild](public/img/mvc_repo.webp)
 
 ## Installation
@@ -52,9 +57,6 @@ php -S localhost:8888 -t public
 ## Avaliable API endpoints
 
 * /api/quote
+* /proj/api
 
 
-## Scrutinizer
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sofan/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/?branch=main)
-[![Code Coverage](https://scrutinizer-ci.com/g/sofan/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/?branch=main)
-[![Build Status](https://scrutinizer-ci.com/g/sofan/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/sofan/mvc/build-status/main)

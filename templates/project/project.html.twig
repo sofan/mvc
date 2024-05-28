@@ -3,9 +3,10 @@
 {% block title %}Projekt - Start{% endblock %}
 
 {% block main %}
-<h1>Poker Squares</h1>
 
-<form method="POST" action="{{ path('start_game') }}">
+
+<form class="game-start" method="POST" action="{{ path('start_game') }}">
+    <h1>Poker Squares</h1>
     <div>
         <label for="playerName">Namn på spelare:</label>
         <input type="text" id="playerName" name="playerName" required>
