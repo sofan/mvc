@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-
 /**
  * Test cases for class Poker Squares GameController
  */

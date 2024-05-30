@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 /**
  * Test cases for class Poker Squares GameController
  */
@@ -36,7 +35,8 @@ class SquareGameControllerApiTest extends WebTestCase
      *
      * @return void
      */
-    public function testApiStartJson() : void {
+    public function testApiStartJson(): void
+    {
 
         // Createa stub for SessionInterface class.
         $sessionStub = $this->createMock(SessionInterface::class);
@@ -63,21 +63,21 @@ class SquareGameControllerApiTest extends WebTestCase
             ->willReturn(new PokerSquareTestGame('testPlayer'));
 
 
-         // Get JSON response from session stub
-         $response = $controller->apiGame($sessionStub);
+        // Get JSON response from session stub
+        $response = $controller->apiGame($sessionStub);
 
-         // Assert that respone is JSON
-         $this->assertInstanceOf(JsonResponse::class, $response);
+        // Assert that respone is JSON
+        $this->assertInstanceOf(JsonResponse::class, $response);
 
-         // Get json content and check that it is a string
-         $content = $response->getContent();
-         $this->assertIsString($content);
+        // Get json content and check that it is a string
+        $content = $response->getContent();
+        $this->assertIsString($content);
 
-         if ($content !== '') {
-             // Get content and json decode
-             $res = json_decode($content, true);
-             $this->assertEquals($exp, $res);
-         }
+        if ($content !== '') {
+            // Get content and json decode
+            $res = json_decode($content, true);
+            $this->assertEquals($exp, $res);
+        }
     }
 
 
