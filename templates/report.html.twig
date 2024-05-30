@@ -172,6 +172,61 @@
 
 
         </article>
+
+        <article id="kmom10" class="report">
+        <h2>Kursmoment 07/10 - Project och examination</h2>
+        <p>
+        Jag har valt till detta projekt att utveckla kortspelet <b>Poker Square</b>. Dels på grund av att jag kan använda en hel del av de klasser vi redan
+        implemeterat under kursens gång, och för att jag som icke van pokerspelare tycker att reglerna för en patiens är lättare att förstå.
+        På grund av viss tidsbrist så har jag valt att fokusera på de obligatoriska kraven. Utöver det har jag även gjort API-kravet.
+
+        <h3>Krav 1-3</h3>
+        Jag har skapat en ny landningsida <code>/proj</code> med en egen stilmall. Det går att komma till projekt-sidan från navbaren på min report-sida.
+        I navbaren till sidan går att komma till startsidan för spelet, about-sidan <code>proj/about</code> och API-sidan <code>proj/api</code>.
+        </p>
+        <p>
+            Mitt <a href="" target="_blank">git repo</a> är uppdaterat och innehåller en beskrivning av repot och hur det klolnas.
+            Där finns även badges som länkar till Scrutinizer.
+        </p>
+        <p>
+            Jag har skapat enhetstester för alla klasser som ingår i projektet, samt till viss del för de Controllers som används (dessa har jag dock
+            ej testat fullt ut då det mesta som ingår redan finns testat i klasserna). I <code>phpunit.xml.dist</code> har jag excluderat vissa klasser
+            som ej är relevanta för projektet. Phpunit och Scrutinizer ger mig en kodtäckning på ca 91% vilket jag anser får vara tillräckligt bra.
+        </p>
+        <p>
+        All kod är kommenterad och dokumentation är skapad med phpdoc och jag har använt PhpMetric för att automattesta koden.
+        </p>
+        <h4>Krav 4 - JSON API</h4>
+        Jag har skapat en sida <code>proj/api</code> där det finns samlat 5 st JSON routes som alla visar olika information om spelet.
+        De första 4 är av metoden GET, och är egentligen väldigt. Den sista routen är en POST där man i en dropdown kan välja vilken typ av poängberäkning som
+        ska visas för spelet, och däreftr får man se poäng för vald metod.
+        Det var inga svårigheter att skapa dessa JSON routes då vi gjort samma sak flera gånger under kursen.
+
+        <h4>Genomförande</h4>
+        <p>Det har varit ett roligt och för mig inte så svårt projekt då jag valde att mest fokusera på de obligatoriska uppgifterna.
+        Det har tagit mig gissningsvis ca 20 timmar att bli klar, och av dessa har nog en tredjedel gått åt till att skapa tester och fixa sådant som ger felmeddelanden av phpmd och phpstan.
+        Nivån på projektet känns absolut rimligt, och jag önskar att jag hade haft tid för alla krav.
+
+        </p>
+        <p>Jag kunde återanvända flera av de klasser som redan implementerats under kursen (Card, CardGraphic och DeckOfCards). Jag skapade ett nytt namespace <code>PokerSquares</code> för projektet där
+        jag lade till de nya klasser som behövdes. Dessa är <code>Grid</code> (spelplanen), <code>HandEvaluator</code> (beräknar poäng) och <code>Game</code> (spelmotorn).
+        Jag har också lagt till två nya Controllers, <code>ProjectController</code> och <code>ProjectControllerApi</code>.
+        </p>
+        <p>
+            Att skapa själva spelplanen och dess utseende gick ganska snabbt, medan poängberäkningen tog lite mer tid men var desto roligare att klura på.
+            Vid starten av varje spelomgång får användaren ange sitt namn samt vilken poängberäknging som ska användas.
+            Att namnet anges var egentligen med syfte att sedan göra krav 5 med databas, och spara spelstatistik. Men tyvärr blev tiden knapp och
+            jag fick hoppa över det momentet.
+        </p>
+
+        <h4>Tankar om kursen</h4>
+        <p>Alla kurser jag läst hittills från BTH har varit grymt bra och detta var inget undantag. Otroligt bra med inspelade föreläsningar
+        för oss som jobbar dagtid. Jag upplever det också mycket bättre att läsa en distanskurs där det samtidigt finns "riktiga" kursstudenter. Annars kan det ofta bli rätt så avslaget
+        och det känns som man är helt ensam i kursen.
+        Instruktionerna på kurssidan är tydliga och det finns aldrig några tveksamheter om vad som ska göras och till när. Dessutom kunniga och engagerade lärare.
+        Kursen kan jag verkligen rekommendera till kollegor och betyget från från mig är en 10:a.
+        </p>
+        </article>
     </article>
 
 
@@ -184,6 +239,7 @@
             <li><a href="#kmom04">kmom04</a></li>
             <li><a href="#kmom05">kmom05</a></li>
             <li><a href="#kmom06">kmom06</a></li>
+            <li><a href="#kmom10">kmom07/10</a></li>
         </ul>
     </div>
 </div>
